@@ -124,7 +124,8 @@ export const Bar: React.FC<{ at: number; width: number; color?: string; height?:
 export const useExit = (duration: number, len = 12) => {
   const f = useCurrentFrame();
   const p = interpolate(f, [duration - len, duration], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease.in });
-  return { opacity: 1 - p, transform: `scale(${1 + p * 0.03})`, filter: `blur(${p * 8}px)` } as React.CSSProperties;
+  // Sortie poussée vers la gauche : la vidéo avance toujours dans le même sens.
+  return { opacity: 1 - p, transform: `translateX(${-90 * p}px) scale(${1 + p * 0.02})`, filter: `blur(${p * 8}px)` } as React.CSSProperties;
 };
 
 export const useEnter = (len = 14) => {

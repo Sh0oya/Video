@@ -71,7 +71,7 @@ export const UsaJapan: React.FC<{ duration: number }> = ({ duration }) => {
           <div style={{ fontFamily: F.display, fontWeight: 800, fontStretch: "110%", fontSize: 62, color: C.ink }}>Les premiers marchés mondiaux</div>
         </Reveal>
         <FadeUp at={6}>
-          <Label size={21} style={{ marginTop: 10 }}>
+          <Label size={22} style={{ marginTop: 10 }}>
             classement par installations annuelles
           </Label>
         </FadeUp>
@@ -124,7 +124,7 @@ export const UsaJapan: React.FC<{ duration: number }> = ({ duration }) => {
         />
       </div>
       <div style={{ position: "absolute", left: CX, top: SLOT3 + CH + 34, opacity: prog(f, usAt + 20, 14) }}>
-        <Label size={20}>installations 2025 · variation sur un an</Label>
+        <Label size={22}>installations 2025 · variation des États-Unis sur un an</Label>
       </div>
     </AbsoluteFill>
   );

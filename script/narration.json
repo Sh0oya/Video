@@ -19,10 +19,11 @@
         {
           "type": "tick",
           "at": "scene",
-          "offset": 0.3,
+          "offset": 0.25,
           "repeat": 24,
-          "every": 0.075,
-          "gain": 0.35
+          "every": 0.19,
+          "gain": 0.35,
+          "accel": 0.925
         },
         {
           "type": "riser",

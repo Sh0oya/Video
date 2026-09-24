@@ -1,11 +1,14 @@
 import React from "react";
 import { AbsoluteFill, Img, staticFile, useCurrentFrame, random } from "remotion";
 import { C } from "../theme";
+import { TL } from "../lib/timeline";
 
 // Fond continu sous toutes les scènes : dégradé, trame de plan technique, halos lents, grain.
 export const Background: React.FC = () => {
   const f = useCurrentFrame();
-  const drift = (f * 0.25) % 80;
+  // La trame défile de plus en plus vite au fil de la vidéo : vitesse 0,15 -> 0,75 px par image.
+  const T = TL.durationInFrames;
+  const drift = (0.15 * f + (0.6 * f ** 3) / (3 * T * T)) % 80;
   // Grain renouvelé toutes les 3 images : texture pellicule sans exploser le débit vidéo.
   const g = Math.floor(f / 3);
   const gx = Math.round(random(`gx${g}`) * 270);

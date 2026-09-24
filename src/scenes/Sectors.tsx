@@ -50,7 +50,7 @@ export const Sectors: React.FC<{ duration: number }> = ({ duration }) => {
         <div>
           <div style={{ fontFamily: F.display, fontWeight: 800, fontStretch: "110%", fontSize: 54, color: C.ink, lineHeight: 1 }}>{label}</div>
           {note && (
-            <Label size={20} style={{ marginTop: 6 }}>
+            <Label size={22} style={{ marginTop: 6 }}>
               {note}
             </Label>
           )}
@@ -67,13 +67,13 @@ export const Sectors: React.FC<{ duration: number }> = ({ duration }) => {
           <div style={{ fontFamily: F.display, fontWeight: 800, fontStretch: "110%", fontSize: 62, color: C.ink }}>Des usines plus fortes</div>
         </Reveal>
         <FadeUp at={6}>
-          <Label size={21} style={{ marginTop: 10 }}>
-            productivité · compétitivité · nouveaux secteurs
+          <Label size={22} style={{ marginTop: 10 }}>
+            productivité · prix · compétitivité · nouveaux secteurs
           </Label>
         </FadeUp>
       </div>
 
-      {stat("Productivité", tProd, 320, false, "≈ +0,36 point par an · 17 pays, 1993-2007")}
+      {stat("Productivité", tProd, 320, false, "≈ +0,36 point par an · 17 pays")}
       {stat("Prix", tPrice, 440, true, "même étude, publiée en 2018")}
       {stat("Compétitivité", tComp, 560, false, "selon l’IFR")}
       <div style={{ position: "absolute", left: 140, top: 690, display: "flex", alignItems: "center", gap: 22, opacity: relo, transform: `translateX(${(1 - relo) * -30}px)` }}>
@@ -82,7 +82,7 @@ export const Sectors: React.FC<{ duration: number }> = ({ duration }) => {
         </div>
         <div style={{ fontFamily: F.display, fontWeight: 800, fontStretch: "110%", fontSize: 40, color: C.ink, lineHeight: 1 }}>
           Relocalisation
-          <Label size={20} style={{ marginTop: 6 }}>
+          <Label size={22} style={{ marginTop: 6 }}>
             aux États-Unis · selon l’IFR
           </Label>
         </div>
@@ -132,10 +132,10 @@ export const Sectors: React.FC<{ duration: number }> = ({ duration }) => {
         </div>
       )}
       <div style={{ position: "absolute", left: TX, top: TY - 44, opacity: prog(f, 10, 14) }}>
-        <Label size={20}>secteurs historiques</Label>
+        <Label size={22}>secteurs historiques</Label>
       </div>
       <div style={{ position: "absolute", left: TX, top: TY + TH + TG - 4, opacity: prog(f, tiles[3].t - 6, 12) }}>
-        <Label size={20} color={C.orange}>
+        <Label size={22} color={C.orange}>
           en plein essor aux États-Unis
         </Label>
       </div>

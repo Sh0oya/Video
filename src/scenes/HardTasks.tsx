@@ -32,7 +32,7 @@ export const HardTasks: React.FC<{ duration: number }> = ({ duration }) => {
           <div style={{ fontFamily: F.display, fontWeight: 800, fontStretch: "110%", fontSize: 62, color: C.ink }}>Moins de tâches ingrates</div>
         </Reveal>
         <FadeUp at={6}>
-          <Label size={21} style={{ marginTop: 10 }}>
+          <Label size={22} style={{ marginTop: 10 }}>
             ce que les robots peuvent prendre en charge
           </Label>
         </FadeUp>
@@ -90,9 +90,9 @@ export const HardTasks: React.FC<{ duration: number }> = ({ duration }) => {
                   transform: `scale(${interpolate(prog(f, accAt + 45, 14), [0, 0.6, 1], [0.7, 1.06, 1])})`,
                 }}
               >
-                <div style={{ fontFamily: F.body, fontWeight: 700, fontSize: 26, color: C.orange }}>▼ ≈ 1,2 accident de moins</div>
+                <div style={{ fontFamily: F.body, fontWeight: 700, fontSize: 26, color: C.orange }}>≈ 1,2 accident de moins</div>
                 <div style={{ fontFamily: F.mono, fontSize: 18, color: C.ink, marginTop: 4 }}>pour 100 salariés par an</div>
-                <div style={{ fontFamily: F.mono, fontSize: 16, color: C.muted, marginTop: 2 }}>là où ils sont plus présents · É.-U., 2022</div>
+                <div style={{ fontFamily: F.mono, fontSize: 18, color: C.muted, marginTop: 2 }}>zones plus robotisées · étude É.-U., 2022</div>
               </div>
             )}
           </div>

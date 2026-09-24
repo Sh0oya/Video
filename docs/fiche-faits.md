@@ -86,6 +86,7 @@ Nuance : les installations annuelles ont plafonné entre 2021 et 2024 (500 000 �
 | Les employeurs du monde entier font face à des pénuries de main-d'œuvre ; la robotique est présentée comme une réponse clé | IFR, *Top 5 Global Robotics Trends 2026* | janv. 2026 | moyenne (non revérifié) |
 | En Chine, face au manque de main-d'œuvre lié à la démographie, l'automatisation est la solution privilégiée et rend la production plus résiliente | IFR, communiqué Chine | 24 sept. 2026 | moyenne |
 | Aux États-Unis, la croissance 2025 vient de l'agroalimentaire, de l'entreposage et de la logistique, et du médical ; relocalisation et pénurie de main-d'œuvre offrent de bonnes perspectives | IFR, communiqué États-Unis | 24 sept. 2026 | moyenne |
+| L'électronique, l'automobile, puis la métallurgie et les machines restent les principaux clients des robots industriels dans le monde (d'où les « secteurs historiques » de la scène secteurs) | IFR, World Robotics, répartition des installations par secteur, éditions 2024 à 2026 | 2024-2026 | élevée |
 | Le monde vieillit : d'ici la fin des années 2070, 2,2 milliards de personnes de 65 ans et plus, soit plus que d'enfants (projection) ; au Japon, la population en âge de travailler a culminé en 1995 | ONU, World Population Prospects 2024 ; Bureau des statistiques du Japon | 2024 | élevée (contexte, sans lien démontré avec les robots) |
 
 ### Formulations prudentes autorisées

@@ -44,7 +44,7 @@ export const Stock: React.FC<{ duration: number }> = ({ duration }) => {
         </Reveal>
         <div style={{ height: 10 }} />
         <FadeUp at={6}>
-          <Label size={21}>parc opérationnel mondial · en millions d’unités · valeurs publiées chaque année par l’IFR</Label>
+          <Label size={22}>parc opérationnel mondial · en millions d’unités · valeurs publiées chaque année par l’IFR</Label>
         </FadeUp>
       </div>
       <svg width={1920} height={1080} style={{ position: "absolute" }}>

@@ -85,7 +85,7 @@ export const China: React.FC<{ duration: number }> = ({ duration }) => {
         </g>
       </svg>
       <div style={{ position: "absolute", left: GX, top: GY + 10 * (CELL + GAP) + 14, width: 10 * (CELL + GAP) - GAP, textAlign: "center", opacity: prog(f, Math.max(sayAt, land), 14) }}>
-        <Label size={21} color={C.ink}>
+        <Label size={22} color={C.ink}>
           <span style={{ color: C.orange }}>■</span> près de trois nouveaux robots sur cinq
         </Label>
       </div>

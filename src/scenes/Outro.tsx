@@ -120,16 +120,16 @@ export const Outro: React.FC<{ duration: number }> = ({ duration }) => {
           </div>
           <div style={{ width: 140, height: 5, background: C.orange, margin: "36px auto" }} />
           <Label size={22} color={C.ink} style={{ letterSpacing: "0.12em" }}>
-            Source : International Federation of Robotics (IFR)
+            Source : Fédération internationale de la robotique (IFR)
           </Label>
           <div style={{ height: 10 }} />
-          <Label size={20}>World Robotics 2026 · communiqué du 24 septembre 2026 · ifr.org</Label>
+          <Label size={22}>World Robotics 2026 · communiqué du 24 septembre 2026 · ifr.org</Label>
           <div style={{ height: 10 }} />
-          <Label size={18}>
-            Autres sources : IFR, The Impact of Robots (août 2026) et tendances 2026 · Graetz et Michaels (2018) · Gihleb et al. (2022)
-          </Label>
+          <Label size={20}>Autres sources : IFR, The Impact of Robots (août 2026) et tendances 2026</Label>
+          <div style={{ height: 6 }} />
+          <Label size={20}>Graetz et Michaels (2018) · Gihleb et al. (2022)</Label>
           <div style={{ height: 56 }} />
-          <Label size={19} color={C.muted}>
+          <Label size={20} color={C.muted}>
             Vidéo entièrement générée par du code · animation Remotion · voix de synthèse Kokoro · musique synthétisée
           </Label>
         </div>

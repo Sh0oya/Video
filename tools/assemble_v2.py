@@ -14,7 +14,7 @@ W = {"type": "whoosh", "at": "scene", "offset": -0.25}
 # Mise en scène par scène : respiration (s), intensité musicale, bruitages, chapitre.
 STAGING = {
     "coldopen": dict(music=0.35, lead=2.4, gap=0.45, tail=0.7, chapter=None, sfx=[
-        {"type": "tick", "at": "scene", "offset": 0.3, "repeat": 24, "every": 0.075, "gain": 0.35},
+        {"type": "tick", "at": "scene", "offset": 0.25, "repeat": 24, "every": 0.19, "accel": 0.925, "gain": 0.35},
         {"type": "riser", "at": "line:0", "args": {"d": 2.2}, "gain": 0.8},
         {"type": "impact", "at": "line:0", "offset": -0.05, "gain": 1.0},
         {"type": "clunk", "at": "line:2", "offset": 0.05, "gain": 0.7},

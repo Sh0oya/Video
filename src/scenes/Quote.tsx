@@ -77,7 +77,7 @@ export const Quote: React.FC<{ duration: number }> = ({ duration }) => {
           <div style={{ width: 60, height: 4, background: C.orange }} />
           <div>
             <div style={{ fontFamily: F.body, fontWeight: 700, fontSize: 40, color: C.ink }}>Jane Heffner</div>
-            <Label size={20} style={{ marginTop: 4 }}>
+            <Label size={22} style={{ marginTop: 4 }}>
               présidente de l’IFR · citation traduite de l’anglais
             </Label>
           </div>
@@ -88,7 +88,7 @@ export const Quote: React.FC<{ duration: number }> = ({ duration }) => {
       <AbsoluteFill style={{ opacity: mapIn }}>
         <div style={{ position: "absolute", left: 140, top: 130, transform: `translateY(${(1 - mapIn) * 20}px)` }}>
           <div style={{ fontFamily: F.display, fontWeight: 800, fontStretch: "110%", fontSize: 62, color: C.ink }}>Où la croissance est la plus forte</div>
-          <Label size={21} style={{ marginTop: 10 }}>
+          <Label size={22} style={{ marginTop: 10 }}>
             d’après Jane Heffner, présidente de l’IFR
           </Label>
         </div>
@@ -104,7 +104,7 @@ export const Quote: React.FC<{ duration: number }> = ({ duration }) => {
         </svg>
         {tag("A", "ASIE", "▲ croissance la plus forte", C.orange, -175, -190)}
         {tag("M", "AMÉRIQUES", "▲ en deuxième position", C.cyan, -312, 88)}
-        {tag("E", "EUROPE", "▸ avance plus lentement", REGION_COLOR.E, -103, 75)}
+        {tag("E", "EUROPE", "▸ avance plus lentement", REGION_COLOR.E, -205, 75)}
       </AbsoluteFill>
     </AbsoluteFill>
   );

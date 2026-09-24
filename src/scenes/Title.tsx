@@ -32,18 +32,28 @@ export const Title: React.FC<{ duration: number }> = ({ duration }) => {
   const SC = 0.92;
   const PICK = [1545, BY - 26] as const;
   const DROP = [1790, BY - 26] as const;
+  // Deux cycles de prise et de dépose, cadence soutenue : le rythme de l'usine.
   const pose = poseAt(f, [
     { f: 0, s: -8, e: 150, w: 30, g: 1 },
-    { f: 42, ...ik(PICK[0], PICK[1] - 90, BX, BY, SC, 1) },
-    { f: 64, ...ik(PICK[0], PICK[1], BX, BY, SC, 1) },
-    { f: 80, ...ik(PICK[0], PICK[1], BX, BY, SC, 0.12) },
-    { f: 104, ...ik(PICK[0] + 20, PICK[1] - 210, BX, BY, SC, 0.12) },
-    { f: 160, ...ik(DROP[0] - 40, DROP[1] - 170, BX, BY, SC, 0.12) },
-    { f: 190, ...ik(DROP[0], DROP[1], BX, BY, SC, 0.12) },
-    { f: 205, ...ik(DROP[0], DROP[1], BX, BY, SC, 1) },
-    { f: 240, ...ik(DROP[0] - 150, DROP[1] - 230, BX, BY, SC, 1) },
+    { f: 23, ...ik(PICK[0], PICK[1] - 90, BX, BY, SC, 1) },
+    { f: 35, ...ik(PICK[0], PICK[1], BX, BY, SC, 1) },
+    { f: 44, ...ik(PICK[0], PICK[1], BX, BY, SC, 0.12) },
+    { f: 57, ...ik(PICK[0] + 20, PICK[1] - 210, BX, BY, SC, 0.12) },
+    { f: 88, ...ik(DROP[0] - 40, DROP[1] - 170, BX, BY, SC, 0.12) },
+    { f: 104, ...ik(DROP[0], DROP[1], BX, BY, SC, 0.12) },
+    { f: 113, ...ik(DROP[0], DROP[1], BX, BY, SC, 1) },
+    { f: 132, ...ik(DROP[0] - 60, DROP[1] - 200, BX, BY, SC, 1) },
+    { f: 150, ...ik(PICK[0], PICK[1] - 90, BX, BY, SC, 1) },
+    { f: 162, ...ik(PICK[0], PICK[1], BX, BY, SC, 1) },
+    { f: 170, ...ik(PICK[0], PICK[1], BX, BY, SC, 0.12) },
+    { f: 183, ...ik(PICK[0] + 20, PICK[1] - 210, BX, BY, SC, 0.12) },
+    { f: 208, ...ik(DROP[0] - 40, DROP[1] - 220, BX, BY, SC, 0.12) },
+    { f: 222, ...ik(DROP[0], DROP[1] - 54, BX, BY, SC, 0.12) },
+    { f: 230, ...ik(DROP[0], DROP[1] - 54, BX, BY, SC, 1) },
+    { f: 252, ...ik(DROP[0] - 150, DROP[1] - 230, BX, BY, SC, 1) },
   ]);
-  const holding = f > 80 && f < 205;
+  const holding = (f > 44 && f < 113) || (f > 170 && f < 230);
+  const box2In = prog(f, 96, 14, ease.out);
   return (
     <AbsoluteFill style={exit}>
       <svg width={1920} height={1080} style={{ position: "absolute" }}>
@@ -59,8 +69,10 @@ export const Title: React.FC<{ duration: number }> = ({ duration }) => {
             payload={holding ? <rect x={-26} y={-26} width={52} height={52} rx={6} fill={C.cyan} opacity={0.95} /> : undefined}
           />
         </g>
-        {!holding && f <= 80 && <rect x={PICK[0] - 26} y={PICK[1] - 26} width={52} height={52} rx={6} fill={C.cyan} opacity={0.95} />}
-        {f >= 205 && <rect x={DROP[0] - 26} y={DROP[1] - 26} width={52} height={52} rx={6} fill={C.cyan} opacity={0.95} />}
+        {f <= 44 && <rect x={PICK[0] - 26} y={PICK[1] - 26} width={52} height={52} rx={6} fill={C.cyan} opacity={0.95} />}
+        {f > 96 && f <= 170 && <rect x={PICK[0] - 26 - (1 - box2In) * 120} y={PICK[1] - 26} width={52} height={52} rx={6} fill={C.cyan} opacity={0.95 * box2In} />}
+        {f >= 113 && <rect x={DROP[0] - 26} y={DROP[1] - 26} width={52} height={52} rx={6} fill={C.cyan} opacity={0.95} />}
+        {f >= 230 && <rect x={DROP[0] - 26} y={DROP[1] - 80} width={52} height={52} rx={6} fill={C.cyan} opacity={0.95} />}
       </svg>
       <div style={{ position: "absolute", left: 140, top: 250 }}>
         <Reveal at={2} dur={18}>
@@ -85,8 +97,8 @@ export const Title: React.FC<{ duration: number }> = ({ duration }) => {
         <Bar at={ifrAt - 6} width={180} />
         <div style={{ height: 28 }} />
         <FadeUp at={ifrAt}>
-          <Label size={28} color={C.ink}>
-            International Federation of Robotics (IFR)
+          <Label size={26} color={C.ink}>
+            Fédération internationale de la robotique (IFR)
           </Label>
         </FadeUp>
         <div style={{ height: 10 }} />

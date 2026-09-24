@@ -7,6 +7,7 @@ Les bruitages sont déclarés par scène dans script/narration.json :
 "at" vaut "scene" (début de scène), "end" (fin de scène), "line:N" (début de la réplique N)
 "sub:N:M" (début du bloc de sous-titre M de la réplique N) ou "match:motif" (premier bloc
 dont le texte correspond à l'expression régulière, pour rester calé sur un mot prononcé).
+"accel" (< 1) raccourcit chaque intervalle entre répétitions d'un facteur constant.
 Sortie : public/audio/mix.wav puis out/mix.wav (loudnorm).
 """
 from __future__ import annotations
@@ -128,7 +129,10 @@ def main() -> None:
                 if cue["type"] == "riser":
                     start = t0 - sig.shape[1] / SR
                 else:
-                    start = t0 + r * cue.get("every", 0.1)
+                    # "accel" < 1 : chaque intervalle raccourcit (répétitions qui s'accélèrent).
+                    k = cue.get("accel", 1.0)
+                    e = cue.get("every", 0.1)
+                    start = t0 + (e * r if k == 1.0 else e * (1 - k**r) / (1 - k))
                 i = int(start * SR)
                 if i < 0:
                     sig, i = sig[:, -i:], 0

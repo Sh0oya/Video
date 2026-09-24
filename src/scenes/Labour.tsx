@@ -40,7 +40,7 @@ export const Labour: React.FC<{ duration: number }> = ({ duration }) => {
           <div style={{ fontFamily: F.display, fontWeight: 800, fontStretch: "110%", fontSize: 62, color: C.ink }}>Quand les bras viennent à manquer</div>
         </Reveal>
         <FadeUp at={6}>
-          <Label size={21} style={{ marginTop: 10 }}>
+          <Label size={22} style={{ marginTop: 10 }}>
             vieillissement de la population active · pénurie de main-d’œuvre
           </Label>
         </FadeUp>

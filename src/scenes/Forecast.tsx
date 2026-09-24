@@ -51,7 +51,7 @@ export const Forecast: React.FC<{ duration: number }> = ({ duration }) => {
           <div style={{ fontFamily: F.display, fontWeight: 800, fontStretch: "110%", fontSize: 62, color: C.ink }}>Installations : les prévisions</div>
         </Reveal>
         <FadeUp at={6}>
-          <Label size={21} style={{ marginTop: 10 }}>
+          <Label size={22} style={{ marginTop: 10 }}>
             robots installés par an · données 2022–2025 · prévisions IFR
           </Label>
         </FadeUp>
@@ -105,14 +105,15 @@ export const Forecast: React.FC<{ duration: number }> = ({ duration }) => {
       </div>
       <div style={{ position: "absolute", left: p26[0] - 70, top: p26[1] - 100, opacity: prog(f, n655, 12) }}>
         <div style={{ fontFamily: F.mono, fontWeight: 600, fontSize: 30, color: C.ink, lineHeight: 1 }}>655 000</div>
-        <Label size={20} style={{ marginTop: 6 }}>
+        <Label size={22} style={{ marginTop: 6 }}>
           prévus en 2026
         </Label>
       </div>
-      <div style={{ position: "absolute", left: p26[0] + 10, top: p26[1] + 30 }}>
+      <div style={{ position: "absolute", left: p26[0] + 10, top: actual[3][1] + 14 }}>
         <Chip at={L[1].to - 30} text="▲ +9 % en 2026" size={24} />
       </div>
-      <div style={{ position: "absolute", left: p29[0] + 50, top: (actual[3][1] + p29[1]) / 2 - 24, opacity: third, transform: `translateX(${(1 - third) * -14}px)` }}>
+      {/* Sous le niveau 2025 prolongé, calé à droite sur l'accolade : reste dans le cadre. */}
+      <div style={{ position: "absolute", right: 1920 - (p29[0] + 38), top: actual[3][1] + 16, opacity: third, transform: `translateY(${(1 - third) * -10}px)` }}>
         <Chip at={findSub("forecast", /tiers/) ?? L[2].to} text="▲ ≈ +⅓ en 4 ans" size={26} />
       </div>
       <div

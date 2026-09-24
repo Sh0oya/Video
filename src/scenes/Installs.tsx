@@ -8,7 +8,7 @@ import { Clock } from "../components/Icons";
 
 const BASE = 800;
 const PER = 460 / 600_000;
-const BX = 1070; // abscisse de la première barre (2022)
+const BX = 1100; // abscisse de la première barre (2022)
 const STEP = 170;
 const BW = 120;
 
@@ -25,6 +25,10 @@ export const Installs: React.FC<{ duration: number }> = ({ duration }) => {
   const recP = prog(f, findSub("installs", /record/i) ?? numAt, 14);
   const day = prog(f, L[2].from + 3, 14, ease.out);
   const thump = interpolate(f, [L[2].from + 3, L[2].from + 7, L[2].from + 18], [0.92, 1.04, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  // « plus d'un par minute » : le rythme rendu tangible.
+  const minAt = findSub("installs", /minute/i) ?? L[2].subs[1]?.from ?? L[2].from + 40;
+  const minP = prog(f, minAt, 12, ease.out);
+  const minThump = interpolate(f, [minAt, minAt + 4, minAt + 16], [0.8, 1.08, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   return (
     <AbsoluteFill style={exit}>
       <div style={{ position: "absolute", left: 140, top: 130 }}>
@@ -64,8 +68,8 @@ export const Installs: React.FC<{ duration: number }> = ({ duration }) => {
           top: 680,
           display: "flex",
           alignItems: "center",
-          gap: 30,
-          padding: "22px 34px",
+          gap: 24,
+          padding: "22px 30px",
           borderRadius: 18,
           background: C.panel,
           border: `1px solid ${C.line}`,
@@ -76,7 +80,7 @@ export const Installs: React.FC<{ duration: number }> = ({ duration }) => {
       >
         <Clock size={76} color={C.orange} stroke={6} angle={Math.max(0, f - L[2].from) * 24} />
         <div>
-          <Label size={20} color={C.orange} style={{ marginBottom: 4 }}>
+          <Label size={22} color={C.orange} style={{ marginBottom: 4 }}>
             plus de
           </Label>
           <div style={{ fontFamily: F.display, fontWeight: 900, fontStretch: "125%", fontSize: 84, color: C.orange, lineHeight: 1 }}>
@@ -89,10 +93,8 @@ export const Installs: React.FC<{ duration: number }> = ({ duration }) => {
             <br />
             chaque jour, en moyenne
           </div>
-          <div style={{ opacity: prog(f, L[2].subs[1]?.from ?? L[2].from + 40, 12) }}>
-            <Label size={22} style={{ marginTop: 8 }}>
-              soit plus d’un par minute
-            </Label>
+          <div style={{ opacity: minP, transform: `scale(${minThump})`, transformOrigin: "left center", marginTop: 10 }}>
+            <div style={{ fontFamily: F.body, fontWeight: 700, fontSize: 27, color: C.orange }}>plus d’un robot chaque minute</div>
           </div>
         </div>
       </div>

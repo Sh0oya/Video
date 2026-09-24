@@ -1,5 +1,5 @@
 import React from "react";
-import { AbsoluteFill, interpolate, random, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Easing, interpolate, random, useCurrentFrame } from "remotion";
 import { C, F, ease, fmt } from "../theme";
 import { localLines, paramsOf, prog } from "../lib/timeline";
 import { Label, Reveal, useExit } from "../components/Ui";
@@ -16,7 +16,7 @@ const DOTS = Array.from({ length: COLS * ROWS }, (_, i) => {
   const x = OX + cx * GAP;
   const y = OY + cy * GAP;
   const d = Math.hypot((x - 960) / 960, (y - 540) / 540);
-  return { x, y, k: d * 0.75 + random(`d${i}`) * 0.6, hot: random(`h${i}`) > 0.93 };
+  return { x, y, r: Math.hypot(x - 960, y - 540), k: d * 0.75 + random(`d${i}`) * 0.6, hot: random(`h${i}`) > 0.93 };
 })
   .sort((a, b) => a.k - b.k)
   .map((d, rank) => ({ ...d, rank }));
@@ -26,13 +26,17 @@ export const ColdOpen: React.FC<{ duration: number }> = ({ duration }) => {
   const L = localLines("coldopen");
   const P = paramsOf("coldopen", { stamp: "RECORD", label: "robots industriels en service", sublabel: "dans les usines du monde · fin 2025" });
   const land = L[0].from;
-  const count = interpolate(f, [8, land], [0, 5_000_000], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease.soft });
+  // Le compteur accélère : lent au départ, vertigineux à l'arrivée.
+  const count = interpolate(f, [8, land], [0, 5_000_000], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.in(Easing.cubic) });
   const lit = count / 1000;
   const hit = prog(f, land, 18);
   const glow = hit * interpolate(f, [land + 18, land + 70], [1, 0.45], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const pulse = interpolate(f, [land, land + 4, land + 22], [1, 1.07, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const flash = interpolate(f, [land, land + 2, land + 16], [0, 0.35, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  const push = interpolate(f, [land, duration], [1, 1.1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const push = interpolate(f, [land, duration], [1, 1.12], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: Easing.in(Easing.quad) });
+  // Onde qui balaie les points quand tombe le tampon « record ».
+  const wave = Math.max(0, f - L[2].from) * 46;
+  const waveOn = f >= L[2].from && wave < 1300;
   const lift = prog(f, L[1].from - 6, 26, ease.inOut);
   const black = interpolate(f, [0, 14], [1, 0], { extrapolateRight: "clamp" });
   const stamp = prog(f, L[2].from, 12, ease.out);
@@ -44,6 +48,7 @@ export const ColdOpen: React.FC<{ duration: number }> = ({ duration }) => {
         {DOTS.map((d, i) => {
           const on = d.rank < lit;
           const fresh = on ? Math.max(0, 1 - (lit - d.rank) / 350) : 0;
+          const rip = waveOn ? Math.exp(-(((d.r - wave) / 55) ** 2)) : 0;
           return (
             <rect
               key={i}
@@ -53,7 +58,7 @@ export const ColdOpen: React.FC<{ duration: number }> = ({ duration }) => {
               height={5}
               rx={1}
               fill={on ? (d.hot ? C.ink : C.orange) : "#1A212C"}
-              opacity={on ? 0.35 + 0.35 * fresh + (d.hot ? 0.2 : 0) + hit * 0.1 : 0.55}
+              opacity={Math.min(1, (on ? 0.35 + 0.35 * fresh + (d.hot ? 0.2 : 0) + hit * 0.1 : 0.55) + 0.5 * rip)}
             />
           );
         })}
