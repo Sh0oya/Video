@@ -1,0 +1,528 @@
+{
+ "fps": 30,
+ "durationInFrames": 4315,
+ "scenes": [
+  {
+   "id": "coldopen",
+   "from": 0,
+   "duration": 333,
+   "lines": [
+    {
+     "from": 72,
+     "to": 100,
+     "subs": [
+      {
+       "text": "5 millions.",
+       "from": 72,
+       "to": 100
+      }
+     ],
+     "key": "l0"
+    },
+    {
+     "from": 113,
+     "to": 265,
+     "subs": [
+      {
+       "text": "C’est le nombre de robots industriels",
+       "from": 113,
+       "to": 185
+      },
+      {
+       "text": "qui travaillent désormais",
+       "from": 185,
+       "to": 214
+      },
+      {
+       "text": "dans les usines de la planète.",
+       "from": 214,
+       "to": 265
+      }
+     ],
+     "key": "l1"
+    },
+    {
+     "from": 278,
+     "to": 312,
+     "subs": [
+      {
+       "text": "Un record absolu.",
+       "from": 278,
+       "to": 312
+      }
+     ],
+     "key": "l2"
+    }
+   ]
+  },
+  {
+   "id": "title",
+   "from": 333,
+   "duration": 260,
+   "lines": [
+    {
+     "from": 360,
+     "to": 551,
+     "subs": [
+      {
+       "text": "Ce chiffre vient d’être publié",
+       "from": 360,
+       "to": 413
+      },
+      {
+       "text": "par la Fédération internationale de la robotique,",
+       "from": 413,
+       "to": 506
+      },
+      {
+       "text": "dans son rapport annuel.",
+       "from": 506,
+       "to": 551
+      }
+     ],
+     "key": "l0"
+    }
+   ]
+  },
+  {
+   "id": "stock",
+   "from": 593,
+   "duration": 231,
+   "lines": [
+    {
+     "from": 617,
+     "to": 720,
+     "subs": [
+      {
+       "text": "En un an, le parc mondial",
+       "from": 617,
+       "to": 671
+      },
+      {
+       "text": "a encore grimpé de 9 %.",
+       "from": 671,
+       "to": 720
+      }
+     ],
+     "key": "l0"
+    },
+    {
+     "from": 735,
+     "to": 788,
+     "subs": [
+      {
+       "text": "En sept ans, il a plus que doublé.",
+       "from": 735,
+       "to": 788
+      }
+     ],
+     "key": "l1"
+    }
+   ]
+  },
+  {
+   "id": "installs",
+   "from": 824,
+   "duration": 470,
+   "lines": [
+    {
+     "from": 842,
+     "to": 911,
+     "subs": [
+      {
+       "text": "Et la cadence des installations s’accélère.",
+       "from": 842,
+       "to": 911
+      }
+     ],
+     "key": "l0"
+    },
+    {
+     "from": 924,
+     "to": 1133,
+     "subs": [
+      {
+       "text": "En 2025, les usines se sont équipées",
+       "from": 924,
+       "to": 1010
+      },
+      {
+       "text": "de plus de 600 000 nouveaux robots,",
+       "from": 1010,
+       "to": 1076
+      },
+      {
+       "text": "en hausse de 11 % sur un an.",
+       "from": 1076,
+       "to": 1133
+      }
+     ],
+     "key": "l1"
+    },
+    {
+     "from": 1146,
+     "to": 1264,
+     "subs": [
+      {
+       "text": "Soit plus de 1 600 robots mis en service,",
+       "from": 1146,
+       "to": 1222
+      },
+      {
+       "text": "chaque jour, en moyenne.",
+       "from": 1222,
+       "to": 1264
+      }
+     ],
+     "key": "l2"
+    }
+   ]
+  },
+  {
+   "id": "quote",
+   "from": 1294,
+   "duration": 452,
+   "lines": [
+    {
+     "from": 1315,
+     "to": 1516,
+     "subs": [
+      {
+       "text": "« L’automatisation industrielle progresse à grande vitesse »,",
+       "from": 1315,
+       "to": 1425
+      },
+      {
+       "text": "résume Jane Heffner,",
+       "from": 1425,
+       "to": 1469
+      },
+      {
+       "text": "présidente de la fédération.",
+       "from": 1469,
+       "to": 1516
+      }
+     ],
+     "key": "l0"
+    },
+    {
+     "from": 1534,
+     "to": 1710,
+     "subs": [
+      {
+       "text": "C’est en Asie que la croissance est la plus forte,",
+       "from": 1534,
+       "to": 1610
+      },
+      {
+       "text": "devant les Amériques.",
+       "from": 1610,
+       "to": 1644
+      },
+      {
+       "text": "L’Europe, elle, avance plus lentement.",
+       "from": 1644,
+       "to": 1710
+      }
+     ],
+     "key": "l1"
+    }
+   ]
+  },
+  {
+   "id": "china",
+   "from": 1746,
+   "duration": 487,
+   "lines": [
+    {
+     "from": 1764,
+     "to": 1852,
+     "subs": [
+      {
+       "text": "Premier marché mondial, la Chine creuse encore l’écart.",
+       "from": 1764,
+       "to": 1852
+      }
+     ],
+     "key": "l0"
+    },
+    {
+     "from": 1865,
+     "to": 1994,
+     "subs": [
+      {
+       "text": "Elle a installé plus de 350 000 robots,",
+       "from": 1865,
+       "to": 1956
+      },
+      {
+       "text": "un bond de 20 %.",
+       "from": 1956,
+       "to": 1994
+      }
+     ],
+     "key": "l1"
+    },
+    {
+     "from": 2008,
+     "to": 2197,
+     "subs": [
+      {
+       "text": "Cela représente 59 % des installations de la planète.",
+       "from": 2008,
+       "to": 2131
+      },
+      {
+       "text": "Près de trois nouveaux robots sur cinq.",
+       "from": 2131,
+       "to": 2197
+      }
+     ],
+     "key": "l2"
+    }
+   ]
+  },
+  {
+   "id": "usajapan",
+   "from": 2233,
+   "duration": 510,
+   "lines": [
+    {
+     "from": 2251,
+     "to": 2439,
+     "subs": [
+      {
+       "text": "Derrière, le podium bascule :",
+       "from": 2251,
+       "to": 2314
+      },
+      {
+       "text": "les États-Unis dépassent le Japon",
+       "from": 2314,
+       "to": 2364
+      },
+      {
+       "text": "et deviennent le deuxième marché mondial.",
+       "from": 2364,
+       "to": 2439
+      }
+     ],
+     "key": "l0"
+    },
+    {
+     "from": 2452,
+     "to": 2574,
+     "subs": [
+      {
+       "text": "Environ 38 400 nouveaux robots,",
+       "from": 2452,
+       "to": 2532
+      },
+      {
+       "text": "en hausse de 12 %.",
+       "from": 2532,
+       "to": 2574
+      }
+     ],
+     "key": "l1"
+    },
+    {
+     "from": 2588,
+     "to": 2713,
+     "subs": [
+      {
+       "text": "Le Japon, lui, chute de 19 %",
+       "from": 2588,
+       "to": 2671
+      },
+      {
+       "text": "et recule à la troisième place.",
+       "from": 2671,
+       "to": 2713
+      }
+     ],
+     "key": "l2"
+    }
+   ]
+  },
+  {
+   "id": "ranking",
+   "from": 2743,
+   "duration": 633,
+   "lines": [
+    {
+     "from": 2761,
+     "to": 2940,
+     "subs": [
+      {
+       "text": "Dans ce classement, le fossé donne le vertige :",
+       "from": 2761,
+       "to": 2845
+      },
+      {
+       "text": "la Chine installe neuf fois plus de robots",
+       "from": 2845,
+       "to": 2907
+      },
+      {
+       "text": "que les États-Unis.",
+       "from": 2907,
+       "to": 2940
+      }
+     ],
+     "key": "l0"
+    },
+    {
+     "from": 2953,
+     "to": 3077,
+     "subs": [
+      {
+       "text": "Quatrième, la Corée du Sud.",
+       "from": 2953,
+       "to": 3006
+      },
+      {
+       "text": "Cinquième, l’Allemagne, premier marché européen.",
+       "from": 3006,
+       "to": 3077
+      }
+     ],
+     "key": "l1"
+    },
+    {
+     "from": 3091,
+     "to": 3235,
+     "subs": [
+      {
+       "text": "Elle concentre à elle seule 41 %",
+       "from": 3091,
+       "to": 3155
+      },
+      {
+       "text": "des installations de l’Union européenne.",
+       "from": 3155,
+       "to": 3235
+      }
+     ],
+     "key": "l2"
+    },
+    {
+     "from": 3249,
+     "to": 3340,
+     "subs": [
+      {
+       "text": "Sixième, l’Inde,",
+       "from": 3249,
+       "to": 3284
+      },
+      {
+       "text": "avec une croissance de 15 %.",
+       "from": 3284,
+       "to": 3340
+      }
+     ],
+     "key": "l3"
+    }
+   ]
+  },
+  {
+   "id": "forecast",
+   "from": 3376,
+   "duration": 432,
+   "lines": [
+    {
+     "from": 3394,
+     "to": 3453,
+     "subs": [
+      {
+       "text": "Et la dynamique devrait se poursuivre.",
+       "from": 3394,
+       "to": 3453
+      }
+     ],
+     "key": "l0"
+    },
+    {
+     "from": 3468,
+     "to": 3681,
+     "subs": [
+      {
+       "text": "La fédération prévoit 655 000 installations",
+       "from": 3468,
+       "to": 3578
+      },
+      {
+       "text": "pour 2026, soit une progression de 9 %.",
+       "from": 3578,
+       "to": 3681
+      }
+     ],
+     "key": "l1"
+    },
+    {
+     "from": 3696,
+     "to": 3766,
+     "subs": [
+      {
+       "text": "Puis 806 000",
+       "from": 3696,
+       "to": 3730
+      },
+      {
+       "text": "en 2029.",
+       "from": 3730,
+       "to": 3766
+      }
+     ],
+     "key": "l2"
+    }
+   ]
+  },
+  {
+   "id": "outro",
+   "from": 3808,
+   "duration": 507,
+   "lines": [
+    {
+     "from": 3829,
+     "to": 3991,
+     "subs": [
+      {
+       "text": "Aujourd’hui, 5 millions de robots.",
+       "from": 3829,
+       "to": 3888
+      },
+      {
+       "text": "En 2029, on en attend plus de 800 000 nouveaux.",
+       "from": 3888,
+       "to": 3991
+      }
+     ],
+     "key": "l0"
+    },
+    {
+     "from": 4007,
+     "to": 4150,
+     "subs": [
+      {
+       "text": "L’usine du futur n’est plus une idée :",
+       "from": 4007,
+       "to": 4070
+      },
+      {
+       "text": "elle tourne déjà.",
+       "from": 4070,
+       "to": 4102
+      },
+      {
+       "text": "Et, de plus en plus, en Chine.",
+       "from": 4102,
+       "to": 4150
+      }
+     ],
+     "key": "l1"
+    }
+   ]
+  }
+ ]
+}

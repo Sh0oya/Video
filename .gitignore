@@ -1,0 +1,9 @@
+node_modules/
+models/
+out/*
+!out/.gitkeep
+public/audio/voice/
+public/audio/*.wav
+*.log
+.DS_Store
+__pycache__/

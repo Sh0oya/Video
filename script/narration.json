@@ -1,0 +1,501 @@
+{
+  "fps": 30,
+  "voice": "ff_siwis",
+  "speed": 0.95,
+  "start_pad": 0.0,
+  "end_pad": 0.0,
+  "music_level": 0.5,
+  "music_under_voice": 0.14,
+  "sfx_level": 0.42,
+  "scenes": [
+    {
+      "id": "coldopen",
+      "chapter": "",
+      "music": 0.3,
+      "lead": 2.4,
+      "gap": 0.45,
+      "tail": 0.7,
+      "lines": [
+        {
+          "tts": "Cinque millions.",
+          "sub": "5 millions."
+        },
+        {
+          "tts": "C'est le nombre de robots industriels | qui travaillent désormais | dans les usines de la planète.",
+          "sub": "C'est le nombre de robots industriels | qui travaillent désormais | dans les usines de la planète."
+        },
+        {
+          "tts": "Un record absolu.",
+          "sub": "Un record absolu."
+        }
+      ],
+      "sfx": [
+        {
+          "type": "tick",
+          "at": "scene",
+          "offset": 0.3,
+          "repeat": 24,
+          "every": 0.075,
+          "gain": 0.35
+        },
+        {
+          "type": "riser",
+          "at": "line:0",
+          "args": {
+            "d": 2.2
+          },
+          "gain": 0.8
+        },
+        {
+          "type": "impact",
+          "at": "line:0",
+          "offset": -0.05,
+          "gain": 1.0
+        }
+      ]
+    },
+    {
+      "id": "title",
+      "chapter": "",
+      "music": 0.45,
+      "lead": 0.9,
+      "tail": 1.4,
+      "lines": [
+        {
+          "tts": "Ce chiffre vient d'être publié | par la Fédération internationale de la robotique, | dans son rapport annuel.",
+          "sub": "Ce chiffre vient d'être publié | par la Fédération internationale de la robotique, | dans son rapport annuel."
+        }
+      ],
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": "scene",
+          "offset": -0.25,
+          "gain": 0.9
+        },
+        {
+          "type": "shimmer",
+          "at": "scene",
+          "offset": 0.35,
+          "gain": 0.8
+        }
+      ]
+    },
+    {
+      "id": "stock",
+      "chapter": "01 · Le record",
+      "music": 0.55,
+      "lead": 0.8,
+      "gap": 0.5,
+      "tail": 1.2,
+      "lines": [
+        {
+          "tts": "En un an, le parc mondial | a encore grimpé de neuf pour cent.",
+          "sub": "En un an, le parc mondial | a encore grimpé de 9 %."
+        },
+        {
+          "tts": "En sept ans, il a plus que doublé.",
+          "sub": "En sept ans, il a plus que doublé."
+        }
+      ],
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": "scene",
+          "offset": -0.25
+        },
+        {
+          "type": "tick",
+          "at": "scene",
+          "offset": 0.45,
+          "repeat": 11,
+          "every": 0.09,
+          "gain": 0.4,
+          "args": {
+            "freq": 2200
+          }
+        },
+        {
+          "type": "blip",
+          "at": "line:1",
+          "offset": 0.25,
+          "gain": 0.8
+        }
+      ]
+    },
+    {
+      "id": "installs",
+      "chapter": "01 · Le record",
+      "music": 0.65,
+      "lead": 0.6,
+      "gap": 0.45,
+      "tail": 1.0,
+      "lines": [
+        {
+          "tts": "Et la cadence des installations s'accélère.",
+          "sub": "Et la cadence des installations s'accélère."
+        },
+        {
+          "tts": "En deux mille vingt-cinq, les usines se sont équipées | de plus de six cent mille nouveaux robots, | en hausse de onze pour cent sur un an.",
+          "sub": "En 2025, les usines se sont équipées | de plus de 600 000 nouveaux robots, | en hausse de 11 % sur un an."
+        },
+        {
+          "tts": "Soit plus de mille six cents robots mis en service, | chaque jour, en moyenne.",
+          "sub": "Soit plus de 1 600 robots mis en service, | chaque jour, en moyenne."
+        }
+      ],
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": "scene",
+          "offset": -0.25
+        },
+        {
+          "type": "tick",
+          "at": "sub:1:1",
+          "offset": 0.05,
+          "repeat": 18,
+          "every": 0.065,
+          "gain": 0.35
+        },
+        {
+          "type": "blip",
+          "at": "sub:1:2",
+          "offset": 0.1,
+          "gain": 0.7
+        },
+        {
+          "type": "clunk",
+          "at": "line:2",
+          "offset": 0.1,
+          "gain": 0.8
+        }
+      ]
+    },
+    {
+      "id": "quote",
+      "chapter": "02 · La carte du monde",
+      "music": 0.4,
+      "lead": 0.7,
+      "gap": 0.6,
+      "tail": 1.2,
+      "lines": [
+        {
+          "tts": "L'automatisation industrielle progresse à grande vitesse, | résume Djène Heffneur, | présidente de la fédération.",
+          "sub": "« L'automatisation industrielle progresse à grande vitesse », | résume Jane Heffner, | présidente de la fédération."
+        },
+        {
+          "tts": "C'est en Asie que la croissance est la plus forte, | devant les Amériques. | L'Europe, elle, avance plus lentement.",
+          "sub": "C'est en Asie que la croissance est la plus forte, | devant les Amériques. | L'Europe, elle, avance plus lentement."
+        }
+      ],
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": "scene",
+          "offset": -0.25,
+          "gain": 0.8
+        },
+        {
+          "type": "shimmer",
+          "at": "line:1",
+          "offset": 0.1,
+          "gain": 0.7
+        }
+      ]
+    },
+    {
+      "id": "china",
+      "chapter": "02 · La carte du monde",
+      "music": 0.7,
+      "lead": 0.6,
+      "gap": 0.45,
+      "tail": 1.2,
+      "lines": [
+        {
+          "tts": "Premier marché mondial, la Chine creuse encore l'écart.",
+          "sub": "Premier marché mondial, la Chine creuse encore l'écart."
+        },
+        {
+          "tts": "Elle a installé plus de trois cent cinquante mille robots, | un bond de vingt pour cent.",
+          "sub": "Elle a installé plus de 350 000 robots, | un bond de 20 %."
+        },
+        {
+          "tts": "Cela représente cinquante-neuf pour cent des installations de la planète. | Près de trois nouveaux robots sur cinq.",
+          "sub": "Cela représente 59 % des installations de la planète. | Près de trois nouveaux robots sur cinq."
+        }
+      ],
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": "scene",
+          "offset": -0.25
+        },
+        {
+          "type": "tick",
+          "at": "line:1",
+          "offset": 0.15,
+          "repeat": 14,
+          "every": 0.07,
+          "gain": 0.3
+        },
+        {
+          "type": "tick",
+          "at": "line:2",
+          "offset": -0.1,
+          "repeat": 20,
+          "every": 0.04,
+          "gain": 0.3,
+          "args": {
+            "freq": 3100
+          }
+        },
+        {
+          "type": "impact",
+          "at": "line:2",
+          "offset": 0.75,
+          "gain": 0.45
+        }
+      ]
+    },
+    {
+      "id": "usajapan",
+      "chapter": "03 · Le classement",
+      "music": 0.72,
+      "lead": 0.6,
+      "gap": 0.45,
+      "tail": 1.0,
+      "lines": [
+        {
+          "tts": "Derrière, le podium bascule : | les États-Unis dépassent le Japon | et deviennent le deuxième marché mondial.",
+          "sub": "Derrière, le podium bascule : | les États-Unis dépassent le Japon | et deviennent le deuxième marché mondial."
+        },
+        {
+          "tts": "Environ trente-huit mille quatre cents nouveaux robots, | en hausse de douze pour cent.",
+          "sub": "Environ 38 400 nouveaux robots, | en hausse de 12 %."
+        },
+        {
+          "tts": "Le Japon, lui, chute de dix-neuf pour cent | et recule à la troisième place.",
+          "sub": "Le Japon, lui, chute de 19 % | et recule à la troisième place."
+        }
+      ],
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": "scene",
+          "offset": -0.25
+        },
+        {
+          "type": "servo",
+          "at": "sub:0:1",
+          "offset": 0.15,
+          "args": {
+            "d": 0.9
+          },
+          "gain": 0.7
+        },
+        {
+          "type": "clunk",
+          "at": "sub:0:1",
+          "offset": 1.02,
+          "gain": 0.6
+        },
+        {
+          "type": "blip",
+          "at": "line:1",
+          "offset": 0.2,
+          "gain": 0.6
+        },
+        {
+          "type": "blip",
+          "at": "line:2",
+          "offset": 0.2,
+          "gain": 0.6,
+          "args": {
+            "f0": 880,
+            "f1": 520
+          }
+        }
+      ]
+    },
+    {
+      "id": "ranking",
+      "chapter": "03 · Le classement",
+      "music": 0.8,
+      "lead": 0.6,
+      "gap": 0.45,
+      "tail": 1.2,
+      "lines": [
+        {
+          "tts": "Dans ce classement, le fossé donne le vertige : | la Chine installe neuf fois plus de robots | que les États-Unis.",
+          "sub": "Dans ce classement, le fossé donne le vertige : | la Chine installe neuf fois plus de robots | que les États-Unis."
+        },
+        {
+          "tts": "Quatrième, la Corée du Sud. | Cinquième, l'Allemagne, premier marché européen.",
+          "sub": "Quatrième, la Corée du Sud. | Cinquième, l'Allemagne, premier marché européen."
+        },
+        {
+          "tts": "Elle concentre à elle seule quarante et un pour cent | des installations de l'Union européenne.",
+          "sub": "Elle concentre à elle seule 41 % | des installations de l'Union européenne."
+        },
+        {
+          "tts": "Sixième, l'Inde, | avec une croissance de quinze pour cent.",
+          "sub": "Sixième, l'Inde, | avec une croissance de 15 %."
+        }
+      ],
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": "scene",
+          "offset": -0.25
+        },
+        {
+          "type": "tick",
+          "at": "scene",
+          "offset": 0.4,
+          "repeat": 6,
+          "every": 0.12,
+          "gain": 0.4
+        },
+        {
+          "type": "tick",
+          "at": "sub:0:1",
+          "offset": 0.0,
+          "repeat": 9,
+          "every": 0.1,
+          "gain": 0.3,
+          "args": {
+            "freq": 1800
+          }
+        },
+        {
+          "type": "blip",
+          "at": "line:1",
+          "offset": 0.1,
+          "gain": 0.5
+        },
+        {
+          "type": "blip",
+          "at": "sub:1:1",
+          "offset": 0.1,
+          "gain": 0.5
+        },
+        {
+          "type": "blip",
+          "at": "line:2",
+          "offset": 0.1,
+          "gain": 0.5
+        },
+        {
+          "type": "blip",
+          "at": "sub:3:1",
+          "offset": 0.1,
+          "gain": 0.5
+        }
+      ]
+    },
+    {
+      "id": "forecast",
+      "chapter": "04 · Et demain ?",
+      "music": 0.9,
+      "lead": 0.6,
+      "gap": 0.5,
+      "tail": 1.4,
+      "lines": [
+        {
+          "tts": "Et la dynamique devrait se poursuivre.",
+          "sub": "Et la dynamique devrait se poursuivre."
+        },
+        {
+          "tts": "La fédération prévoit six cent cinquante-cinq mille installations | pour deux mille vingt-six, soit une progression de neuf pour cent.",
+          "sub": "La fédération prévoit 655 000 installations | pour 2026, soit une progression de 9 %."
+        },
+        {
+          "tts": "Puis huit cent six mille | en deux mille vingt-neuf.",
+          "sub": "Puis 806 000 | en 2029."
+        }
+      ],
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": "scene",
+          "offset": -0.25
+        },
+        {
+          "type": "blip",
+          "at": "line:1",
+          "offset": 0.6,
+          "gain": 0.6
+        },
+        {
+          "type": "riser",
+          "at": "line:2",
+          "offset": 0.9,
+          "args": {
+            "d": 1.6
+          },
+          "gain": 0.6
+        },
+        {
+          "type": "impact",
+          "at": "line:2",
+          "offset": 0.9,
+          "gain": 0.7
+        }
+      ]
+    },
+    {
+      "id": "outro",
+      "chapter": "",
+      "music": 0.5,
+      "lead": 0.7,
+      "gap": 0.55,
+      "tail": 5.5,
+      "lines": [
+        {
+          "tts": "Aujourd'hui, cinque millions de robots. | En deux mille vingt-neuf, on en attend plus de huit cent mille nouveaux.",
+          "sub": "Aujourd'hui, 5 millions de robots. | En 2029, on en attend plus de 800 000 nouveaux."
+        },
+        {
+          "tts": "L'usine du futur n'est plus une idée : | elle tourne déjà. | Et, de plus en plus, en Chine.",
+          "sub": "L'usine du futur n'est plus une idée : | elle tourne déjà. | Et, de plus en plus, en Chine."
+        }
+      ],
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": "scene",
+          "offset": -0.25
+        },
+        {
+          "type": "servo",
+          "at": "line:1",
+          "offset": 0.2,
+          "args": {
+            "d": 1.2,
+            "pitch": 0.9
+          },
+          "gain": 0.6
+        },
+        {
+          "type": "clunk",
+          "at": "line:1",
+          "offset": 1.45,
+          "gain": 0.7
+        },
+        {
+          "type": "shimmer",
+          "at": "end",
+          "offset": -4.6,
+          "gain": 0.8
+        },
+        {
+          "type": "impact",
+          "at": "end",
+          "offset": -4.7,
+          "gain": 0.5
+        }
+      ]
+    }
+  ]
+}
