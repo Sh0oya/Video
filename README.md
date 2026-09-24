@@ -13,7 +13,7 @@ Tout est produit par du code, sans banque d'images, de sons ou de musique :
 | Mixage | Ducking de la musique sous la voix, limiteur, normalisation EBU R128 à -14 LUFS (`tools/mix.py`) |
 | Carte du monde | `world-atlas` + `d3-geo`, pré-calculée en points (`tools/build-map.mjs`) |
 
-La vidéo finale est dans `video/cinq-millions-de-robots.mp4`, avec ses sous-titres `video/cinq-millions-de-robots.srt`.
+La vidéo finale est dans `video/cinq-millions-de-robots.mp4` (2 min 24, 1080p, 38 Mo), avec ses sous-titres `video/cinq-millions-de-robots.srt` et une miniature `video/miniature.jpg`. Les sous-titres sont aussi incrustés dans l'image.
 
 ## Contenu
 

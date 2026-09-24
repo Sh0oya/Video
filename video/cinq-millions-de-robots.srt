@@ -1,0 +1,216 @@
+1
+00:00:02,400 --> 00:00:03,533
+5 millions.
+
+2
+00:00:03,767 --> 00:00:06,167
+C’est le nombre de robots industriels
+
+3
+00:00:06,167 --> 00:00:07,133
+qui travaillent désormais
+
+4
+00:00:07,133 --> 00:00:09,033
+dans les usines de la planète.
+
+5
+00:00:09,267 --> 00:00:10,600
+Un record absolu.
+
+6
+00:00:12,000 --> 00:00:13,767
+Ce chiffre vient d’être publié
+
+7
+00:00:13,767 --> 00:00:16,867
+par la Fédération internationale de la robotique,
+
+8
+00:00:16,867 --> 00:00:18,567
+dans son rapport annuel.
+
+9
+00:00:20,567 --> 00:00:22,367
+En un an, le parc mondial
+
+10
+00:00:22,367 --> 00:00:24,200
+a encore grimpé de 9 %.
+
+11
+00:00:24,500 --> 00:00:26,467
+En sept ans, il a plus que doublé.
+
+12
+00:00:28,067 --> 00:00:30,567
+Et la cadence des installations s’accélère.
+
+13
+00:00:30,800 --> 00:00:33,667
+En 2025, les usines se sont équipées
+
+14
+00:00:33,667 --> 00:00:35,867
+de plus de 600 000 nouveaux robots,
+
+15
+00:00:35,867 --> 00:00:37,967
+en hausse de 11 % sur un an.
+
+16
+00:00:38,200 --> 00:00:40,733
+Soit plus de 1 600 robots mis en service,
+
+17
+00:00:40,733 --> 00:00:42,333
+chaque jour, en moyenne.
+
+18
+00:00:43,833 --> 00:00:47,500
+« L’automatisation industrielle progresse à grande vitesse »,
+
+19
+00:00:47,500 --> 00:00:48,967
+résume Jane Heffner,
+
+20
+00:00:48,967 --> 00:00:50,733
+présidente de la fédération.
+
+21
+00:00:51,133 --> 00:00:53,667
+C’est en Asie que la croissance est la plus forte,
+
+22
+00:00:53,667 --> 00:00:54,800
+devant les Amériques.
+
+23
+00:00:54,800 --> 00:00:57,200
+L’Europe, elle, avance plus lentement.
+
+24
+00:00:58,800 --> 00:01:01,933
+Premier marché mondial, la Chine creuse encore l’écart.
+
+25
+00:01:02,167 --> 00:01:05,200
+Elle a installé plus de 350 000 robots,
+
+26
+00:01:05,200 --> 00:01:06,667
+un bond de 20 %.
+
+27
+00:01:06,933 --> 00:01:11,033
+Cela représente 59 % des installations de la planète.
+
+28
+00:01:11,033 --> 00:01:13,433
+Près de trois nouveaux robots sur cinq.
+
+29
+00:01:15,033 --> 00:01:17,133
+Derrière, le podium bascule :
+
+30
+00:01:17,133 --> 00:01:18,800
+les États-Unis dépassent le Japon
+
+31
+00:01:18,800 --> 00:01:21,500
+et deviennent le deuxième marché mondial.
+
+32
+00:01:21,733 --> 00:01:24,400
+Environ 38 400 nouveaux robots,
+
+33
+00:01:24,400 --> 00:01:26,000
+en hausse de 12 %.
+
+34
+00:01:26,267 --> 00:01:29,033
+Le Japon, lui, chute de 19 %
+
+35
+00:01:29,033 --> 00:01:30,633
+et recule à la troisième place.
+
+36
+00:01:32,033 --> 00:01:34,833
+Dans ce classement, le fossé donne le vertige :
+
+37
+00:01:34,833 --> 00:01:36,900
+la Chine installe neuf fois plus de robots
+
+38
+00:01:36,900 --> 00:01:38,200
+que les États-Unis.
+
+39
+00:01:38,433 --> 00:01:40,200
+Quatrième, la Corée du Sud.
+
+40
+00:01:40,200 --> 00:01:42,767
+Cinquième, l’Allemagne, premier marché européen.
+
+41
+00:01:43,033 --> 00:01:45,167
+Elle concentre à elle seule 41 %
+
+42
+00:01:45,167 --> 00:01:48,033
+des installations de l’Union européenne.
+
+43
+00:01:48,300 --> 00:01:49,467
+Sixième, l’Inde,
+
+44
+00:01:49,467 --> 00:01:51,533
+avec une croissance de 15 %.
+
+45
+00:01:53,133 --> 00:01:55,300
+Et la dynamique devrait se poursuivre.
+
+46
+00:01:55,600 --> 00:01:59,267
+La fédération prévoit 655 000 installations
+
+47
+00:01:59,267 --> 00:02:02,900
+pour 2026, soit une progression de 9 %.
+
+48
+00:02:03,200 --> 00:02:04,333
+Puis 806 000
+
+49
+00:02:04,333 --> 00:02:05,733
+en 2029.
+
+50
+00:02:07,633 --> 00:02:09,600
+Aujourd’hui, 5 millions de robots.
+
+51
+00:02:09,600 --> 00:02:13,233
+En 2029, on en attend plus de 800 000 nouveaux.
+
+52
+00:02:13,567 --> 00:02:15,667
+L’usine du futur n’est plus une idée :
+
+53
+00:02:15,667 --> 00:02:16,733
+elle tourne déjà.
+
+54
+00:02:16,733 --> 00:02:18,533
+Et, de plus en plus, en Chine.
+
