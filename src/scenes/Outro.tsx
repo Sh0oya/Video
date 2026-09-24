@@ -21,6 +21,7 @@ export const Outro: React.FC<{ duration: number }> = ({ duration }) => {
     card1: "5 MILLIONS",
     card2: "DE ROBOTS",
     card3: "",
+    credits: "Vidéo entièrement générée par du code · animation Remotion · voix de synthèse Kokoro · musique synthétisée",
   });
   const statsOut = prog(f, L[1].from - 8, 14, ease.in);
   const armIn = prog(f, L[1].from - 10, 26, ease.out);
@@ -130,7 +131,7 @@ export const Outro: React.FC<{ duration: number }> = ({ duration }) => {
           <Label size={20}>Graetz et Michaels (2018) · Gihleb et al. (2022)</Label>
           <div style={{ height: 56 }} />
           <Label size={20} color={C.muted}>
-            Vidéo entièrement générée par du code · animation Remotion · voix de synthèse Kokoro · musique synthétisée
+            {P.credits}
           </Label>
         </div>
       </AbsoluteFill>

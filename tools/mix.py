@@ -8,6 +8,10 @@ Les bruitages sont déclarés par scène dans script/narration.json :
 "sub:N:M" (début du bloc de sous-titre M de la réplique N) ou "match:motif" (premier bloc
 dont le texte correspond à l'expression régulière, pour rester calé sur un mot prononcé).
 "accel" (< 1) raccourcit chaque intervalle entre répétitions d'un facteur constant.
+Musique : par défaut public/audio/music.wav (tools/music.py). Si narration.json contient
+"music_file", ce fichier est décodé puis remonté selon "edits" : une liste de segments
+{"from": s, "to": s, "at": s} (secondes source -> position dans la vidéo), raccordés par de
+courts fondus à puissance constante. Les coupes se placent juste avant un temps fort.
 Sortie : public/audio/mix.wav puis out/mix.wav (loudnorm).
 """
 from __future__ import annotations
@@ -84,6 +88,40 @@ def cue_time(cue: dict, sc: dict, fps: int) -> float:
     return base / fps + cue.get("offset", 0.0)
 
 
+def load_music_file(cfg: dict, n: int) -> np.ndarray:
+    """Décode le fichier musique (48 kHz stéréo) et applique le montage "edits"."""
+    raw = subprocess.run(
+        ["ffmpeg", "-hide_banner", "-loglevel", "error", "-i", str(ROOT / cfg["path"]), "-f", "f32le", "-ac", "2", "-ar", str(SR), "-"],
+        capture_output=True, check=True,
+    ).stdout
+    src = np.frombuffer(raw, dtype=np.float32).reshape(-1, 2).T.astype(np.float64)
+    xf = int(cfg.get("xfade", 0.02) * SR)
+    out = np.zeros((2, n))
+    edits = cfg.get("edits") or [{"from": 0.0, "to": src.shape[1] / SR, "at": 0.0}]
+    for k, e in enumerate(edits):
+        a, b, at = int(e["from"] * SR), int(e["to"] * SR), int(e["at"] * SR)
+        # Chaque segment déborde de xf/2 de part et d'autre de la coupe, avec des rampes sin/cos.
+        pa = xf // 2 if k > 0 else 0
+        pb = xf // 2 if k < len(edits) - 1 else 0
+        a0, b0, d0 = max(0, a - pa), min(src.shape[1], b + pb), at - (a - max(0, a - pa))
+        seg = src[:, a0:b0].copy()
+        if pa:
+            seg[:, :xf] *= np.sin(np.linspace(0, np.pi / 2, xf))
+        if pb:
+            seg[:, -xf:] *= np.cos(np.linspace(0, np.pi / 2, xf))
+        d0 = max(0, d0)
+        L = min(seg.shape[1], n - d0)
+        if L > 0:
+            out[:, d0 : d0 + L] += seg[:, :L]
+    fi = int(cfg.get("fade_in", 0.0) * SR)
+    if fi:
+        out[:, :fi] *= np.linspace(0, 1, fi)
+    fo = int(cfg.get("fade_out", 0.0) * SR)
+    if fo:
+        out[:, n - fo :] *= np.linspace(1, 0, fo)
+    return out * 10 ** (cfg.get("gain_db", 0.0) / 20)
+
+
 def limiter(x: np.ndarray, ceiling: float = 0.94) -> np.ndarray:
     from scipy.ndimage import minimum_filter1d, uniform_filter1d
 
@@ -108,10 +146,13 @@ def main() -> None:
     voice = process_voice(voice)[:n]
     voice = np.pad(voice, (0, n - len(voice)))
 
-    music, msr = sf.read(ROOT / "public" / "audio" / "music.wav", dtype="float64")
-    assert msr == SR
-    music = music.T[:, :n]
-    music = np.pad(music, ((0, 0), (0, n - music.shape[1])))
+    if spec.get("music_file"):
+        music = load_music_file(spec["music_file"], n)
+    else:
+        music, msr = sf.read(ROOT / "public" / "audio" / "music.wav", dtype="float64")
+        assert msr == SR
+        music = music.T[:, :n]
+        music = np.pad(music, ((0, 0), (0, n - music.shape[1])))
     env = duck_envelope(tl, n, low=spec.get("music_under_voice", 0.2), high=spec.get("music_level", 0.5))
     # Creuse la bande de présence de la voix (1-4 kHz) dans la musique pendant les répliques : -5 dB.
     speaking = (env.max() - env) / (env.max() - env.min() + 1e-9)

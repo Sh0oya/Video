@@ -668,8 +668,29 @@
         "sub2": "La direction, si.",
         "card1": "LA GRANDE",
         "card2": "ACCÉLÉRATION",
-        "card3": "Et pourquoi elle peut être une chance"
+        "card3": "Et pourquoi elle peut être une chance",
+        "credits": "Animation générée par du code (Remotion) · voix de synthèse Kokoro · musique ElevenLabs Music via fal"
       }
     }
-  ]
+  ],
+  "music_file": {
+    "path": "assets/audio/musique-elevenlabs-fal.mp3",
+    "source": "ElevenLabs Music via fal (fal-ai/elevenlabs/music), docs/fal/musique-elevenlabs-music.json",
+    "edits": [
+      {
+        "from": 3.1727,
+        "to": 26.1718,
+        "at": 0.0
+      },
+      {
+        "from": 30.5355,
+        "to": 180.08,
+        "at": 22.9991
+      }
+    ],
+    "xfade": 0.02,
+    "fade_in": 0.25,
+    "fade_out": 1.5,
+    "gain_db": -0.5
+  }
 }

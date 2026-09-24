@@ -9,13 +9,13 @@ Le fil conducteur : le monde se robotise à une vitesse folle, et cette accélé
 3. **Une chance à saisir** : pénurie de main-d'œuvre, tâches répétitives, pénibles ou dangereuses, accidents du travail, productivité, prix, nouveaux secteurs. Chaque bénéfice est sourcé (IFR, Graetz et Michaels 2018, Gihleb et al. 2022) et nuancé : certains emplois disparaissent, et il faut former.
 4. **Ce n'est qu'un début** : 655 000 installations prévues en 2026, 806 000 en 2029.
 
-Tout est produit par du code, sans banque d'images, de sons ou de musique :
+L'image, la voix et les bruitages sont produits par du code, sans banque d'images ni de sons. La musique est générée par IA (ElevenLabs Music, via fal) :
 
 | Élément | Outil |
 |---|---|
 | Animation, graphiques, carte en points, bras robotisé, pictogrammes | [Remotion](https://www.remotion.dev) (React + TypeScript, SVG) |
 | Voix off | [Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M) (Apache-2.0), voix française `ff_siwis`, via `kokoro-onnx` |
-| Musique | Synthèse additive et soustractive en numpy/scipy, ré majeur, 110 BPM, intensité par scène (`tools/music.py`) |
+| Musique | ElevenLabs Music via fal (`fal-ai/elevenlabs/music`, requête dans `docs/fal/musique-elevenlabs-music.json`), remontée sur la timeline par `tools/mix.py` (coupes à la mesure, champ `music_file` du script). Repli : synthèse numpy/scipy (`tools/music.py`) |
 | Bruitages | Synthèse procédurale (`tools/sfx.py`) |
 | Mixage | Ducking de la musique sous la voix, creux de 5 dB sur 1-4 kHz pendant la parole, limiteur, normalisation EBU R128 à -14 LUFS (`tools/mix.py`) |
 | Carte du monde | `world-atlas` + `d3-geo`, pré-calculée en points (`tools/build-map.mjs`) |
@@ -37,7 +37,7 @@ bash tools/fetch_models.sh   # modèle Kokoro q8 et voix, depuis npm
 
 node tools/build-map.mjs     # carte en points -> src/data/map.json
 python3 tools/tts.py         # voix + timeline -> src/data/timeline.json
-python3 tools/music.py       # musique calée sur la timeline
+python3 tools/music.py       # musique de repli (utilisée si music_file est absent)
 python3 tools/mix.py         # mixage final -> public/audio/mix.wav
 bash tools/render.sh         # rendu Remotion + multiplexage -> video/
 ```
