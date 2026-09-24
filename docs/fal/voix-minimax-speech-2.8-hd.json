@@ -1,0 +1,16 @@
+{
+  "prompt": "Cinq millions. <#0.8#> C'est le nombre de robots industriels qui travaillent, en ce moment, dans les usines de la planète. <#0.8#> Un record. Et ça va très vite. <#0.8#> Ce chiffre, publié ce mois-ci, vient de la Fédération internationale de la robotique, dans son rapport annuel. <#0.8#> En un an, le parc mondial a encore grimpé de neuf pour cent. <#0.8#> En dix ans, il a triplé. <#0.8#> Après un plateau, les installations repartent de plus belle. <#0.8#> En deux mille vingt-cinq, nouveau record : plus de six cent mille robots, en hausse de onze pour cent, bien plus que prévu. <#0.8#> Soit plus de mille six cents par jour, en moyenne. Plus d'un robot chaque minute. <#0.8#> « L'automatisation industrielle progresse à grande vitesse », résume Jane Heffner, présidente de la fédération. <#0.8#> L'Asie fonce, suivie des Amériques. L'Europe, elle, avance plus lentement. <#0.8#> En tête, et de loin : la Chine. Plus de trois cent cinquante mille nouveaux robots, un bond de vingt pour cent. <#0.8#> Cinquante-neuf pour cent du total mondial. Près de trois nouveaux robots sur cinq. <#0.8#> Derrière, le podium bascule : les États-Unis dépassent le Japon et deviennent le deuxième marché mondial. <#0.8#> Leurs installations progressent de douze pour cent. <#0.8#> Et si cette vitesse était une chance ? <#0.8#> Le monde vieillit. Dans bien des pays, les usines manquent de bras. <#0.8#> Pour la fédération, la robotique est une réponse clé : elle aide à continuer à produire. <#0.8#> Les robots peuvent aussi se charger des tâches répétitives, des tâches pénibles, des tâches dangereuses, et réduire les accidents. <#0.8#> Certains emplois disparaissent. Mais d'autres métiers peuvent naître, selon la fédération. Par exemple : contrôle, programmation, maintenance. Encore faut-il y former les salariés. <#0.8#> Côté économie, les robots font progresser la productivité et peuvent faire baisser les prix. <#0.8#> La fédération y voit aussi un atout de compétitivité. <#0.8#> Aux États-Unis, les robots se multiplient dans l'agroalimentaire, la logistique, le médical. La relocalisation devrait les porter, selon la fédération. <#0.8#> Et ce n'est qu'un début. <#0.8#> Prévision pour deux mille vingt-six : six cent cinquante-cinq mille installations, en hausse de neuf pour cent. <#0.8#> Puis huit cent six mille attendues pour deux mille vingt-neuf : un bond d'environ un tiers, en quatre ans à peine. <#0.8#> Aujourd'hui, cinq millions de robots. En deux mille vingt-neuf, plus de huit cent mille installations prévues. Le monde se robotise à une vitesse folle. <#0.8#> Bien accompagnée, cette révolution peut être une chance : moins de tâches pénibles, de nouveaux métiers. La vitesse, on ne la choisit pas. La direction, si.",
+  "voice_setting": {
+    "voice_id": "French_MaleNarrator",
+    "speed": 1,
+    "vol": 1,
+    "pitch": 0
+  },
+  "language_boost": "French",
+  "audio_setting": {
+    "format": "flac",
+    "sample_rate": "44100",
+    "channel": "1"
+  },
+  "output_format": "url"
+}

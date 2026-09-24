@@ -1,0 +1,146 @@
+{
+  "composition_plan": {
+    "positive_global_styles": [
+      "instrumental",
+      "documentary underscore",
+      "modern electronic and cinematic hybrid",
+      "uplifting",
+      "optimistic",
+      "driving",
+      "110 BPM",
+      "D major",
+      "pulsing synth arpeggios",
+      "warm analog bass",
+      "tight punchy drums",
+      "bright plucks",
+      "piano",
+      "airy strings",
+      "subtle mechanical percussion, metallic ticks",
+      "clean modern mix",
+      "leaves space for a voice-over"
+    ],
+    "negative_global_styles": [
+      "vocals",
+      "singing",
+      "choir",
+      "spoken word",
+      "rap",
+      "dark",
+      "sad",
+      "aggressive",
+      "distorted",
+      "heavy dubstep drops",
+      "lo-fi",
+      "jazz"
+    ],
+    "sections": [
+      {
+        "section_name": "Intro countdown",
+        "duration_ms": 12000,
+        "positive_local_styles": [
+          "tense and minimal",
+          "ticking clock-like pulse that speeds up",
+          "rising riser",
+          "ends with a big cinematic impact"
+        ],
+        "negative_local_styles": [
+          "full drums"
+        ],
+        "lines": []
+      },
+      {
+        "section_name": "Main theme",
+        "duration_ms": 33000,
+        "positive_local_styles": [
+          "main theme enters on the impact",
+          "steady energetic groove",
+          "confident",
+          "arpeggios and bass lock in"
+        ],
+        "negative_local_styles": [],
+        "lines": []
+      },
+      {
+        "section_name": "Lighter interlude",
+        "duration_ms": 13000,
+        "positive_local_styles": [
+          "lighter",
+          "spacious",
+          "pads and plucks",
+          "half-time feel"
+        ],
+        "negative_local_styles": [
+          "heavy drums"
+        ],
+        "lines": []
+      },
+      {
+        "section_name": "Energy returns",
+        "duration_ms": 22000,
+        "positive_local_styles": [
+          "energy returns",
+          "bigger drums",
+          "forward momentum",
+          "global and expansive"
+        ],
+        "negative_local_styles": [],
+        "lines": []
+      },
+      {
+        "section_name": "Hopeful breakdown",
+        "duration_ms": 14000,
+        "positive_local_styles": [
+          "breakdown",
+          "soft hopeful piano",
+          "warm pads",
+          "sense of possibility"
+        ],
+        "negative_local_styles": [
+          "drums",
+          "bass drops"
+        ],
+        "lines": []
+      },
+      {
+        "section_name": "Optimistic build",
+        "duration_ms": 39000,
+        "positive_local_styles": [
+          "warm optimistic build",
+          "layers added gradually",
+          "strings swell",
+          "rising intensity"
+        ],
+        "negative_local_styles": [],
+        "lines": []
+      },
+      {
+        "section_name": "Climax",
+        "duration_ms": 16000,
+        "positive_local_styles": [
+          "climax",
+          "full arrangement",
+          "soaring",
+          "triumphant but not bombastic"
+        ],
+        "negative_local_styles": [],
+        "lines": []
+      },
+      {
+        "section_name": "Resolution",
+        "duration_ms": 31000,
+        "positive_local_styles": [
+          "calm confident resolution",
+          "elements drop out gradually",
+          "gentle piano and pads",
+          "ends on a long sustained D major chord"
+        ],
+        "negative_local_styles": [
+          "abrupt ending"
+        ],
+        "lines": []
+      }
+    ]
+  },
+  "respect_sections_durations": true,
+  "output_format": "mp3_44100_192"
+}
