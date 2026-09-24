@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { C, F, ease, fmt } from "../theme";
-import { localLines, prog } from "../lib/timeline";
+import { findSub, localLines, prog } from "../lib/timeline";
 import { Chip, Counter, FadeUp, Label, Reveal, useExit } from "../components/Ui";
 import { INSTALLS } from "../data/facts";
 import { Clock } from "../components/Icons";
@@ -15,6 +15,8 @@ export const Installs: React.FC<{ duration: number }> = ({ duration }) => {
   const exit = useExit(duration);
   const bars = INSTALLS.slice(1);
   const numAt = L[1].subs[1].from;
+  // Repère « prévu » (575 000) si la narration évoque la prévision dépassée.
+  const fcAt = findSub("installs", /prévu|prévision|prévoyait|attendait/i);
   const grow25 = prog(f, numAt, 40, ease.out);
   const day = prog(f, L[2].from + 3, 14, ease.out);
   const thump = interpolate(f, [L[2].from + 3, L[2].from + 7, L[2].from + 18], [0.92, 1.04, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
@@ -108,6 +110,17 @@ export const Installs: React.FC<{ duration: number }> = ({ duration }) => {
             DEUX ANNÉES DE PLATEAU
           </text>
         </g>
+        {fcAt !== undefined && (
+          <g opacity={prog(f, fcAt, 14)}>
+            <line x1={1590} x2={1760} y1={BASE - 575_000 * PER} y2={BASE - 575_000 * PER} stroke={C.ink} strokeWidth={3} strokeDasharray="10 7" />
+            <text x={1768} y={BASE - 575_000 * PER - 4} fontFamily={F.mono} fontSize={19} fill={C.ink}>
+              prévu
+            </text>
+            <text x={1768} y={BASE - 575_000 * PER + 20} fontFamily={F.mono} fontSize={19} fill={C.ink}>
+              575 000
+            </text>
+          </g>
+        )}
         {/* Emplacement 2025 en pointillés : l'accélération annoncée, avant le chiffre. */}
         <g opacity={prog(f, L[0].from + 28, 14) * (1 - grow25)}>
           <rect x={1600} y={BASE - 460} width={140} height={460} rx={5} fill="none" stroke={C.orange} strokeWidth={3} strokeDasharray="10 9" opacity={0.55} />

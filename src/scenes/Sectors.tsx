@@ -46,6 +46,7 @@ export const Sectors: React.FC<{ duration: number }> = ({ duration }) => {
     );
   };
   const relo = prog(f, tRelo, 18, ease.out);
+  const deAt = L.flatMap((l) => l.subs).find((s) => /Allemagne|services/i.test(s.text))?.from;
   return (
     <AbsoluteFill style={exit}>
       <div style={{ position: "absolute", left: 140, top: 130 }}>
@@ -101,6 +102,14 @@ export const Sectors: React.FC<{ duration: number }> = ({ duration }) => {
           </div>
         );
       })}
+      {deAt !== undefined && (
+        <div style={{ position: "absolute", left: 140, top: 680, maxWidth: 640, opacity: prog(f, deAt, 14) }}>
+          <div style={{ fontFamily: F.body, fontWeight: 600, fontSize: 30, color: C.ink, lineHeight: 1.3 }}>
+            Allemagne : emplois industriels perdus compensés par de nouveaux emplois dans les services
+          </div>
+          <Label size={18} style={{ marginTop: 6 }}>étude 1994-2014, publiée en 2021</Label>
+        </div>
+      )}
       <div style={{ position: "absolute", left: TX, top: TY - 44, opacity: prog(f, 10, 14) }}>
         <Label size={20}>secteurs historiques</Label>
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { C, F, ease } from "../theme";
-import { localLines, prog } from "../lib/timeline";
+import { findSub, localLines, prog } from "../lib/timeline";
 import { FadeUp, Label, Reveal, useExit } from "../components/Ui";
 import { Gear, Repeat, Robot, Tablet, Warning, Weight, Worker, Shield } from "../components/Icons";
 
@@ -22,6 +22,7 @@ export const HardTasks: React.FC<{ duration: number }> = ({ duration }) => {
   const roles = L[1].from;
   const roleSubs = L[1].subs;
   const shift = prog(f, roles - 4, 18, ease.inOut);
+  const accAt = findSub("hardtasks", /accident/i);
   return (
     <AbsoluteFill style={exit}>
       <div style={{ position: "absolute", left: 140, top: 130 }}>
@@ -78,6 +79,12 @@ export const HardTasks: React.FC<{ duration: number }> = ({ duration }) => {
         );
       })}
 
+      {accAt !== undefined && (
+        <div style={{ position: "absolute", right: 140, top: 128, textAlign: "right", opacity: prog(f, accAt, 14), transform: `translateY(${(1 - prog(f, accAt, 14)) * 12}px)` }}>
+          <div style={{ fontFamily: F.display, fontWeight: 900, fontStretch: "115%", fontSize: 44, color: C.orange }}>▼ accidents du travail</div>
+          <Label size={19} style={{ marginTop: 4 }}>là où les robots sont plus présents · étude États-Unis, 2022</Label>
+        </div>
+      )}
       {/* Les humains passent à des rôles plus qualifiés. */}
       <div style={{ position: "absolute", left: X0, top: 680, width: 3 * CW + 2 * GAP, display: "flex", alignItems: "center", gap: 34, opacity: shift }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>

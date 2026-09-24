@@ -56,9 +56,9 @@ Installations annuelles utilisées pour la courbe de prévision : 2022 : 553 000
 - Parts régionales Asie 74 % / Europe 16 % / Amériques 9 % : données 2024.
 - Chiffres de l'UE (700 000 robots en service) : ils viennent d'un autre communiqué publié le même jour.
 
-## V2 : vitesse et bénéfices
+## V2 : vitesse et bénéfices (version vérifiée)
 
-Seconde recherche, menée pour la version « le monde se robotise à une vitesse folle, et cela peut être une chance ». Les sources primaires sont signalées ; la plupart ont été lues via des extraits de recherche (sites bloqués par le proxy).
+Seconde recherche, pour la version « le monde se robotise à une vitesse folle, et cela peut être une chance », suivie d'une vérification indépendante. Sources lues via des extraits de recherche (sites bloqués par le proxy). L'IFR est une fédération professionnelle : ses statistiques font référence, ses notes de position relèvent du plaidoyer et doivent être attribuées (« selon la Fédération internationale de la robotique »).
 
 ### Vitesse
 
@@ -66,36 +66,44 @@ Seconde recherche, menée pour la version « le monde se robotise à une vitesse
 |---|---|---|---|
 | Parc mondial en dix ans | ×3 : 1,63 M (2015) → ≈ 5,08 M (2025) | élevée (calcul) | séries World Robotics |
 | Parc mondial en sept ans | plus du double | élevée | citation de J. Heffner |
-| Installations annuelles en dix ans | plus que doublées : ≈ 254 000 (2015) → plus de 600 000 (2025) | élevée (calcul) | World Robotics 2016 et 2026 ; l'IFR titrait déjà en 2025 « la demande a doublé en dix ans » |
-| Au-dessus de 500 000 installations par an | cinq années de suite (2021 à 2025) | élevée | IFR : « quatre années de suite » jusqu'en 2024, puis plus de 600 000 en 2025 |
-| Rythme 2025 | plus d'un robot installé chaque minute, en moyenne | élevée (calcul) | 600 000 / 525 600 minutes |
-| 2029 par rapport à 2025 | environ un tiers de plus (806 000 contre plus de 600 000) | élevée (calcul) | prévision IFR |
+| Installations 2025 | record historique : plus de 600 000, au-dessus du précédent record de 2022 (≈ 553 000) | élevée | World Robotics 2025 et 2026 |
+| Plus vite que prévu | en septembre 2025, l'IFR prévoyait +6 % (575 000) pour 2025 ; résultat : +11 % et plus de 600 000, soit une hausse presque deux fois plus forte que prévu | moyenne à élevée | World Robotics 2025 et 2026 |
+| Installations annuelles en dix ans | plus que doublées : ≈ 254 000 (2015) → plus de 600 000 (2025) | élevée (calcul) | World Robotics 2016 et 2026 |
+| Rythme 2025 | plus d'un robot installé chaque minute, plus de 1 600 par jour, en moyenne | élevée (calcul) | 600 000 / 525 600 minutes ; / 365 jours |
+| Pays le plus robotisé | Corée du Sud : 1 220 robots pour 10 000 salariés de l'industrie (2024), soit environ un robot pour huit salariés | élevée | IFR, densité robotique, 8 avril 2026 |
+| 2029 par rapport à 2025 | environ un tiers de plus (806 000 prévus contre plus de 600 000) | élevée (calcul) | prévision IFR |
+
+Nuance : les installations annuelles ont plafonné entre 2021 et 2024 (500 000 à 553 000) avant le bond de 2025. La vitesse se lit surtout sur sept à dix ans et dans le parc en service. La robotisation est très concentrée en Chine (59 % des installations 2025).
 
 ### Bénéfices sourcés
 
 | Affirmation | Source | Date | Confiance |
 |---|---|---|---|
-| Partout dans le monde, les employeurs font face à des pénuries de main-d'œuvre ; la robotique et l'automatisation sont une stratégie clé pour y répondre (« les robots, alliés face au manque de main-d'œuvre ») | IFR, *Top 5 Global Robotics Trends 2026* | 8 janv. 2026 | élevée |
-| Le vieillissement et la contraction de la population active créent des pénuries dans l'industrie et la logistique ; la robotique aide les entreprises à maintenir leur capacité de production | IFR, note de position *The Impact of Robots: Employment, Productivity and Competitiveness* | 11 août 2026 | moyenne à élevée |
+| Dans 17 pays (1993-2007), les robots ont ajouté environ 0,36 point par an à la croissance de la productivité du travail et fait baisser le prix des biens produits, sans baisse significative de l'emploi total (mais moins d'emplois peu qualifiés) | Graetz et Michaels, *Robots at Work*, Review of Economics and Statistics | 2018 | élevée |
+| En Allemagne (1994-2014), les emplois industriels supprimés par les robots ont été entièrement compensés par de nouveaux emplois dans les services (coût surtout supporté par les jeunes entrants) | Dauth, Findeisen, Suedekum et Woessner, Journal of the European Economic Association | 2021 | élevée |
+| Aux États-Unis, là où les robots sont plus présents, on compte environ 1,2 accident du travail de moins pour 100 salariés par an (l'étude relève aussi des effets négatifs sur la santé mentale) | Gihleb, Giuntella, Stella et Wang, Labour Economics | 2022 | élevée |
+| Les robots automatisent certaines tâches, mais augmentent aussi la productivité, créent de nouvelles tâches et de nouveaux métiers, et aident les entreprises à produire plus et à rester compétitives | IFR, note de position *The Impact of Robots* | 11 août 2026 | élevée (plaidoyer) |
+| Les employeurs du monde entier font face à des pénuries de main-d'œuvre ; la robotique est présentée comme une réponse clé | IFR, *Top 5 Global Robotics Trends 2026* | janv. 2026 | moyenne (non revérifié) |
 | En Chine, face au manque de main-d'œuvre lié à la démographie, l'automatisation est la solution privilégiée et rend la production plus résiliente | IFR, communiqué Chine | 24 sept. 2026 | moyenne |
-| La robotique améliore les conditions de travail en prenant en charge les tâches sales, répétitives, dangereuses et délicates | IFR, note de position 2026 (citée par la presse spécialisée) | août 2026 | élevée |
-| En confiant les tâches routinières, répétitives et dangereuses aux robots, les salariés peuvent évoluer vers des rôles plus créatifs, de supervision ou techniques | IFR, tendances 2026 | janv. 2026 | moyenne |
-| Les robots automatisent certaines tâches, mais augmentent aussi la productivité, créent de nouvelles tâches et de nouveaux métiers, et aident les entreprises à produire plus et à rester compétitives | IFR, note de position 2026 | 11 août 2026 | élevée |
-| Étude de référence sur 17 pays (1993-2007) : les robots ont augmenté la productivité du travail et les salaires, sans effet significatif sur le total des heures travaillées, avec toutefois moins d'emplois peu qualifiés | Graetz et Michaels, *Robots at Work*, Review of Economics and Statistics | 2018 | élevée |
-| Aux États-Unis, la croissance 2025 vient de l'agroalimentaire, de l'entreposage et de la logistique, et du médical ; l'automobile reste le premier client | IFR, communiqué États-Unis (J. Heffner) | 24 sept. 2026 | moyenne |
-| Aux États-Unis, la politique de relocalisation et la pénurie de main-d'œuvre offrent d'excellentes perspectives à long terme | IFR, communiqué États-Unis | 24 sept. 2026 | moyenne |
+| Aux États-Unis, la croissance 2025 vient de l'agroalimentaire, de l'entreposage et de la logistique, et du médical ; relocalisation et pénurie de main-d'œuvre offrent de bonnes perspectives | IFR, communiqué États-Unis | 24 sept. 2026 | moyenne |
+| Le monde vieillit : d'ici la fin des années 2070, 2,2 milliards de personnes de 65 ans et plus, soit plus que d'enfants (projection) ; au Japon, la population en âge de travailler a culminé en 1995 | ONU, World Population Prospects 2024 ; Bureau des statistiques du Japon | 2024 | élevée (contexte, sans lien démontré avec les robots) |
 
-### Formulations prudentes autorisées (sans chiffre)
-- Les robots **peuvent** prendre en charge les tâches répétitives, pénibles ou dangereuses.
-- Ils **permettent** de continuer à produire quand la main-d'œuvre manque.
-- Ils **aident** à gagner en productivité et en compétitivité, et à produire plus près de chez soi.
-- Bien accompagnée (formation, nouvelles compétences), cette transition **peut** créer de nouveaux métiers.
+### Formulations prudentes autorisées
+- Les robots **peuvent** prendre en charge des tâches répétitives, pénibles ou dangereuses, et **peuvent** réduire les accidents du travail (Gihleb et al.).
+- Ils **augmentent** la productivité et **peuvent** faire baisser les prix (Graetz et Michaels).
+- Selon l'IFR, ils **aident** à continuer à produire quand la main-d'œuvre manque.
+- Ils automatisent des tâches mais **peuvent** faire naître de nouveaux métiers (IFR) ; des exemples comme le contrôle, la programmation ou la maintenance restent illustratifs.
+- Les emplois perdus dans l'industrie **peuvent** être compensés ailleurs (Allemagne : services).
+- Bien accompagnée (formation, compétences), cette transition **peut** être une chance.
 
 ### Nuances honnêtes
-- L'effet sur l'emploi est débattu. L'IFR souligne que les robots ne remplacent pas simplement les travailleurs (effets de déplacement, de productivité et de nouvelles tâches). Des travaux américains (Acemoglu et Restrepo, 2020) trouvent des effets négatifs locaux sur l'emploi. L'IFR insiste : l'essentiel est que les salariés aient accès aux bonnes compétences et à la formation.
+- L'effet sur l'emploi n'est pas consensuel : il y a des gagnants et des perdants selon les pays, les secteurs et les qualifications (méta-analyse Guarascio et al., 2025 ; Acemoglu et Restrepo, 2020, effets négatifs locaux aux États-Unis). Message juste : « bénéfique dans l'ensemble, si la transition est accompagnée », pas « personne n'y perd ».
 
 ### À ne pas affirmer
-- « Les robots créent plus d'emplois qu'ils n'en détruisent » : contesté.
-- Les chiffres de l'ancienne note de l'IFR (21 millions d'emplois, entreprises « 2 à 10 fois plus productives », estimations Deloitte) : de seconde main, non vérifiés.
-- Densité robotique mondiale : la série a été révisée (162 pour 2023, puis 132 pour 2024 après révision des données chinoises) ; source de confusion.
-- Les robots attirent les jeunes vers l'industrie : presse spécialisée seulement.
+- « Les robots créent plus d'emplois qu'ils n'en détruisent » ou « personne n'y perd ».
+- « Les robots compensent le vieillissement » comme un fait démontré.
+- « Les robots rendent les pays plus compétitifs » comme un lien de cause à effet.
+- La hausse des salaires due aux robots (non vérifiée).
+- Des phrases entre guillemets attribuées à la note de l'IFR d'août 2026 autres que celle du tableau ; aucune citation d'un responsable sur cette note.
+- Toute comparaison de densité robotique entre éditions (séries révisées).
+- Les chiffres de l'ancienne note de l'IFR (21 millions d'emplois, « 2 à 10 fois plus productives », Deloitte).
