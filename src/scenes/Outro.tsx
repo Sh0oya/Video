@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { C, F, ease } from "../theme";
-import { localLines, prog } from "../lib/timeline";
+import { localLines, paramsOf, prog } from "../lib/timeline";
 import { Counter, Label, Reveal } from "../components/Ui";
 import { RobotArm, ik, poseAt } from "../components/RobotArm";
 
@@ -12,6 +12,14 @@ const SC = 0.78;
 export const Outro: React.FC<{ duration: number }> = ({ duration }) => {
   const f = useCurrentFrame();
   const L = localLines("outro");
+  const P = paramsOf("outro", {
+    head1: "L’usine du futur",
+    head2: "tourne déjà.",
+    sub1: "Et, de plus en plus,",
+    sub2: "en Chine.",
+    card1: "5 MILLIONS",
+    card2: "DE ROBOTS",
+  });
   const statsOut = prog(f, L[1].from - 8, 14, ease.in);
   const armIn = prog(f, L[1].from - 10, 26, ease.out);
   const t0 = L[1].from + 6;
@@ -71,16 +79,16 @@ export const Outro: React.FC<{ duration: number }> = ({ duration }) => {
           <div style={{ position: "absolute", top: 150, width: "100%", textAlign: "center" }}>
             <div style={{ display: "flex", justifyContent: "center", gap: "0.28em", fontFamily: F.display, fontWeight: 900, fontStretch: "120%", fontSize: 84 }}>
               <Reveal at={L[1].from}>
-                <span style={{ color: C.ink }}>L’usine du futur</span>
+                <span style={{ color: C.ink }}>{P.head1}</span>
               </Reveal>
               <Reveal at={L[1].subs[1]?.from ?? L[1].from + 40}>
-                <span style={{ color: C.orange }}>tourne déjà.</span>
+                <span style={{ color: C.orange }}>{P.head2}</span>
               </Reveal>
             </div>
             <div style={{ height: 18 }} />
             <Reveal at={L[1].subs[2]?.from ?? L[1].to}>
               <div style={{ fontFamily: F.display, fontWeight: 800, fontStretch: "110%", fontSize: 50, color: C.muted }}>
-                Et, de plus en plus, <span style={{ color: C.ink }}>en Chine.</span>
+                {P.sub1} <span style={{ color: C.ink }}>{P.sub2}</span>
               </div>
             </Reveal>
           </div>
@@ -98,7 +106,7 @@ export const Outro: React.FC<{ duration: number }> = ({ duration }) => {
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", opacity: card }}>
         <div style={{ textAlign: "center", transform: `translateY(${(1 - card) * 20}px)` }}>
           <div style={{ fontFamily: F.display, fontWeight: 900, fontStretch: "125%", fontSize: 92, color: C.ink, lineHeight: 1 }}>
-            <span style={{ color: C.orange }}>5 MILLIONS</span> DE ROBOTS
+            <span style={{ color: C.orange }}>{P.card1}</span> {P.card2}
           </div>
           <div style={{ width: 140, height: 5, background: C.orange, margin: "36px auto" }} />
           <Label size={22} color={C.ink} style={{ letterSpacing: "0.12em" }}>

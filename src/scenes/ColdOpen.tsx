@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, interpolate, random, useCurrentFrame } from "remotion";
 import { C, F, ease, fmt } from "../theme";
-import { localLines, prog } from "../lib/timeline";
+import { localLines, paramsOf, prog } from "../lib/timeline";
 import { Label, Reveal, useExit } from "../components/Ui";
 
 // 5 000 points = 5 millions de robots (1 point = 1 000 robots), allumés du centre vers les bords.
@@ -24,6 +24,7 @@ const DOTS = Array.from({ length: COLS * ROWS }, (_, i) => {
 export const ColdOpen: React.FC<{ duration: number }> = ({ duration }) => {
   const f = useCurrentFrame();
   const L = localLines("coldopen");
+  const P = paramsOf("coldopen", { stamp: "RECORD", label: "robots industriels en service", sublabel: "dans les usines du monde · fin 2025" });
   const land = L[0].from;
   const count = interpolate(f, [8, land], [0, 5_000_000], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease.soft });
   const lit = count / 1000;
@@ -78,20 +79,20 @@ export const ColdOpen: React.FC<{ duration: number }> = ({ duration }) => {
         <div style={{ height: 30 }} />
         <Reveal at={land + 4} dur={20}>
           <Label size={30} color={C.ink} style={{ letterSpacing: "0.22em" }}>
-            robots industriels en service
+            {P.label}
           </Label>
         </Reveal>
         <div style={{ height: 14 }} />
         <Reveal at={L[1].subs[2]?.from ?? L[1].from + 4} dur={20}>
           <Label size={22} color={C.muted}>
-            dans les usines du monde · fin 2025
+            {P.sublabel}
           </Label>
         </Reveal>
       </AbsoluteFill>
       <div
         style={{
           position: "absolute",
-          left: 1260,
+          right: 150,
           top: 196,
           padding: "14px 26px",
           border: `5px solid ${C.orange}`,
@@ -107,7 +108,7 @@ export const ColdOpen: React.FC<{ duration: number }> = ({ duration }) => {
           background: "rgba(7,9,13,0.7)",
         }}
       >
-        RECORD
+        {P.stamp}
       </div>
       <div
         style={{

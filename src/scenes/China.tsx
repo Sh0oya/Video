@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { C, F, ease } from "../theme";
-import { localLines, prog } from "../lib/timeline";
+import { findSub, localLines, prog } from "../lib/timeline";
 import { Chip, Counter, Label, Reveal, useExit } from "../components/Ui";
 import { MAP } from "../components/DotMap";
 
@@ -16,9 +16,16 @@ export const China: React.FC<{ duration: number }> = ({ duration }) => {
   const exit = useExit(duration);
   const draw = prog(f, 4, 50, ease.inOut);
   const fillIn = prog(f, 40, 30, ease.out);
-  const toWaffle = prog(f, L[2].from - 16, 16, ease.inOut);
-  const fillStart = L[2].from - 3;
-  const land = L[2].from + 22;
+  // Calage sur les mots : le nombre (350 000 / 354 000), la hausse (20 %), la part (59 %).
+  const last = L[L.length - 1];
+  const numAt = findSub("china", /35\d/) ?? L[Math.min(1, L.length - 1)].from;
+  const upAt = findSub("china", /20\s?%/) ?? numAt + 40;
+  const pctLine = L.find((l) => l.subs.some((s) => /59/.test(s.text))) ?? last;
+  const pctAt = pctLine.subs.find((s) => /59/.test(s.text))?.from ?? pctLine.from;
+  const sayAt = findSub("china", /trois|3 nouveaux|3 robots/i) ?? pctAt + 60;
+  const toWaffle = prog(f, pctAt - 16, 16, ease.inOut);
+  const fillStart = pctAt - 3;
+  const land = pctAt + 22;
   const pop = interpolate(f, [land, land + 4, land + 18], [1, 1.1, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const numDim = interpolate(toWaffle, [0, 1], [1, 0.4]);
   return (
@@ -33,14 +40,14 @@ export const China: React.FC<{ duration: number }> = ({ duration }) => {
           <div style={{ fontFamily: F.display, fontWeight: 900, fontStretch: "125%", fontSize: 190, lineHeight: 1, color: C.ink, letterSpacing: "-0.02em" }}>CHINE</div>
         </Reveal>
         <div style={{ height: 36 }} />
-        <div style={{ opacity: prog(f, L[1].from, 12) * numDim, transform: `translateY(${-20 * toWaffle}px)` }}>
+        <div style={{ opacity: prog(f, numAt - 4, 12) * numDim, transform: `translateY(${-20 * toWaffle}px)` }}>
           <div style={{ fontFamily: F.display, fontWeight: 900, fontStretch: "120%", fontSize: 112, lineHeight: 1, color: C.ink }}>
             <span style={{ color: C.muted, fontWeight: 500 }}>≈ </span>
-            <Counter to={354_000} at={L[1].from + 4} dur={34} />
+            <Counter to={354_000} at={numAt} dur={34} step={1000} />
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 22, marginTop: 12 }}>
             <div style={{ fontFamily: F.body, fontSize: 34, fontWeight: 500, color: C.ink }}>robots installés en 2025</div>
-            <Chip at={L[1].subs[1].from + 4} text="▲ +20 % sur un an" size={30} />
+            <Chip at={upAt + 4} text="▲ +20 % sur un an" size={30} />
           </div>
         </div>
         <div style={{ height: 36 }} />
@@ -77,7 +84,7 @@ export const China: React.FC<{ duration: number }> = ({ duration }) => {
           })}
         </g>
       </svg>
-      <div style={{ position: "absolute", left: GX, top: GY + 10 * (CELL + GAP) + 14, width: 10 * (CELL + GAP) - GAP, textAlign: "center", opacity: prog(f, L[2].subs[1]?.from ?? land, 14) }}>
+      <div style={{ position: "absolute", left: GX, top: GY + 10 * (CELL + GAP) + 14, width: 10 * (CELL + GAP) - GAP, textAlign: "center", opacity: prog(f, Math.max(sayAt, land), 14) }}>
         <Label size={21} color={C.ink}>
           <span style={{ color: C.orange }}>■</span> près de trois nouveaux robots sur cinq
         </Label>

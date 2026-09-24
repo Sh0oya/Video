@@ -14,6 +14,9 @@ import { UsaJapan } from "./scenes/UsaJapan";
 import { Ranking } from "./scenes/Ranking";
 import { Forecast } from "./scenes/Forecast";
 import { Outro } from "./scenes/Outro";
+import { Labour } from "./scenes/Labour";
+import { HardTasks } from "./scenes/HardTasks";
+import { Sectors } from "./scenes/Sectors";
 
 const SCENES: Record<string, React.FC<{ duration: number }>> = {
   coldopen: ColdOpen,
@@ -25,6 +28,9 @@ const SCENES: Record<string, React.FC<{ duration: number }>> = {
   usajapan: UsaJapan,
   ranking: Ranking,
   forecast: Forecast,
+  labour: Labour,
+  hardtasks: HardTasks,
+  sectors: Sectors,
   outro: Outro,
 };
 

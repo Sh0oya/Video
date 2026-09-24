@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { C, F, ease } from "../theme";
-import { localLines, prog } from "../lib/timeline";
+import { findSub, localLines, prog } from "../lib/timeline";
 import { Chip, Counter, FadeUp, Label, Reveal, useExit } from "../components/Ui";
 
 const CX = 140;
@@ -55,8 +55,13 @@ export const UsaJapan: React.FC<{ duration: number }> = ({ duration }) => {
   const jpX = Math.sin(sw * Math.PI) * 60;
   const year = sw < 0.5 ? "2024" : "2025";
   const yearFlip = Math.abs(Math.cos(sw * Math.PI));
-  const usHL = prog(f, L[1].from, 14);
-  const jpHL = prog(f, L[2].from, 14);
+  // Calage sur les mots : 38 400 / 12 % pour les États-Unis, 19 % pour le Japon (facultatif).
+  const usAt = findSub("usajapan", /38|12\s?%/) ?? L[0].to - 10;
+  const upAt = findSub("usajapan", /12\s?%/) ?? usAt + 30;
+  const jpAt = findSub("usajapan", /19\s?%/);
+  const usHL = prog(f, usAt, 14);
+  const jpHL = jpAt !== undefined ? prog(f, jpAt, 14) : 0;
+  const jpVal = prog(f, jpAt ?? usAt + 24, 14);
   const usRank = sw < 0.5 ? 3 : 2;
   const jpRank = sw < 0.5 ? 2 : 3;
   return (
@@ -90,12 +95,12 @@ export const UsaJapan: React.FC<{ duration: number }> = ({ duration }) => {
           accent={C.red}
           highlight={jpHL}
           right={
-            <div style={{ display: "flex", alignItems: "center", gap: 26, opacity: jpHL }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 26, opacity: jpVal }}>
               <div style={{ fontFamily: F.display, fontWeight: 900, fontStretch: "115%", fontSize: 64, color: C.ink }}>
                 <span style={{ color: C.muted, fontWeight: 500 }}>≈ </span>
-                <Counter to={36_200} at={L[2].from + 2} dur={24} step={100} />
+                <Counter to={36_200} at={(jpAt ?? usAt + 24) + 2} dur={24} step={100} />
               </div>
-              <Chip at={L[2].from + 8} text="▼ −19 %" color={C.red} size={30} />
+              {jpAt !== undefined && <Chip at={jpAt + 8} text="▼ −19 %" color={C.red} size={30} />}
             </div>
           }
         />
@@ -111,14 +116,14 @@ export const UsaJapan: React.FC<{ duration: number }> = ({ duration }) => {
             <div style={{ display: "flex", alignItems: "center", gap: 26, opacity: usHL }}>
               <div style={{ fontFamily: F.display, fontWeight: 900, fontStretch: "115%", fontSize: 64, color: C.ink }}>
                 <span style={{ color: C.muted, fontWeight: 500 }}>≈ </span>
-                <Counter to={38_400} at={L[1].from + 2} dur={28} step={100} />
+                <Counter to={38_400} at={usAt + 2} dur={28} step={100} />
               </div>
-              <Chip at={L[1].subs[1].from} text="▲ +12 %" size={30} />
+              <Chip at={upAt} text="▲ +12 %" size={30} />
             </div>
           }
         />
       </div>
-      <div style={{ position: "absolute", left: CX, top: SLOT3 + CH + 34, opacity: prog(f, L[1].from + 20, 14) }}>
+      <div style={{ position: "absolute", left: CX, top: SLOT3 + CH + 34, opacity: prog(f, usAt + 20, 14) }}>
         <Label size={20}>installations 2025 · variation sur un an</Label>
       </div>
     </AbsoluteFill>

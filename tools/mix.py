@@ -5,12 +5,14 @@ Les bruitages sont déclarés par scène dans script/narration.json :
   "sfx": [{"type": "whoosh", "at": "scene", "offset": -0.3},
           {"type": "tick", "at": "line:1", "offset": 0.2, "repeat": 10, "every": 0.07, "gain": 0.5}]
 "at" vaut "scene" (début de scène), "end" (fin de scène), "line:N" (début de la réplique N)
-ou "sub:N:M" (début du bloc de sous-titre M de la réplique N).
+"sub:N:M" (début du bloc de sous-titre M de la réplique N) ou "match:motif" (premier bloc
+dont le texte correspond à l'expression régulière, pour rester calé sur un mot prononcé).
 Sortie : public/audio/mix.wav puis out/mix.wav (loudnorm).
 """
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -70,6 +72,12 @@ def cue_time(cue: dict, sc: dict, fps: int) -> float:
     elif at.startswith("sub:"):
         _, li, bi = at.split(":")
         base = sc["lines"][int(li)]["subs"][int(bi)]["from"]
+    elif at.startswith("match:"):
+        pat = re.compile(at[len("match:") :], re.I)
+        hits = [b["from"] for ln in sc["lines"] for b in ln["subs"] if pat.search(b["text"])]
+        if not hits:
+            raise ValueError(f"aucun sous-titre ne correspond à {at!r} dans la scène {sc['id']}")
+        base = hits[0]
     else:
         raise ValueError(at)
     return base / fps + cue.get("offset", 0.0)

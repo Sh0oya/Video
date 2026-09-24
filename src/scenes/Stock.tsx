@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { C, F, ease } from "../theme";
-import { localLines, prog } from "../lib/timeline";
+import { localLines, paramsOf, prog } from "../lib/timeline";
 import { Chip, FadeUp, Label, Reveal, useExit } from "../components/Ui";
 import { STOCK } from "../data/facts";
 
@@ -19,14 +19,14 @@ export const Stock: React.FC<{ duration: number }> = ({ duration }) => {
   const step = (X1 - X0 - BW) / (n - 1);
   const chipAt = L[0].to - 22;
   const hl = prog(f, L[1].from, 20, ease.out);
-  const i18 = STOCK.findIndex((d) => d.year === 2018);
+  // Comparaison affichée : K copies de la barre de l'année de base s'empilent dans la barre 2025.
+  const { base, times, caption } = paramsOf("stock", { base: 2018, times: 2, caption: "depuis 2018" });
+  const i18 = STOCK.findIndex((d) => d.year === base);
   const x18 = X0 + i18 * step;
   const x25 = X0 + (n - 1) * step;
   const h18 = STOCK[i18].v * PER_M;
   const h25 = STOCK[n - 1].v * PER_M;
-  // Deux copies de la barre 2018 viennent s'empiler dans la barre 2025.
-  const g1 = prog(f, L[1].from + 2, 22, ease.inOut);
-  const g2 = prog(f, L[1].from + 10, 22, ease.inOut);
+  const gs = Array.from({ length: times }, (_, k) => prog(f, L[1].from + 2 + k * 8, 22, ease.inOut));
   const ghost = (p: number, k: number) => {
     if (p <= 0) return null;
     const gx = interpolate(p, [0, 1], [x18, x25]);
@@ -87,27 +87,26 @@ export const Stock: React.FC<{ duration: number }> = ({ duration }) => {
             </g>
           );
         })}
-        {ghost(g1, 1)}
-        {ghost(g2, 2)}
+        {gs.map((g, k) => <React.Fragment key={k}>{ghost(g, k + 1)}</React.Fragment>)}
         <g opacity={lab}>
-          <line x1={x25 + BW + 18} x2={x25 + BW + 18} y1={BASE} y2={BASE - 2 * h18} stroke={C.cyan} strokeWidth={3} />
-          <line x1={x25 + BW + 8} x2={x25 + BW + 28} y1={BASE - h18} y2={BASE - h18} stroke={C.cyan} strokeWidth={3} />
-          <line x1={x25 + BW + 8} x2={x25 + BW + 28} y1={BASE - 2 * h18} y2={BASE - 2 * h18} stroke={C.cyan} strokeWidth={3} />
-          <line x1={x25 + BW + 8} x2={x25 + BW + 28} y1={BASE} y2={BASE} stroke={C.cyan} strokeWidth={3} />
+          <line x1={x25 + BW + 18} x2={x25 + BW + 18} y1={BASE} y2={BASE - times * h18} stroke={C.cyan} strokeWidth={3} />
+          {Array.from({ length: times + 1 }, (_, k) => (
+            <line key={k} x1={x25 + BW + 8} x2={x25 + BW + 28} y1={BASE - k * h18} y2={BASE - k * h18} stroke={C.cyan} strokeWidth={3} />
+          ))}
         </g>
       </svg>
       <div
         style={{
           position: "absolute",
           left: x25 + BW + 44,
-          top: BASE - h18 - 70,
+          top: BASE - (times * h18) / 2 - 70,
           opacity: lab,
           transform: `translateX(${(1 - lab) * -16}px)`,
         }}
       >
-        <div style={{ fontFamily: F.display, fontWeight: 900, fontStretch: "125%", fontSize: 88, color: C.ink, lineHeight: 1 }}>×2</div>
+        <div style={{ fontFamily: F.display, fontWeight: 900, fontStretch: "125%", fontSize: 88, color: C.ink, lineHeight: 1 }}>×{times}</div>
         <Label size={23} color={C.cyan} style={{ marginTop: 8 }}>
-          depuis 2018
+          {caption}
         </Label>
       </div>
       <div style={{ position: "absolute", right: 1920 - (x25 + BW), top: BASE - h25 - 118 }}>

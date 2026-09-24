@@ -16,7 +16,7 @@ from scipy.signal import butter, fftconvolve, lfilter, sosfilt
 
 ROOT = Path(__file__).resolve().parent.parent
 SR = 48000
-BPM = 100.0
+BPM = 110.0
 BEAT = 60.0 / BPM
 BAR = 4 * BEAT
 rng = np.random.default_rng(7)
@@ -26,12 +26,12 @@ def midi(n: float) -> float:
     return 440.0 * 2 ** ((n - 69) / 12)
 
 
-# Ré mineur : Dm - Bb - F - C (i - VI - III - VII), un accord par mesure.
+# Ré majeur : D - A - Bm - G (I - V - vi - IV), un accord par mesure : couleur optimiste.
 PROGRESSION = [
-    (50, [62, 65, 69]),  # Dm
-    (46, [62, 65, 70]),  # Bb
-    (53, [60, 65, 69]),  # F
-    (48, [60, 64, 67]),  # C
+    (50, [62, 66, 69]),  # D
+    (45, [61, 64, 69]),  # A
+    (47, [62, 66, 71]),  # Bm
+    (43, [62, 67, 71]),  # G
 ]
 
 

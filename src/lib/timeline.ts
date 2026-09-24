@@ -9,11 +9,17 @@ export type Scene = { id: string; from: number; duration: number; lines: Line[] 
 
 export const TL = timeline as { fps: number; durationInFrames: number; scenes: Scene[] };
 
-const chapters: Record<string, string> = Object.fromEntries(
-  (narration.scenes as { id: string; chapter?: string }[]).map((s) => [s.id, s.chapter ?? ""])
-);
+type SceneSpec = { id: string; chapter?: string; params?: Record<string, unknown> };
+const specs = narration.scenes as SceneSpec[];
+const chapters: Record<string, string> = Object.fromEntries(specs.map((s) => [s.id, s.chapter ?? ""]));
 
 export const chapterOf = (id: string) => chapters[id] ?? "";
+
+// Paramètres visuels d'une scène, déclarés dans script/narration.json ("params").
+export function paramsOf<T extends Record<string, unknown>>(id: string, defaults: T): T {
+  const p = specs.find((s) => s.id === id)?.params ?? {};
+  return { ...defaults, ...(p as Partial<T>) };
+}
 
 export const sceneById = (id: string): Scene => {
   const s = TL.scenes.find((x) => x.id === id);
@@ -34,3 +40,9 @@ export const localLines = (id: string) => {
 // Progression 0 -> 1 à partir de l'image `start`, sur `dur` images.
 export const prog = (frame: number, start: number, dur: number, easing = ease.out) =>
   interpolate(frame, [start, start + dur], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing });
+
+// Début (image locale) du premier bloc de sous-titre de la scène qui correspond au motif.
+export const findSub = (id: string, re: RegExp): number | undefined => {
+  for (const l of localLines(id)) for (const s of l.subs) if (re.test(s.text)) return s.from;
+  return undefined;
+};

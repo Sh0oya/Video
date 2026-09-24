@@ -4,6 +4,7 @@ import { C, F, ease, fmt } from "../theme";
 import { localLines, prog } from "../lib/timeline";
 import { Chip, Counter, FadeUp, Label, Reveal, useExit } from "../components/Ui";
 import { INSTALLS } from "../data/facts";
+import { Clock } from "../components/Icons";
 
 const BASE = 800;
 const PER = 460 / 600_000;
@@ -61,6 +62,7 @@ export const Installs: React.FC<{ duration: number }> = ({ duration }) => {
           transformOrigin: "left center",
         }}
       >
+        <Clock size={76} color={C.orange} stroke={6} angle={Math.max(0, f - L[2].from) * 24} />
         <div>
           <Label size={20} color={C.orange} style={{ marginBottom: 4 }}>
             plus de

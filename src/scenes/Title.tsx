@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { C, F, ease } from "../theme";
-import { localLines, prog } from "../lib/timeline";
+import { localLines, paramsOf, prog } from "../lib/timeline";
 import { Bar, FadeUp, Label, Reveal, useExit } from "../components/Ui";
 import { RobotArm, ik, poseAt } from "../components/RobotArm";
 
@@ -20,8 +20,11 @@ export const Title: React.FC<{ duration: number }> = ({ duration }) => {
   const f = useCurrentFrame();
   const exit = useExit(duration);
   const L = localLines("title");
+  const P = paramsOf("title", { kicker: "Rapport World Robotics 2026", line1: "5 MILLIONS", line2: "DE ROBOTS", sub: "travaillent désormais dans les usines du monde" });
   const ifrAt = L[0].subs[1]?.from ?? 30;
   const reportAt = L[0].subs[2]?.from ?? 60;
+  // Taille du titre adaptée à la ligne la plus longue, pour ne jamais empiéter sur le bras.
+  const titleSize = Math.min(128, Math.floor(1080 / (0.8 * Math.max(P.line1.length, P.line2.length))));
   const pulse = interpolate(f, [reportAt, reportAt + 5, reportAt + 20], [1, 1.07, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const rise = prog(f, 0, 40, ease.out);
   const BX = 1330;
@@ -62,20 +65,20 @@ export const Title: React.FC<{ duration: number }> = ({ duration }) => {
       <div style={{ position: "absolute", left: 140, top: 250 }}>
         <Reveal at={2} dur={18}>
           <Label size={24} color={f >= reportAt ? C.orangeHi : C.orange} style={{ letterSpacing: "0.2em", transform: `scale(${pulse})`, transformOrigin: "left center" }}>
-            Rapport World Robotics 2026
+            {P.kicker}
           </Label>
         </Reveal>
         <div style={{ height: 26 }} />
         <Reveal at={6}>
-          <div style={{ ...big, color: C.orange }}>5 MILLIONS</div>
+          <div style={{ ...big, fontSize: titleSize, color: C.orange }}>{P.line1}</div>
         </Reveal>
         <Reveal at={11}>
-          <div style={big}>DE ROBOTS</div>
+          <div style={{ ...big, fontSize: titleSize }}>{P.line2}</div>
         </Reveal>
         <div style={{ height: 26 }} />
         <Reveal at={17} dur={20}>
           <div style={{ fontFamily: F.body, fontWeight: 500, fontSize: 44, color: C.ink, opacity: 0.92 }}>
-            travaillent désormais dans les usines du monde
+            {P.sub}
           </div>
         </Reveal>
         <div style={{ height: 40 }} />
