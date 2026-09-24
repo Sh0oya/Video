@@ -10,20 +10,26 @@ const when = (L: ReturnType<typeof localLines>, re: RegExp, fallback: number) =>
   for (const l of L) for (const s of l.subs) if (re.test(s.text)) return s.from;
   return fallback;
 };
+// Variante calée vers la fin du bloc, quand le mot clé termine la phrase.
+const whenLate = (L: ReturnType<typeof localLines>, re: RegExp, fallback: number) => {
+  for (const l of L) for (const s of l.subs) if (re.test(s.text)) return Math.round(s.from + 0.7 * (s.to - s.from));
+  return fallback;
+};
 
-const TW = 290;
+const TW = 300;
 const TH = 190;
 const TG = 24;
 const TX = 1780 - (3 * TW + 2 * TG);
-const TY = 300;
+const TY = 340;
 
 export const Sectors: React.FC<{ duration: number }> = ({ duration }) => {
   const f = useCurrentFrame();
   const L = localLines("sectors");
   const exit = useExit(duration);
   const last = L[L.length - 1];
-  const tProd = when(L, /productiv/i, L[0].from + 10);
-  const tComp = when(L, /compétitiv/i, tProd + 25);
+  const tProd = whenLate(L, /productiv/i, L[0].from + 10);
+  const tComp = whenLate(L, /compétitiv/i, tProd + 25);
+  const tPrice = whenLate(L, /prix/i, tProd + 12);
   const tRelo = when(L, /relocalis/i, last.from);
   const tiles = [
     { name: "Automobile", Icon: Car, t: 6, fresh: false },
@@ -31,17 +37,24 @@ export const Sectors: React.FC<{ duration: number }> = ({ duration }) => {
     { name: "Métal et machines", Icon: Gear, t: 12, fresh: false },
     { name: "Agroalimentaire", Icon: Food, t: when(L, /agroalimentaire|alimentaire/i, last.from + 10), fresh: true },
     { name: "Logistique", Icon: Box, t: when(L, /logistique|entrep/i, last.from + 30), fresh: true },
-    { name: "Santé", Icon: Health, t: when(L, /santé|médical/i, last.from + 50), fresh: true },
+    { name: "Médical", Icon: Health, t: when(L, /santé|médical/i, last.from + 50), fresh: true },
   ];
-  const stat = (label: string, t: number, y: number) => {
+  const stat = (label: string, t: number, y: number, down = false, note = "") => {
     const p = prog(f, t, 16, ease.out);
     const arrow = interpolate(p, [0, 1], [30, 0]);
     return (
       <div style={{ position: "absolute", left: 140, top: y, display: "flex", alignItems: "center", gap: 22, opacity: p }}>
         <div style={{ width: 64, height: 64, borderRadius: 16, background: `${C.orange}22`, border: `2px solid ${C.orange}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <div style={{ fontFamily: F.display, fontWeight: 900, fontSize: 38, color: C.orange, transform: `translateY(${arrow}px)` }}>▲</div>
+          <div style={{ fontFamily: F.display, fontWeight: 900, fontSize: 38, color: C.orange, transform: `translateY(${down ? -arrow : arrow}px)` }}>{down ? "▼" : "▲"}</div>
         </div>
-        <div style={{ fontFamily: F.display, fontWeight: 800, fontStretch: "110%", fontSize: 54, color: C.ink }}>{label}</div>
+        <div>
+          <div style={{ fontFamily: F.display, fontWeight: 800, fontStretch: "110%", fontSize: 54, color: C.ink, lineHeight: 1 }}>{label}</div>
+          {note && (
+            <Label size={20} style={{ marginTop: 6 }}>
+              {note}
+            </Label>
+          )}
+        </div>
       </div>
     );
   };
@@ -60,13 +73,19 @@ export const Sectors: React.FC<{ duration: number }> = ({ duration }) => {
         </FadeUp>
       </div>
 
-      {stat("Productivité", tProd, 330)}
-      {stat("Compétitivité", tComp, 440)}
-      <div style={{ position: "absolute", left: 140, top: 560, display: "flex", alignItems: "center", gap: 22, opacity: relo, transform: `translateX(${(1 - relo) * -30}px)` }}>
+      {stat("Productivité", tProd, 320, false, "≈ +0,36 point par an · 17 pays, 1993-2007")}
+      {stat("Prix", tPrice, 440, true, "même étude, publiée en 2018")}
+      {stat("Compétitivité", tComp, 560, false, "selon l’IFR")}
+      <div style={{ position: "absolute", left: 140, top: 690, display: "flex", alignItems: "center", gap: 22, opacity: relo, transform: `translateX(${(1 - relo) * -30}px)` }}>
         <div style={{ width: 64, height: 64, borderRadius: 16, background: `${C.cyan}22`, border: `2px solid ${C.cyan}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
           <Factory size={40} color={C.cyan} stroke={8} />
         </div>
-        <div style={{ fontFamily: F.display, fontWeight: 800, fontStretch: "110%", fontSize: 40, color: C.ink }}>Produire près de chez soi</div>
+        <div style={{ fontFamily: F.display, fontWeight: 800, fontStretch: "110%", fontSize: 40, color: C.ink, lineHeight: 1 }}>
+          Relocalisation
+          <Label size={20} style={{ marginTop: 6 }}>
+            aux États-Unis · selon l’IFR
+          </Label>
+        </div>
       </div>
 
       {tiles.map((tile, i) => {
@@ -93,12 +112,14 @@ export const Sectors: React.FC<{ duration: number }> = ({ duration }) => {
               alignItems: "center",
               justifyContent: "center",
               gap: 14,
-              opacity: tile.fresh ? Math.max(0.35 * prog(f, 10, 14), p) : p,
+              opacity: tile.fresh ? Math.max(0.3 * prog(f, 10, 14), p) : p,
               transform: `scale(${pop})`,
             }}
           >
-            <tile.Icon size={70} color={color} stroke={6} />
-            <div style={{ fontFamily: F.body, fontWeight: 600, fontSize: 30, color: tile.fresh && lit < 0.5 ? C.textDim : C.ink }}>{tile.name}</div>
+            <div style={{ opacity: tile.fresh ? lit : 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
+              <tile.Icon size={70} color={color} stroke={6} />
+              <div style={{ fontFamily: F.body, fontWeight: 600, fontSize: 28, color: C.ink }}>{tile.name}</div>
+            </div>
           </div>
         );
       })}
@@ -115,7 +136,7 @@ export const Sectors: React.FC<{ duration: number }> = ({ duration }) => {
       </div>
       <div style={{ position: "absolute", left: TX, top: TY + TH + TG - 4, opacity: prog(f, tiles[3].t - 6, 12) }}>
         <Label size={20} color={C.orange}>
-          nouveaux terrains de jeu
+          en plein essor aux États-Unis
         </Label>
       </div>
     </AbsoluteFill>

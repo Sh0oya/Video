@@ -4,6 +4,7 @@ import { C, F, ease } from "../theme";
 import { localLines, paramsOf, prog } from "../lib/timeline";
 import { Counter, Label, Reveal } from "../components/Ui";
 import { RobotArm, ik, poseAt } from "../components/RobotArm";
+import { Worker } from "../components/Icons";
 
 const BX = 960;
 const BY = 845;
@@ -19,6 +20,7 @@ export const Outro: React.FC<{ duration: number }> = ({ duration }) => {
     sub2: "en Chine.",
     card1: "5 MILLIONS",
     card2: "DE ROBOTS",
+    card3: "",
   });
   const statsOut = prog(f, L[1].from - 8, 14, ease.in);
   const armIn = prog(f, L[1].from - 10, 26, ease.out);
@@ -66,9 +68,9 @@ export const Outro: React.FC<{ duration: number }> = ({ duration }) => {
                 Sur l’année 2029
               </Label>
               <div style={{ fontFamily: F.display, fontWeight: 900, fontStretch: "125%", fontSize: 130, color: C.orange, lineHeight: 1.05 }}>
-                <Counter from={600_000} to={806_000} at={L[0].subs[1].from} dur={26} />
+                <Counter prefix="+" from={600_000} to={806_000} at={L[0].subs[1].from} dur={26} step={1000} />
               </div>
-              <div style={{ fontFamily: F.body, fontSize: 32, color: C.ink }}>installations prévues</div>
+              <div style={{ fontFamily: F.body, fontSize: 32, color: C.ink }}>nouveaux robots prévus dans l’année</div>
               <Label size={22} style={{ marginTop: 8 }}>
                 prévisions IFR
               </Label>
@@ -86,20 +88,27 @@ export const Outro: React.FC<{ duration: number }> = ({ duration }) => {
               </Reveal>
             </div>
             <div style={{ height: 18 }} />
-            <Reveal at={L[1].subs[2]?.from ?? L[1].to}>
-              <div style={{ fontFamily: F.display, fontWeight: 800, fontStretch: "110%", fontSize: 50, color: C.muted }}>
-                {P.sub1} <span style={{ color: C.ink }}>{P.sub2}</span>
-              </div>
-            </Reveal>
+            <div style={{ display: "flex", justifyContent: "center", gap: "0.3em", fontFamily: F.display, fontWeight: 800, fontStretch: "110%", fontSize: 50 }}>
+              <Reveal at={L[1].subs[2]?.from ?? L[1].to}>
+                <span style={{ color: C.muted }}>{P.sub1}</span>
+              </Reveal>
+              <Reveal at={L[1].subs[3]?.from ?? L[1].subs[2]?.from ?? L[1].to}>
+                <span style={{ color: C.orange }}>{P.sub2}</span>
+              </Reveal>
+            </div>
           </div>
           <svg width={1920} height={1080} style={{ position: "absolute" }}>
-            <line x1={420} x2={1500} y1={BY + 12} y2={BY + 12} stroke={C.line} strokeWidth={2} />
+            <line x1={420} x2={1700} y1={BY + 12} y2={BY + 12} stroke={C.line} strokeWidth={2} />
             <g transform={`translate(0 ${(1 - armIn) * 400})`}>
               <RobotArm id="outro-arm" x={BX} y={BY + 12} scale={SC} pose={pose} glow={0.6} payload={holding ? cube(0, 0, "") : undefined} />
             </g>
             {f <= t0 + 8 && cube(PICK[0], PICK[1], "")}
             {f >= t0 + 44 && cube(DROP[0], DROP[1], "")}
           </svg>
+          {/* L'humain dans l'image finale : il reprend la main sur la pièce posée par le robot. */}
+          <div style={{ position: "absolute", left: DROP[0] + 70, top: BY + 12 - 160, opacity: prog(f, L[1].subs[1]?.from ?? t0 + 60, 14), transform: `translateX(${(1 - prog(f, L[1].subs[1]?.from ?? t0 + 60, 14)) * 30}px)` }}>
+            <Worker size={160} color={C.cyan} stroke={6} />
+          </div>
         </AbsoluteFill>
       </AbsoluteFill>
 
@@ -107,6 +116,7 @@ export const Outro: React.FC<{ duration: number }> = ({ duration }) => {
         <div style={{ textAlign: "center", transform: `translateY(${(1 - card) * 20}px)` }}>
           <div style={{ fontFamily: F.display, fontWeight: 900, fontStretch: "125%", fontSize: 92, color: C.ink, lineHeight: 1 }}>
             <span style={{ color: C.orange }}>{P.card1}</span> {P.card2}
+            {P.card3 && <div style={{ fontFamily: F.body, fontWeight: 500, fontSize: 40, color: C.ink, opacity: 0.9, marginTop: 22, letterSpacing: 0 }}>{P.card3}</div>}
           </div>
           <div style={{ width: 140, height: 5, background: C.orange, margin: "36px auto" }} />
           <Label size={22} color={C.ink} style={{ letterSpacing: "0.12em" }}>
@@ -114,6 +124,10 @@ export const Outro: React.FC<{ duration: number }> = ({ duration }) => {
           </Label>
           <div style={{ height: 10 }} />
           <Label size={20}>World Robotics 2026 · communiqué du 24 septembre 2026 · ifr.org</Label>
+          <div style={{ height: 10 }} />
+          <Label size={18}>
+            Autres sources : IFR, The Impact of Robots (août 2026) et tendances 2026 · Graetz et Michaels (2018) · Gihleb et al. (2022)
+          </Label>
           <div style={{ height: 56 }} />
           <Label size={19} color={C.muted}>
             Vidéo entièrement générée par du code · animation Remotion · voix de synthèse Kokoro · musique synthétisée

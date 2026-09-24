@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { C, F, ease, fmt } from "../theme";
-import { localLines, prog } from "../lib/timeline";
+import { findSub, localLines, prog } from "../lib/timeline";
 import { Chip, FadeUp, Label, Reveal, useExit } from "../components/Ui";
 import { FORECAST, INSTALLS } from "../data/facts";
 
@@ -41,6 +41,9 @@ export const Forecast: React.FC<{ duration: number }> = ({ duration }) => {
   const land = cAt + 25;
   const glow = interpolate(f, [land, land + 3, land + 40], [0, 1, 0.35], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const zone = prog(f, L[1].from, 20);
+  const n655 = findSub("forecast", /655/) ?? L[1].from + 18;
+  // « un bond d'environ un tiers » : niveau 2025 prolongé et accolade jusqu'à 2029.
+  const third = prog(f, findSub("forecast", /tiers/) ?? L[2].to, 16, ease.out);
   return (
     <AbsoluteFill style={exit}>
       <div style={{ position: "absolute", left: 140, top: 130 }}>
@@ -91,19 +94,26 @@ export const Forecast: React.FC<{ duration: number }> = ({ duration }) => {
         <circle cx={p26[0]} cy={p26[1]} r={11} fill={C.orange} opacity={b > 0.98 ? 1 : 0} />
         <circle cx={p29[0]} cy={p29[1]} r={14 + 40 * glow} fill={C.orange} opacity={0.25 * glow} />
         <circle cx={p29[0]} cy={p29[1]} r={13} fill={C.orange} opacity={c > 0.98 ? 1 : 0} />
+        <g opacity={third}>
+          <line x1={actual[3][0]} x2={p29[0] + 30} y1={actual[3][1]} y2={actual[3][1]} stroke={C.muted} strokeWidth={2} strokeDasharray="6 8" />
+          <path d={`M ${p29[0] + 22} ${actual[3][1]} L ${p29[0] + 38} ${actual[3][1]} M ${p29[0] + 30} ${actual[3][1]} L ${p29[0] + 30} ${p29[1]} M ${p29[0] + 22} ${p29[1]} L ${p29[0] + 38} ${p29[1]}`} stroke={C.orange} strokeWidth={4} fill="none" />
+        </g>
       </svg>
       <div style={{ position: "absolute", left: actual[3][0] - 110, top: actual[3][1] + 26, opacity: prog(f, L[0].from + 30, 12) }}>
         <div style={{ fontFamily: F.mono, fontWeight: 600, fontSize: 28, color: C.ink }}>plus de 600 000</div>
         <Label size={22}>2025</Label>
       </div>
-      <div style={{ position: "absolute", left: p26[0] - 70, top: p26[1] - 82, opacity: prog(f, L[1].from + 18, 12) }}>
+      <div style={{ position: "absolute", left: p26[0] - 70, top: p26[1] - 100, opacity: prog(f, n655, 12) }}>
         <div style={{ fontFamily: F.mono, fontWeight: 600, fontSize: 30, color: C.ink, lineHeight: 1 }}>655 000</div>
         <Label size={20} style={{ marginTop: 6 }}>
           prévus en 2026
         </Label>
       </div>
-      <div style={{ position: "absolute", left: p26[0] - 60, top: p26[1] + 30 }}>
+      <div style={{ position: "absolute", left: p26[0] + 10, top: p26[1] + 30 }}>
         <Chip at={L[1].to - 30} text="▲ +9 % en 2026" size={24} />
+      </div>
+      <div style={{ position: "absolute", left: p29[0] + 50, top: (actual[3][1] + p29[1]) / 2 - 24, opacity: third, transform: `translateX(${(1 - third) * -14}px)` }}>
+        <Chip at={findSub("forecast", /tiers/) ?? L[2].to} text="▲ ≈ +⅓ en 4 ans" size={26} />
       </div>
       <div
         style={{

@@ -1,7 +1,7 @@
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { C, F, ease } from "../theme";
-import { TL, chapterOf } from "../lib/timeline";
+import { TL, chapterOf, paramsOf } from "../lib/timeline";
 
 // Habillage permanent : source en haut à gauche, chapitre en haut à droite, barre de progression.
 export const Hud: React.FC = () => {
@@ -20,11 +20,12 @@ export const Hud: React.FC = () => {
   const prevChapter = idx > 0 ? chapterOf(TL.scenes[idx - 1].id) : "";
   const chapOpacity = chapter === prevChapter ? 1 : chapIn;
   const progress = f / TL.durationInFrames;
+  const { source } = paramsOf(scene.id, { source: "IFR · WORLD ROBOTICS 2026" });
   return (
     <AbsoluteFill style={{ opacity: show * hide, pointerEvents: "none" }}>
       <div style={{ position: "absolute", left: 72, top: 56, display: "flex", alignItems: "center", gap: 14 }}>
         <div style={{ width: 12, height: 12, background: C.orange, borderRadius: 2 }} />
-        <div style={{ fontFamily: F.mono, fontSize: 19, letterSpacing: "0.16em", color: C.muted }}>IFR · WORLD ROBOTICS 2026</div>
+        <div style={{ fontFamily: F.mono, fontSize: 19, letterSpacing: "0.16em", color: C.muted, textTransform: "uppercase" }}>{source}</div>
       </div>
       {chapter && (
         <div

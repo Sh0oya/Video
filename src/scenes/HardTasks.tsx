@@ -23,6 +23,8 @@ export const HardTasks: React.FC<{ duration: number }> = ({ duration }) => {
   const roleSubs = L[1].subs;
   const shift = prog(f, roles - 4, 18, ease.inOut);
   const accAt = findSub("hardtasks", /accident/i);
+  const exAt = findSub("hardtasks", /contrôle|programmation|maintenance/i) ?? (roleSubs[1]?.from ?? roles + 20);
+  const trainAt = findSub("hardtasks", /form(er|ation)/i);
   return (
     <AbsoluteFill style={exit}>
       <div style={{ position: "absolute", left: 140, top: 130 }}>
@@ -31,7 +33,7 @@ export const HardTasks: React.FC<{ duration: number }> = ({ duration }) => {
         </Reveal>
         <FadeUp at={6}>
           <Label size={21} style={{ marginTop: 10 }}>
-            ce que les robots prennent en charge
+            ce que les robots peuvent prendre en charge
           </Label>
         </FadeUp>
       </div>
@@ -50,7 +52,7 @@ export const HardTasks: React.FC<{ duration: number }> = ({ duration }) => {
               left: x,
               top: 300 + lift,
               width: CW,
-              height: 360,
+              height: accAt !== undefined ? 470 : 360,
               borderRadius: 22,
               background: C.panel,
               border: `2px solid ${swap > 0.5 ? C.orange : C.line}`,
@@ -65,28 +67,50 @@ export const HardTasks: React.FC<{ duration: number }> = ({ duration }) => {
           >
             <c.Icon size={92} color={swap > 0.5 ? C.orange : C.ink} stroke={6} />
             <div style={{ fontFamily: F.display, fontWeight: 800, fontStretch: "110%", fontSize: 50, color: C.ink, marginTop: 22 }}>{c.title}</div>
-            <div style={{ position: "relative", width: 240, height: 110, marginTop: 20 }}>
+            <div style={{ position: "relative", width: 240, height: 80, marginTop: 20 }}>
               <div style={{ position: "absolute", left: 0, top: 0, display: "flex", alignItems: "center", gap: 14, opacity: 1 - swap, transform: `translateX(${-30 * swap}px)` }}>
-                <Worker size={70} color={C.red} stroke={6} />
-                <Label size={21} color={C.red}>humain</Label>
+                <Worker size={70} color={C.muted} stroke={6} />
+                <Label size={22} color={C.muted}>humain</Label>
               </div>
               <div style={{ position: "absolute", left: 0, top: 0, display: "flex", alignItems: "center", gap: 14, opacity: swap, transform: `translateX(${30 * (1 - swap)}px)` }}>
                 <Robot size={70} color={C.orange} stroke={6} />
-                <Label size={21} color={C.orange}>robot</Label>
+                <Label size={22} color={C.orange}>robot</Label>
               </div>
             </div>
+            {i === 2 && accAt !== undefined && (
+              <div
+                style={{
+                  marginTop: 6,
+                  padding: "8px 16px",
+                  borderRadius: 12,
+                  background: `${C.orange}22`,
+                  border: `2px solid ${C.orange}`,
+                  textAlign: "center",
+                  opacity: prog(f, accAt + 45, 14),
+                  transform: `scale(${interpolate(prog(f, accAt + 45, 14), [0, 0.6, 1], [0.7, 1.06, 1])})`,
+                }}
+              >
+                <div style={{ fontFamily: F.body, fontWeight: 700, fontSize: 26, color: C.orange }}>▼ ≈ 1,2 accident de moins</div>
+                <div style={{ fontFamily: F.mono, fontSize: 18, color: C.ink, marginTop: 4 }}>pour 100 salariés par an</div>
+                <div style={{ fontFamily: F.mono, fontSize: 16, color: C.muted, marginTop: 2 }}>là où ils sont plus présents · É.-U., 2022</div>
+              </div>
+            )}
           </div>
         );
       })}
 
-      {accAt !== undefined && (
-        <div style={{ position: "absolute", right: 140, top: 128, textAlign: "right", opacity: prog(f, accAt, 14), transform: `translateY(${(1 - prog(f, accAt, 14)) * 12}px)` }}>
-          <div style={{ fontFamily: F.display, fontWeight: 900, fontStretch: "115%", fontSize: 44, color: C.orange }}>▼ accidents du travail</div>
-          <Label size={19} style={{ marginTop: 4 }}>là où les robots sont plus présents · étude États-Unis, 2022</Label>
+      {/* Nuance dite par la voix : certains emplois disparaissent, d'autres métiers peuvent naître (selon l'IFR). */}
+      <div style={{ position: "absolute", left: X0, top: (accAt !== undefined ? 812 : 700) - 52, display: "flex", gap: 40, opacity: shift }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, opacity: prog(f, roleSubs[0]?.from ?? roles, 12) }}>
+          <Worker size={30} color={C.red} stroke={8} />
+          <Label size={22} color={C.red}>certains emplois disparaissent</Label>
         </div>
-      )}
+        <div style={{ opacity: prog(f, roleSubs[1]?.from ?? roles + 30, 12) }}>
+          <Label size={22} color={C.cyan}>nouveaux métiers possibles · selon l’IFR</Label>
+        </div>
+      </div>
       {/* Les humains passent à des rôles plus qualifiés. */}
-      <div style={{ position: "absolute", left: X0, top: 680, width: 3 * CW + 2 * GAP, display: "flex", alignItems: "center", gap: 34, opacity: shift }}>
+      <div style={{ position: "absolute", left: X0, top: accAt !== undefined ? 812 : 700, width: 3 * CW + 2 * GAP, display: "flex", alignItems: "center", gap: 34, opacity: shift }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
           <Worker size={72} color={C.cyan} stroke={6} />
           <div style={{ fontFamily: F.display, fontWeight: 800, fontSize: 40, color: C.cyan }}>→</div>
@@ -96,7 +120,7 @@ export const HardTasks: React.FC<{ duration: number }> = ({ duration }) => {
           { t: "Programmation", I: Tablet },
           { t: "Maintenance", I: Gear },
         ].map((r, k) => {
-          const rp = prog(f, (roleSubs[1]?.from ?? roles + 20) + k * 9, 14, ease.out);
+          const rp = prog(f, exAt + k * 9, 14, ease.out);
           return (
             <div
               key={r.t}
@@ -117,6 +141,23 @@ export const HardTasks: React.FC<{ duration: number }> = ({ duration }) => {
             </div>
           );
         })}
+        {trainAt !== undefined && (
+          <div
+            style={{
+              marginLeft: 10,
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
+              padding: "14px 22px",
+              borderRadius: 16,
+              background: C.cyan,
+              opacity: prog(f, trainAt, 14),
+              transform: `scale(${interpolate(prog(f, trainAt, 14), [0, 0.6, 1], [0.7, 1.06, 1])})`,
+            }}
+          >
+            <div style={{ fontFamily: F.body, fontWeight: 700, fontSize: 28, color: C.bg }}>à condition de former</div>
+          </div>
+        )}
       </div>
     </AbsoluteFill>
   );

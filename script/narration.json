@@ -11,24 +11,10 @@
     {
       "id": "coldopen",
       "chapter": "",
-      "music": 0.3,
+      "music": 0.35,
       "lead": 2.4,
       "gap": 0.45,
       "tail": 0.7,
-      "lines": [
-        {
-          "tts": "Cinque millions.",
-          "sub": "5 millions."
-        },
-        {
-          "tts": "C'est le nombre de robots industriels | qui travaillent désormais | dans les usines de la planète.",
-          "sub": "C'est le nombre de robots industriels | qui travaillent désormais | dans les usines de la planète."
-        },
-        {
-          "tts": "Un record absolu.",
-          "sub": "Un record absolu."
-        }
-      ],
       "sfx": [
         {
           "type": "tick",
@@ -51,21 +37,40 @@
           "at": "line:0",
           "offset": -0.05,
           "gain": 1.0
+        },
+        {
+          "type": "clunk",
+          "at": "line:2",
+          "offset": 0.05,
+          "gain": 0.7
         }
-      ]
+      ],
+      "lines": [
+        {
+          "tts": "Cinque millions.",
+          "sub": "5 millions."
+        },
+        {
+          "tts": "C'est le nombre de robots industriels | qui travaillent, en ce moment, | dans les usines de la planète.",
+          "sub": "C'est le nombre de robots industriels | qui travaillent, en ce moment, | dans les usines de la planète."
+        },
+        {
+          "tts": "Un record. Et ça va très vite.",
+          "sub": "Un record. Et ça va très vite."
+        }
+      ],
+      "params": {
+        "stamp": "RECORD",
+        "label": "robots industriels en service",
+        "sublabel": "dans les usines du monde · fin 2025"
+      }
     },
     {
       "id": "title",
       "chapter": "",
-      "music": 0.45,
+      "music": 0.5,
       "lead": 0.9,
-      "tail": 1.4,
-      "lines": [
-        {
-          "tts": "Ce chiffre vient d'être publié | par la Fédération internationale de la robotique, | dans son rapport annuel.",
-          "sub": "Ce chiffre vient d'être publié | par la Fédération internationale de la robotique, | dans son rapport annuel."
-        }
-      ],
+      "tail": 1.3,
       "sfx": [
         {
           "type": "whoosh",
@@ -79,25 +84,27 @@
           "offset": 0.35,
           "gain": 0.8
         }
-      ]
+      ],
+      "lines": [
+        {
+          "tts": "Ce chiffre, publié ce mois-ci, | vient de la Fédération internationale de la robotique, | dans son rapport annuel.",
+          "sub": "Ce chiffre, publié ce mois-ci, | vient de la Fédération internationale de la robotique, | dans son rapport annuel."
+        }
+      ],
+      "params": {
+        "kicker": "Rapport World Robotics 2026",
+        "line1": "LA GRANDE",
+        "line2": "ACCÉLÉRATION",
+        "sub": "Et pourquoi elle peut être une chance"
+      }
     },
     {
       "id": "stock",
-      "chapter": "01 · Le record",
-      "music": 0.55,
+      "chapter": "01 · Tout s’accélère",
+      "music": 0.6,
       "lead": 0.8,
       "gap": 0.5,
-      "tail": 1.2,
-      "lines": [
-        {
-          "tts": "En un an, le parc mondial | a encore grimpé de neuf pour cent.",
-          "sub": "En un an, le parc mondial | a encore grimpé de 9 %."
-        },
-        {
-          "tts": "En sept ans, il a plus que doublé.",
-          "sub": "En sept ans, il a plus que doublé."
-        }
-      ],
+      "tail": 1.3,
       "sfx": [
         {
           "type": "whoosh",
@@ -118,32 +125,41 @@
         {
           "type": "blip",
           "at": "line:1",
-          "offset": 0.25,
-          "gain": 0.8
+          "offset": 0.3,
+          "repeat": 3,
+          "every": 0.27,
+          "gain": 0.6
+        },
+        {
+          "type": "shimmer",
+          "at": "line:1",
+          "offset": 1.0,
+          "gain": 0.6
         }
-      ]
+      ],
+      "lines": [
+        {
+          "tts": "En un an, le parc mondial | a encore grimpé de neuf pour cent.",
+          "sub": "En un an, le parc mondial | a encore grimpé de 9 %."
+        },
+        {
+          "tts": "En dix ans, | il a triplé.",
+          "sub": "En dix ans, | il a triplé."
+        }
+      ],
+      "params": {
+        "base": 2015,
+        "times": 3,
+        "caption": "en dix ans"
+      }
     },
     {
       "id": "installs",
-      "chapter": "01 · Le record",
-      "music": 0.65,
+      "chapter": "01 · Tout s’accélère",
+      "music": 0.7,
       "lead": 0.6,
       "gap": 0.45,
       "tail": 1.0,
-      "lines": [
-        {
-          "tts": "Et la cadence des installations s'accélère.",
-          "sub": "Et la cadence des installations s'accélère."
-        },
-        {
-          "tts": "En deux mille vingt-cinq, les usines se sont équipées | de plus de six cent mille nouveaux robots, | en hausse de onze pour cent sur un an.",
-          "sub": "En 2025, les usines se sont équipées | de plus de 600 000 nouveaux robots, | en hausse de 11 % sur un an."
-        },
-        {
-          "tts": "Soit plus de mille six cents robots mis en service, | chaque jour, en moyenne.",
-          "sub": "Soit plus de 1 600 robots mis en service, | chaque jour, en moyenne."
-        }
-      ],
       "sfx": [
         {
           "type": "whoosh",
@@ -169,26 +185,41 @@
           "at": "line:2",
           "offset": 0.1,
           "gain": 0.8
+        },
+        {
+          "type": "tick",
+          "at": "line:2",
+          "offset": 0.3,
+          "repeat": 16,
+          "every": 0.12,
+          "gain": 0.22,
+          "args": {
+            "freq": 3400
+          }
+        }
+      ],
+      "lines": [
+        {
+          "tts": "Après un plateau, | les installations repartent de plus belle.",
+          "sub": "Après un plateau, | les installations repartent de plus belle."
+        },
+        {
+          "tts": "En deux mille vingt-cinq, nouveau record : | plus de six cent mille robots, | en hausse de onze pour cent, bien plus que prévu.",
+          "sub": "En 2025, nouveau record : | plus de 600 000 robots, | en hausse de 11 %, bien plus que prévu."
+        },
+        {
+          "tts": "Soit plus de mille six cents par jour, en moyenne. | Plus d'un robot chaque minute.",
+          "sub": "Soit plus de 1 600 par jour, en moyenne. | Plus d'un robot chaque minute."
         }
       ]
     },
     {
       "id": "quote",
-      "chapter": "02 · La carte du monde",
-      "music": 0.4,
+      "chapter": "02 · Partout sur la planète",
+      "music": 0.45,
       "lead": 0.7,
       "gap": 0.6,
       "tail": 1.2,
-      "lines": [
-        {
-          "tts": "L'automatisation industrielle progresse à grande vitesse, | résume Djène Heffneur, | présidente de la fédération.",
-          "sub": "« L'automatisation industrielle progresse à grande vitesse », | résume Jane Heffner, | présidente de la fédération."
-        },
-        {
-          "tts": "C'est en Asie que la croissance est la plus forte, | devant les Amériques. | L'Europe, elle, avance plus lentement.",
-          "sub": "C'est en Asie que la croissance est la plus forte, | devant les Amériques. | L'Europe, elle, avance plus lentement."
-        }
-      ],
       "sfx": [
         {
           "type": "whoosh",
@@ -202,29 +233,25 @@
           "offset": 0.1,
           "gain": 0.7
         }
+      ],
+      "lines": [
+        {
+          "tts": "L'automatisation industrielle progresse à grande vitesse, | résume Djène Heffneur, | présidente de la fédération.",
+          "sub": "« L'automatisation industrielle progresse à grande vitesse », | résume Jane Heffner, | présidente de la fédération."
+        },
+        {
+          "tts": "L'Asie fonce, | suivie des Amériques. | L'Europe, elle, avance plus lentement.",
+          "sub": "L'Asie fonce, | suivie des Amériques. | L'Europe, elle, avance plus lentement."
+        }
       ]
     },
     {
       "id": "china",
-      "chapter": "02 · La carte du monde",
+      "chapter": "02 · Partout sur la planète",
       "music": 0.7,
       "lead": 0.6,
       "gap": 0.45,
-      "tail": 1.2,
-      "lines": [
-        {
-          "tts": "Premier marché mondial, la Chine creuse encore l'écart.",
-          "sub": "Premier marché mondial, la Chine creuse encore l'écart."
-        },
-        {
-          "tts": "Elle a installé plus de trois cent cinquante mille robots, | un bond de vingt pour cent.",
-          "sub": "Elle a installé plus de 350 000 robots, | un bond de 20 %."
-        },
-        {
-          "tts": "Cela représente cinquante-neuf pour cent des installations de la planète. | Près de trois nouveaux robots sur cinq.",
-          "sub": "Cela représente 59 % des installations de la planète. | Près de trois nouveaux robots sur cinq."
-        }
-      ],
+      "tail": 1.1,
       "sfx": [
         {
           "type": "whoosh",
@@ -233,15 +260,15 @@
         },
         {
           "type": "tick",
-          "at": "line:1",
-          "offset": 0.15,
+          "at": "match:35\\d",
+          "offset": 0.0,
           "repeat": 14,
           "every": 0.07,
           "gain": 0.3
         },
         {
           "type": "tick",
-          "at": "line:2",
+          "at": "match:59",
           "offset": -0.1,
           "repeat": 20,
           "every": 0.04,
@@ -252,33 +279,29 @@
         },
         {
           "type": "impact",
-          "at": "line:2",
-          "offset": 0.75,
+          "at": "match:59",
+          "offset": 0.73,
           "gain": 0.45
+        }
+      ],
+      "lines": [
+        {
+          "tts": "En tête, et de loin : la Chine. | Plus de trois cent cinquante mille nouveaux robots, | un bond de vingt pour cent.",
+          "sub": "En tête, et de loin : la Chine. | Plus de 350 000 nouveaux robots, | un bond de 20 %."
+        },
+        {
+          "tts": "Cinquante-neuf pour cent du total mondial. | Près de trois nouveaux robots sur cinque.",
+          "sub": "59 % du total mondial. | Près de trois nouveaux robots sur cinq."
         }
       ]
     },
     {
       "id": "usajapan",
-      "chapter": "03 · Le classement",
+      "chapter": "02 · Partout sur la planète",
       "music": 0.72,
       "lead": 0.6,
       "gap": 0.45,
       "tail": 1.0,
-      "lines": [
-        {
-          "tts": "Derrière, le podium bascule : | les États-Unis dépassent le Japon | et deviennent le deuxième marché mondial.",
-          "sub": "Derrière, le podium bascule : | les États-Unis dépassent le Japon | et deviennent le deuxième marché mondial."
-        },
-        {
-          "tts": "Environ trente-huit mille quatre cents nouveaux robots, | en hausse de douze pour cent.",
-          "sub": "Environ 38 400 nouveaux robots, | en hausse de 12 %."
-        },
-        {
-          "tts": "Le Japon, lui, chute de dix-neuf pour cent | et recule à la troisième place.",
-          "sub": "Le Japon, lui, chute de 19 % | et recule à la troisième place."
-        }
-      ],
       "sfx": [
         {
           "type": "whoosh",
@@ -302,47 +325,29 @@
         },
         {
           "type": "blip",
-          "at": "line:1",
-          "offset": 0.2,
+          "at": "match:38|12",
+          "offset": 0.1,
           "gain": 0.6
+        }
+      ],
+      "lines": [
+        {
+          "tts": "Derrière, le podium bascule : | les États-Unis dépassent le Japon | et deviennent le deuxième marché mondial.",
+          "sub": "Derrière, le podium bascule : | les États-Unis dépassent le Japon | et deviennent le deuxième marché mondial."
         },
         {
-          "type": "blip",
-          "at": "line:2",
-          "offset": 0.2,
-          "gain": 0.6,
-          "args": {
-            "f0": 880,
-            "f1": 520
-          }
+          "tts": "Leurs installations progressent de douze pour cent.",
+          "sub": "Leurs installations progressent de 12 %."
         }
       ]
     },
     {
-      "id": "ranking",
-      "chapter": "03 · Le classement",
-      "music": 0.8,
-      "lead": 0.6,
-      "gap": 0.45,
+      "id": "labour",
+      "chapter": "03 · Une chance à saisir",
+      "music": 0.55,
+      "lead": 0.7,
+      "gap": 0.5,
       "tail": 1.2,
-      "lines": [
-        {
-          "tts": "Dans ce classement, le fossé donne le vertige : | la Chine installe neuf fois plus de robots | que les États-Unis.",
-          "sub": "Dans ce classement, le fossé donne le vertige : | la Chine installe neuf fois plus de robots | que les États-Unis."
-        },
-        {
-          "tts": "Quatrième, la Corée du Sud. | Cinquième, l'Allemagne, premier marché européen.",
-          "sub": "Quatrième, la Corée du Sud. | Cinquième, l'Allemagne, premier marché européen."
-        },
-        {
-          "tts": "Elle concentre à elle seule quarante et un pour cent | des installations de l'Union européenne.",
-          "sub": "Elle concentre à elle seule 41 % | des installations de l'Union européenne."
-        },
-        {
-          "tts": "Sixième, l'Inde, | avec une croissance de quinze pour cent.",
-          "sub": "Sixième, l'Inde, | avec une croissance de 15 %."
-        }
-      ],
       "sfx": [
         {
           "type": "whoosh",
@@ -350,71 +355,216 @@
           "offset": -0.25
         },
         {
-          "type": "tick",
-          "at": "scene",
-          "offset": 0.4,
+          "type": "blip",
+          "at": "sub:1:1",
+          "offset": 0.0,
           "repeat": 6,
-          "every": 0.12,
-          "gain": 0.4
+          "every": 0.233,
+          "gain": 0.45,
+          "args": {
+            "f0": 700,
+            "f1": 420
+          }
         },
         {
-          "type": "tick",
-          "at": "sub:0:1",
-          "offset": 0.0,
-          "repeat": 9,
-          "every": 0.1,
-          "gain": 0.3,
+          "type": "clunk",
+          "at": "line:2",
+          "offset": 0.13,
+          "repeat": 6,
+          "every": 0.267,
+          "gain": 0.55
+        },
+        {
+          "type": "shimmer",
+          "at": "line:2",
+          "offset": 1.9,
+          "gain": 0.7
+        }
+      ],
+      "lines": [
+        {
+          "tts": "Et si cette vitesse était une chance ?",
+          "sub": "Et si cette vitesse était une chance ?"
+        },
+        {
+          "tts": "Le monde vieillit. | Dans bien des pays, les usines manquent de bras.",
+          "sub": "Le monde vieillit. | Dans bien des pays, les usines manquent de bras."
+        },
+        {
+          "tts": "Pour la fédération, la robotique est une réponse clé : | elle aide à continuer à produire.",
+          "sub": "Pour la fédération, la robotique est une réponse clé : | elle aide à continuer à produire."
+        }
+      ],
+      "params": {
+        "source": "IFR · tendances 2026 et communiqués du 24/09/2026"
+      }
+    },
+    {
+      "id": "hardtasks",
+      "chapter": "03 · Une chance à saisir",
+      "music": 0.7,
+      "lead": 0.6,
+      "gap": 0.5,
+      "tail": 1.1,
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": "scene",
+          "offset": -0.25
+        },
+        {
+          "type": "blip",
+          "at": "sub:0:0",
+          "offset": -0.1,
+          "gain": 0.5
+        },
+        {
+          "type": "servo",
+          "at": "sub:0:0",
+          "offset": 0.45,
           "args": {
-            "freq": 1800
+            "d": 0.5
+          },
+          "gain": 0.45
+        },
+        {
+          "type": "blip",
+          "at": "sub:0:1",
+          "offset": -0.1,
+          "gain": 0.5
+        },
+        {
+          "type": "servo",
+          "at": "sub:0:1",
+          "offset": 0.45,
+          "args": {
+            "d": 0.5,
+            "pitch": 1.1
+          },
+          "gain": 0.45
+        },
+        {
+          "type": "blip",
+          "at": "sub:0:2",
+          "offset": -0.1,
+          "gain": 0.5
+        },
+        {
+          "type": "servo",
+          "at": "sub:0:2",
+          "offset": 0.45,
+          "args": {
+            "d": 0.5,
+            "pitch": 1.2
+          },
+          "gain": 0.45
+        },
+        {
+          "type": "shimmer",
+          "at": "line:1",
+          "offset": 0.4,
+          "gain": 0.6
+        }
+      ],
+      "lines": [
+        {
+          "tts": "Les robots peuvent aussi se charger des tâches répétitives, | des tâches pénibles, | des tâches dangereuses, et réduire les accidents.",
+          "sub": "Les robots peuvent aussi se charger des tâches répétitives, | des tâches pénibles, | des tâches dangereuses, et réduire les accidents."
+        },
+        {
+          "tts": "Certains emplois disparaissent. | Mais d'autres métiers peuvent naître, selon la fédération. | Par exemple : contrôle, programmation, maintenance. | Encore faut-il y former les salariés.",
+          "sub": "Certains emplois disparaissent. | Mais d'autres métiers peuvent naître, selon la fédération. | Par exemple : contrôle, programmation, maintenance. | Encore faut-il y former les salariés."
+        }
+      ],
+      "params": {
+        "source": "Gihleb et al., 2022 · IFR, The Impact of Robots, 2026"
+      }
+    },
+    {
+      "id": "sectors",
+      "chapter": "03 · Une chance à saisir",
+      "music": 0.82,
+      "lead": 0.6,
+      "gap": 0.5,
+      "tail": 1.2,
+      "sfx": [
+        {
+          "type": "whoosh",
+          "at": "scene",
+          "offset": -0.25
+        },
+        {
+          "type": "blip",
+          "at": "match:productiv",
+          "offset": 0.0,
+          "gain": 0.55
+        },
+        {
+          "type": "blip",
+          "at": "match:compétitiv",
+          "offset": 0.0,
+          "gain": 0.55,
+          "args": {
+            "f0": 990,
+            "f1": 1480
           }
         },
         {
           "type": "blip",
-          "at": "line:1",
-          "offset": 0.1,
-          "gain": 0.5
+          "at": "match:agroalimentaire|alimentaire",
+          "offset": 0.0,
+          "gain": 0.55,
+          "args": {
+            "f0": 1100,
+            "f1": 1650
+          }
         },
         {
           "type": "blip",
-          "at": "sub:1:1",
-          "offset": 0.1,
-          "gain": 0.5
+          "at": "match:logistique",
+          "offset": 0.0,
+          "gain": 0.55,
+          "args": {
+            "f0": 1175,
+            "f1": 1760
+          }
         },
         {
           "type": "blip",
-          "at": "line:2",
-          "offset": 0.1,
-          "gain": 0.5
-        },
-        {
-          "type": "blip",
-          "at": "sub:3:1",
-          "offset": 0.1,
-          "gain": 0.5
+          "at": "match:santé|médical",
+          "offset": 0.0,
+          "gain": 0.55,
+          "args": {
+            "f0": 1320,
+            "f1": 1980
+          }
         }
-      ]
+      ],
+      "lines": [
+        {
+          "tts": "Côté économie, | les robots font progresser la productivité | et peuvent faire baisser les prix.",
+          "sub": "Côté économie, | les robots font progresser la productivité | et peuvent faire baisser les prix."
+        },
+        {
+          "tts": "La fédération y voit aussi un atout de compétitivité.",
+          "sub": "La fédération y voit aussi un atout de compétitivité."
+        },
+        {
+          "tts": "Aux États-Unis, les robots se multiplient | dans l'agroalimentaire, | la logistique, | le médical. | La relocalisation devrait les porter, selon la fédération.",
+          "sub": "Aux États-Unis, les robots se multiplient | dans l'agroalimentaire, | la logistique, | le médical. | La relocalisation devrait les porter, selon la fédération."
+        }
+      ],
+      "params": {
+        "source": "Graetz et Michaels, 2018 · IFR, 2026"
+      }
     },
     {
       "id": "forecast",
-      "chapter": "04 · Et demain ?",
-      "music": 0.9,
+      "chapter": "04 · Ce n’est qu’un début",
+      "music": 0.92,
       "lead": 0.6,
       "gap": 0.5,
       "tail": 1.4,
-      "lines": [
-        {
-          "tts": "Et la dynamique devrait se poursuivre.",
-          "sub": "Et la dynamique devrait se poursuivre."
-        },
-        {
-          "tts": "La fédération prévoit six cent cinquante-cinq mille installations | pour deux mille vingt-six, soit une progression de neuf pour cent.",
-          "sub": "La fédération prévoit 655 000 installations | pour 2026, soit une progression de 9 %."
-        },
-        {
-          "tts": "Puis huit cent six mille | en deux mille vingt-neuf.",
-          "sub": "Puis 806 000 | en 2029."
-        }
-      ],
       "sfx": [
         {
           "type": "whoosh",
@@ -442,25 +592,29 @@
           "offset": 0.9,
           "gain": 0.7
         }
+      ],
+      "lines": [
+        {
+          "tts": "Et ce n'est qu'un début.",
+          "sub": "Et ce n'est qu'un début."
+        },
+        {
+          "tts": "Prévision pour deux mille vingt-six : | six cent cinquante-cinque mille installations, | en hausse de neuf pour cent.",
+          "sub": "Prévision pour 2026 : | 655 000 installations, | en hausse de 9 %."
+        },
+        {
+          "tts": "Puis huit cent six mille attendues pour deux mille vingt-neuf : | un bond d'environ un tiers, en quatre ans à peine.",
+          "sub": "Puis 806 000 attendues pour 2029 : | un bond d'environ un tiers, en quatre ans à peine."
+        }
       ]
     },
     {
       "id": "outro",
       "chapter": "",
-      "music": 0.5,
+      "music": 0.6,
       "lead": 0.7,
       "gap": 0.55,
       "tail": 5.5,
-      "lines": [
-        {
-          "tts": "Aujourd'hui, cinque millions de robots. | En deux mille vingt-neuf, on en attend plus de huit cent mille nouveaux.",
-          "sub": "Aujourd'hui, 5 millions de robots. | En 2029, on en attend plus de 800 000 nouveaux."
-        },
-        {
-          "tts": "L'usine du futur n'est plus une idée : | elle tourne déjà. | Et, de plus en plus, en Chine.",
-          "sub": "L'usine du futur n'est plus une idée : | elle tourne déjà. | Et, de plus en plus, en Chine."
-        }
-      ],
       "sfx": [
         {
           "type": "whoosh",
@@ -495,7 +649,26 @@
           "offset": -4.7,
           "gain": 0.5
         }
-      ]
+      ],
+      "lines": [
+        {
+          "tts": "Aujourd'hui, cinque millions de robots. | En deux mille vingt-neuf, plus de huit cent mille installations prévues. | Le monde se robotise à une vitesse folle.",
+          "sub": "Aujourd'hui, 5 millions de robots. | En 2029, plus de 800 000 installations prévues. | Le monde se robotise à une vitesse folle."
+        },
+        {
+          "tts": "Bien accompagnée, cette révolution peut être une chance : | moins de tâches pénibles, de nouveaux métiers. | La vitesse, on ne la choisit pas. | La direction, si.",
+          "sub": "Bien accompagnée, cette révolution peut être une chance : | moins de tâches pénibles, de nouveaux métiers. | La vitesse, on ne la choisit pas. | La direction, si."
+        }
+      ],
+      "params": {
+        "head1": "Une chance,",
+        "head2": "si on l’accompagne.",
+        "sub1": "La vitesse ne se choisit pas.",
+        "sub2": "La direction, si.",
+        "card1": "LA GRANDE",
+        "card2": "ACCÉLÉRATION",
+        "card3": "Et pourquoi elle peut être une chance"
+      }
     }
   ]
 }
