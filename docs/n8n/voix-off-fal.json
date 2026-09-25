@@ -1,0 +1,502 @@
+{
+  "name": "Voix off fal : La grande accélération",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Voix off via fal (ElevenLabs Multilingual v2)\n\n1. **Préparer la voix off** : texte, voix, destinataire (à modifier ici).\n2. **Générer la voix off** : envoie la demande à la file d'attente fal.\n3. Boucle **Patienter → Vérifier l'avancement** toutes les 5 s, 5 min maximum.\n4. **Récupérer la voix générée**, **Télécharger le fichier audio**, joindre le minutage, **Envoyer par email**.\n\nPrérequis : credential Header Auth « Fal.ai » (`Authorization: Key <clé fal>`) et un credential Gmail OAuth2 à sélectionner sur le dernier nœud.",
+        "height": 300,
+        "width": 720,
+        "color": 5
+      },
+      "id": "dca141a9-3ab8-4791-9d27-2ab73a6b72cc",
+      "name": "Note : fonctionnement",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        -380
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "05602557-6c37-4577-bd9e-b598b121cd7e",
+      "name": "Lancer la génération",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "manual",
+        "includeOtherFields": false,
+        "options": {},
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e7411097-ea4e-4ba7-af1c-f502bf7f7e7e",
+              "name": "texte",
+              "type": "string",
+              "value": "Cinq millions.\n\nC'est le nombre de robots industriels qui travaillent, en ce moment, dans les usines de la planète.\n\nUn record. Et ça va très vite.\n\nCe chiffre, publié ce mois-ci, vient de la Fédération internationale de la robotique, dans son rapport annuel.\n\nEn un an, le parc mondial a encore grimpé de neuf pour cent.\n\nEn dix ans, il a triplé.\n\nAprès un plateau, les installations repartent de plus belle.\n\nEn deux mille vingt-cinq, nouveau record : plus de six cent mille robots, en hausse de onze pour cent, bien plus que prévu.\n\nSoit plus de mille six cents par jour, en moyenne. Plus d'un robot chaque minute.\n\n« L'automatisation industrielle progresse à grande vitesse », résume Jane Heffner, présidente de la fédération.\n\nL'Asie fonce, suivie des Amériques. L'Europe, elle, avance plus lentement.\n\nEn tête, et de loin : la Chine. Plus de trois cent cinquante mille nouveaux robots, un bond de vingt pour cent.\n\nCinquante-neuf pour cent du total mondial. Près de trois nouveaux robots sur cinq.\n\nDerrière, le podium bascule : les États-Unis dépassent le Japon et deviennent le deuxième marché mondial.\n\nLeurs installations progressent de douze pour cent.\n\nEt si cette vitesse était une chance ?\n\nLe monde vieillit. Dans bien des pays, les usines manquent de bras.\n\nPour la fédération, la robotique est une réponse clé : elle aide à continuer à produire.\n\nLes robots peuvent aussi se charger des tâches répétitives, des tâches pénibles, des tâches dangereuses, et réduire les accidents.\n\nCertains emplois disparaissent. Mais d'autres métiers peuvent naître, selon la fédération. Par exemple : contrôle, programmation, maintenance. Encore faut-il y former les salariés.\n\nCôté économie, les robots font progresser la productivité et peuvent faire baisser les prix.\n\nLa fédération y voit aussi un atout de compétitivité.\n\nAux États-Unis, les robots se multiplient dans l'agroalimentaire, la logistique, le médical. La relocalisation devrait les porter, selon la fédération.\n\nEt ce n'est qu'un début.\n\nPrévision pour deux mille vingt-six : six cent cinquante-cinq mille installations, en hausse de neuf pour cent.\n\nPuis huit cent six mille attendues pour deux mille vingt-neuf : un bond d'environ un tiers, en quatre ans à peine.\n\nAujourd'hui, cinq millions de robots. En deux mille vingt-neuf, plus de huit cent mille installations prévues. Le monde se robotise à une vitesse folle.\n\nBien accompagnée, cette révolution peut être une chance : moins de tâches pénibles, de nouveaux métiers. La vitesse, on ne la choisit pas. La direction, si."
+            },
+            {
+              "id": "e3e8a329-e63e-4d85-8472-36c49e4f4f96",
+              "name": "voix",
+              "type": "string",
+              "value": "Daniel"
+            },
+            {
+              "id": "3ab0fb4d-372d-4489-97fa-a587a9818740",
+              "name": "destinataire",
+              "type": "string",
+              "value": "ton.adresse@exemple.com"
+            }
+          ]
+        }
+      },
+      "id": "3ebf149c-e3af-4b55-a22a-a02f21849f29",
+      "name": "Préparer la voix off",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://queue.fal.run/fal-ai/elevenlabs/tts/multilingual-v2",
+        "options": {
+          "timeout": 30000
+        },
+        "method": "POST",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ text: $json.texte, voice: $json.voix, stability: 0.45, similarity_boost: 0.8, style: 0.15, speed: 1, timestamps: true }) }}"
+      },
+      "id": "c12868ab-fead-47e2-a749-ff3cea407769",
+      "name": "Générer la voix off",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        440,
+        0
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "onError": "continueErrorOutput",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "rSKsn9EgMcYLPdnL",
+          "name": "Fal.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 5,
+        "unit": "seconds"
+      },
+      "id": "588492bb-1a96-4655-b196-6ffd55d500d8",
+      "name": "Patienter 5 secondes",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        660,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Générer la voix off').first().json.status_url }}",
+        "options": {
+          "timeout": 30000
+        },
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      },
+      "id": "f875d105-0c4a-46bc-a88d-c41d0c6eaaea",
+      "name": "Vérifier l'avancement",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        0
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "onError": "continueRegularOutput",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "rSKsn9EgMcYLPdnL",
+          "name": "Fal.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {},
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "e3ce6334-2965-4513-88d1-7c33e4f5fd59",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "COMPLETED",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ]
+        },
+        "looseTypeValidation": true
+      },
+      "id": "184c0585-541b-4352-a755-150b38275f5a",
+      "name": "Voix prête ?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1100,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "options": {},
+        "conditions": {
+          "options": {
+            "version": 2,
+            "leftValue": "",
+            "caseSensitive": true,
+            "typeValidation": "loose"
+          },
+          "combinator": "and",
+          "conditions": [
+            {
+              "id": "0a021813-4ccc-47b1-bc05-290f29259a93",
+              "leftValue": "={{ $runIndex }}",
+              "rightValue": 60,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ]
+        },
+        "looseTypeValidation": true
+      },
+      "id": "a4a14e78-10a7-4fcf-8876-50f628457184",
+      "name": "Encore du temps ?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1320,
+        160
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $('Générer la voix off').first().json.response_url }}",
+        "options": {
+          "timeout": 30000
+        },
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth"
+      },
+      "id": "596a8e6e-b4c0-492a-9ecc-323bcf3da7d9",
+      "name": "Récupérer la voix générée",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1320,
+        -120
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "onError": "continueErrorOutput",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "rSKsn9EgMcYLPdnL",
+          "name": "Fal.ai"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.audio.url }}",
+        "options": {
+          "timeout": 120000,
+          "response": {
+            "response": {
+              "responseFormat": "file",
+              "outputPropertyName": "voix"
+            }
+          }
+        }
+      },
+      "id": "a82cfcb3-f985-4a8b-ad1b-24d994dce777",
+      "name": "Télécharger le fichier audio",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1540,
+        -120
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 3000,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Le résultat fal contient l'URL de l'audio et, avec timestamps: true, le minutage de chaque mot.\n// On le joint en fichier JSON à côté de l'audio : il sert à caler la vidéo au mot près.\nconst resultat = $('Récupérer la voix générée').first().json;\nconst item = $input.first();\nconst minutage = JSON.stringify(resultat, null, 2);\nitem.binary = item.binary || {};\nitem.binary.minutage = await this.helpers.prepareBinaryData(\n  Buffer.from(minutage, 'utf8'),\n  'minutage-voix-off.json',\n  'application/json'\n);\nitem.json = {\n  audio_url: resultat.audio?.url,\n  taille_octets: resultat.audio?.file_size ?? null,\n  mots_horodates: Array.isArray(resultat.timestamps) ? resultat.timestamps.length : null\n};\nreturn [item];"
+      },
+      "id": "ab272f29-bae1-4003-b6a6-b34f672c29b5",
+      "name": "Joindre le minutage des mots",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1760,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Préparer la voix off').first().json.destinataire }}",
+        "subject": "Voix off prête : La grande accélération",
+        "emailType": "text",
+        "message": "=Bonjour,\n\nLa voix off de « La grande accélération » est prête (ElevenLabs Multilingual v2, voix {{ $('Préparer la voix off').first().json.voix }}).\n\nEn pièces jointes :\n- l'audio de la voix off ;\n- minutage-voix-off.json : la réponse complète de fal, avec le minutage de chaque mot.\n\nLien direct fal : {{ $json.audio_url }}\n",
+        "options": {
+          "appendAttribution": false,
+          "attachmentsUi": {
+            "attachmentsBinary": [
+              {
+                "property": "voix"
+              },
+              {
+                "property": "minutage"
+              }
+            ]
+          }
+        }
+      },
+      "id": "91d90128-addf-4e25-aceb-d1167a63fb1b",
+      "name": "Envoyer la voix par email",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1980,
+        -120
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "errorMessage": "={{ 'fal a refusé la demande : ' + ($json.error?.message || JSON.stringify($json.error || $json)) }}"
+      },
+      "id": "c036f8d4-b57f-48e5-b5a6-a070a148d0df",
+      "name": "Échec de l'appel fal",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        660,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "errorMessage": "La voix n'est pas prête après 5 minutes : vérifier la file d'attente fal."
+      },
+      "id": "bd757327-0c14-4a6c-ae12-b8331e521428",
+      "name": "Délai dépassé",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        260
+      ]
+    },
+    {
+      "parameters": {
+        "errorMessage": "={{ 'La génération a échoué : ' + ($json.error?.message || JSON.stringify($json.error || $json)) }}"
+      },
+      "id": "c8ce2876-c228-4227-b573-fc525baf37f0",
+      "name": "Échec de la génération",
+      "type": "n8n-nodes-base.stopAndError",
+      "typeVersion": 1,
+      "position": [
+        1540,
+        60
+      ]
+    }
+  ],
+  "connections": {
+    "Lancer la génération": {
+      "main": [
+        [
+          {
+            "node": "Préparer la voix off",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Préparer la voix off": {
+      "main": [
+        [
+          {
+            "node": "Générer la voix off",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Générer la voix off": {
+      "main": [
+        [
+          {
+            "node": "Patienter 5 secondes",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Échec de l'appel fal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Patienter 5 secondes": {
+      "main": [
+        [
+          {
+            "node": "Vérifier l'avancement",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Vérifier l'avancement": {
+      "main": [
+        [
+          {
+            "node": "Voix prête ?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Voix prête ?": {
+      "main": [
+        [
+          {
+            "node": "Récupérer la voix générée",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Encore du temps ?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Encore du temps ?": {
+      "main": [
+        [
+          {
+            "node": "Patienter 5 secondes",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Délai dépassé",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Récupérer la voix générée": {
+      "main": [
+        [
+          {
+            "node": "Télécharger le fichier audio",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Échec de la génération",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Télécharger le fichier audio": {
+      "main": [
+        [
+          {
+            "node": "Joindre le minutage des mots",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Échec de la génération",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Joindre le minutage des mots": {
+      "main": [
+        [
+          {
+            "node": "Envoyer la voix par email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Paris"
+  },
+  "pinData": {}
+}
