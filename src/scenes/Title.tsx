@@ -33,7 +33,10 @@ export const Title: React.FC<{ duration: number }> = ({ duration }) => {
   const PICK = [1545, BY - 26] as const;
   const DROP = [1790, BY - 26] as const;
   // Deux cycles de prise et de dépose, cadence soutenue : le rythme de l'usine.
-  const pose = poseAt(f, [
+  // Horloge du bras : les deux cycles (252 images) se compriment si la scène est plus courte.
+  const K = Math.min(1, (duration - 16) / 252);
+  const fa = f / K;
+  const pose = poseAt(fa, [
     { f: 0, s: -8, e: 150, w: 30, g: 1 },
     { f: 23, ...ik(PICK[0], PICK[1] - 90, BX, BY, SC, 1) },
     { f: 35, ...ik(PICK[0], PICK[1], BX, BY, SC, 1) },
@@ -52,8 +55,8 @@ export const Title: React.FC<{ duration: number }> = ({ duration }) => {
     { f: 230, ...ik(DROP[0], DROP[1] - 54, BX, BY, SC, 1) },
     { f: 252, ...ik(DROP[0] - 150, DROP[1] - 230, BX, BY, SC, 1) },
   ]);
-  const holding = (f > 44 && f < 113) || (f > 170 && f < 230);
-  const box2In = prog(f, 96, 14, ease.out);
+  const holding = (fa > 44 && fa < 113) || (fa > 170 && fa < 230);
+  const box2In = prog(fa, 96, 14, ease.out);
   return (
     <AbsoluteFill style={exit}>
       <svg width={1920} height={1080} style={{ position: "absolute" }}>
@@ -69,10 +72,10 @@ export const Title: React.FC<{ duration: number }> = ({ duration }) => {
             payload={holding ? <rect x={-26} y={-26} width={52} height={52} rx={6} fill={C.cyan} opacity={0.95} /> : undefined}
           />
         </g>
-        {f <= 44 && <rect x={PICK[0] - 26} y={PICK[1] - 26} width={52} height={52} rx={6} fill={C.cyan} opacity={0.95} />}
-        {f > 96 && f <= 170 && <rect x={PICK[0] - 26 - (1 - box2In) * 120} y={PICK[1] - 26} width={52} height={52} rx={6} fill={C.cyan} opacity={0.95 * box2In} />}
-        {f >= 113 && <rect x={DROP[0] - 26} y={DROP[1] - 26} width={52} height={52} rx={6} fill={C.cyan} opacity={0.95} />}
-        {f >= 230 && <rect x={DROP[0] - 26} y={DROP[1] - 80} width={52} height={52} rx={6} fill={C.cyan} opacity={0.95} />}
+        {fa <= 44 && <rect x={PICK[0] - 26} y={PICK[1] - 26} width={52} height={52} rx={6} fill={C.cyan} opacity={0.95} />}
+        {fa > 96 && fa <= 170 && <rect x={PICK[0] - 26 - (1 - box2In) * 120} y={PICK[1] - 26} width={52} height={52} rx={6} fill={C.cyan} opacity={0.95 * box2In} />}
+        {fa >= 113 && <rect x={DROP[0] - 26} y={DROP[1] - 26} width={52} height={52} rx={6} fill={C.cyan} opacity={0.95} />}
+        {fa >= 230 && <rect x={DROP[0] - 26} y={DROP[1] - 80} width={52} height={52} rx={6} fill={C.cyan} opacity={0.95} />}
       </svg>
       <div style={{ position: "absolute", left: 140, top: 250 }}>
         <Reveal at={2} dur={18}>

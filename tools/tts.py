@@ -6,6 +6,9 @@ Sorties : public/audio/voice/<hash>.wav   (une réplique par fichier, en cache)
           public/audio/voice.wav          (piste voix complète, placée sur la timeline)
           src/data/timeline.json          (images de début/fin de chaque scène, réplique, sous-titre)
 
+Si le script contient "voice_file", les répliques viennent d'une voix enregistrée, découpée au
+préalable par tools/voice_import.py (<lines_dir>/NN.wav, 48 kHz) : Kokoro n'est alors pas utilisé.
+
 Dans le script, "tts" est le texte prononcé (nombres en toutes lettres) et "sub" le texte
 affiché. Le caractère "|" découpe une réplique en blocs de sous-titres ; "tts" et "sub"
 doivent contenir le même nombre de blocs.
@@ -102,8 +105,16 @@ def main() -> None:
 
     from kokoro_onnx.tokenizer import Tokenizer
 
+    global SR
     tok = Tokenizer()
-    kokoro = load_kokoro()
+    ext = spec.get("voice_file")
+    if ext:
+        SR = 48000
+        ext_dir = ROOT / ext.get("lines_dir", "public/audio/voice_ext")
+        kokoro = None
+    else:
+        kokoro = load_kokoro()
+    n_line = 0
 
     def f(sec: float) -> int:
         return int(round(sec * fps))
@@ -123,7 +134,12 @@ def main() -> None:
             if len(tts_chunks) != len(sub_chunks):
                 sys.exit(f"[{scene['id']}#{li}] {len(tts_chunks)} blocs tts / {len(sub_chunks)} blocs sub")
             text = " ".join(tts_chunks)
-            audio = synth(kokoro, text, voice, line.get("speed", scene.get("speed", base_speed)))
+            if ext:
+                audio, sr = sf.read(ext_dir / f"{n_line:02d}.wav", dtype="float32")
+                assert sr == SR, f"{ext_dir}/{n_line:02d}.wav : {sr} Hz"
+            else:
+                audio = synth(kokoro, text, voice, line.get("speed", scene.get("speed", base_speed)))
+            n_line += 1
             dur = len(audio) / SR
 
             # Coupes des sous-titres : proportionnelles au nombre de phonèmes, calées sur un silence proche.

@@ -5,7 +5,7 @@
   "start_pad": 0.0,
   "end_pad": 0.0,
   "music_level": 0.5,
-  "music_under_voice": 0.14,
+  "music_under_voice": 0.16,
   "sfx_level": 0.42,
   "scenes": [
     {
@@ -13,8 +13,8 @@
       "chapter": "",
       "music": 0.35,
       "lead": 2.4,
-      "gap": 0.45,
-      "tail": 0.7,
+      "gap": 0.3,
+      "tail": 0.5,
       "sfx": [
         {
           "type": "tick",
@@ -70,8 +70,8 @@
       "id": "title",
       "chapter": "",
       "music": 0.5,
-      "lead": 0.9,
-      "tail": 1.3,
+      "lead": 0.6,
+      "tail": 1.0,
       "sfx": [
         {
           "type": "whoosh",
@@ -103,9 +103,9 @@
       "id": "stock",
       "chapter": "01 · Tout s’accélère",
       "music": 0.6,
-      "lead": 0.8,
-      "gap": 0.5,
-      "tail": 1.3,
+      "lead": 0.5,
+      "gap": 0.3,
+      "tail": 0.9,
       "sfx": [
         {
           "type": "whoosh",
@@ -158,9 +158,9 @@
       "id": "installs",
       "chapter": "01 · Tout s’accélère",
       "music": 0.7,
-      "lead": 0.6,
-      "gap": 0.45,
-      "tail": 1.0,
+      "lead": 0.4,
+      "gap": 0.3,
+      "tail": 0.7,
       "sfx": [
         {
           "type": "whoosh",
@@ -218,9 +218,9 @@
       "id": "quote",
       "chapter": "02 · Partout sur la planète",
       "music": 0.45,
-      "lead": 0.7,
-      "gap": 0.6,
-      "tail": 1.2,
+      "lead": 0.5,
+      "gap": 0.45,
+      "tail": 0.8,
       "sfx": [
         {
           "type": "whoosh",
@@ -250,9 +250,9 @@
       "id": "china",
       "chapter": "02 · Partout sur la planète",
       "music": 0.7,
-      "lead": 0.6,
-      "gap": 0.45,
-      "tail": 1.1,
+      "lead": 0.4,
+      "gap": 0.3,
+      "tail": 0.8,
       "sfx": [
         {
           "type": "whoosh",
@@ -300,9 +300,9 @@
       "id": "usajapan",
       "chapter": "02 · Partout sur la planète",
       "music": 0.72,
-      "lead": 0.6,
-      "gap": 0.45,
-      "tail": 1.0,
+      "lead": 0.4,
+      "gap": 0.3,
+      "tail": 0.7,
       "sfx": [
         {
           "type": "whoosh",
@@ -346,9 +346,9 @@
       "id": "labour",
       "chapter": "03 · Une chance à saisir",
       "music": 0.55,
-      "lead": 0.7,
-      "gap": 0.5,
-      "tail": 1.2,
+      "lead": 0.5,
+      "gap": 0.4,
+      "tail": 0.8,
       "sfx": [
         {
           "type": "whoosh",
@@ -404,9 +404,9 @@
       "id": "hardtasks",
       "chapter": "03 · Une chance à saisir",
       "music": 0.7,
-      "lead": 0.6,
-      "gap": 0.5,
-      "tail": 1.1,
+      "lead": 0.4,
+      "gap": 0.35,
+      "tail": 0.8,
       "sfx": [
         {
           "type": "whoosh",
@@ -485,9 +485,9 @@
       "id": "sectors",
       "chapter": "03 · Une chance à saisir",
       "music": 0.82,
-      "lead": 0.6,
-      "gap": 0.5,
-      "tail": 1.2,
+      "lead": 0.4,
+      "gap": 0.3,
+      "tail": 0.9,
       "sfx": [
         {
           "type": "whoosh",
@@ -563,9 +563,9 @@
       "id": "forecast",
       "chapter": "04 · Ce n’est qu’un début",
       "music": 0.92,
-      "lead": 0.6,
-      "gap": 0.5,
-      "tail": 1.4,
+      "lead": 0.4,
+      "gap": 0.35,
+      "tail": 1.1,
       "sfx": [
         {
           "type": "whoosh",
@@ -613,9 +613,9 @@
       "id": "outro",
       "chapter": "",
       "music": 0.6,
-      "lead": 0.7,
-      "gap": 0.55,
-      "tail": 5.5,
+      "lead": 0.5,
+      "gap": 0.4,
+      "tail": 5.2,
       "sfx": [
         {
           "type": "whoosh",
@@ -669,7 +669,7 @@
         "card1": "LA GRANDE",
         "card2": "ACCÉLÉRATION",
         "card3": "Et pourquoi elle peut être une chance",
-        "credits": "Animation générée par du code (Remotion) · voix de synthèse Kokoro · musique ElevenLabs Music via fal"
+        "credits": "Animation générée par du code (Remotion) · voix ElevenLabs Multilingual v2 et musique ElevenLabs Music, via fal"
       }
     }
   ],
@@ -678,19 +678,64 @@
     "source": "ElevenLabs Music via fal (fal-ai/elevenlabs/music), docs/fal/musique-elevenlabs-music.json",
     "edits": [
       {
-        "from": 3.1727,
-        "to": 26.1718,
+        "from": 4.2061,
+        "to": 76.3536,
         "at": 0.0
       },
       {
-        "from": 30.5355,
-        "to": 180.08,
-        "at": 22.9991
+        "from": 82.8991,
+        "to": 95.99,
+        "at": 72.1476
+      },
+      {
+        "from": 98.1718,
+        "to": 130.8991,
+        "at": 85.2385
+      },
+      {
+        "from": 133.0809,
+        "to": 180.0879,
+        "at": 117.9658
       }
     ],
     "xfade": 0.02,
     "fade_in": 0.25,
     "fade_out": 1.5,
-    "gain_db": -0.5
+    "gain_db": -0.5,
+    "bpm": 110,
+    "beats_per_bar": 4,
+    "first_downbeat": 0.0,
+    "seam_before": 0.01,
+    "anchors": [
+      {
+        "bar": 7,
+        "scene": "title"
+      },
+      {
+        "bar": 40,
+        "scene": "labour"
+      },
+      {
+        "bar": 56,
+        "scene": "sectors",
+        "offset": 0.4
+      },
+      {
+        "bar": 72,
+        "scene": "outro",
+        "offset": 0.4
+      }
+    ]
+  },
+  "voice_file": {
+    "path": "assets/audio/voix-elevenlabs-fal.mp3",
+    "text": "docs/fal/voix-elevenlabs-multilingual-v2.json",
+    "source": "ElevenLabs Multilingual v2 via fal (workflow docs/n8n/voix-off-fal.json)",
+    "tempo": 1.08,
+    "pause_keep": 0.12,
+    "pause_ratio": 0.35,
+    "pause_max": 0.4,
+    "silence_db": -40.0,
+    "lines_dir": "public/audio/voice_ext"
   }
 }

@@ -7,3 +7,4 @@ public/audio/*.wav
 *.log
 .DS_Store
 __pycache__/
+public/audio/voice_ext/

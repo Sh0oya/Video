@@ -33,8 +33,9 @@ ROOT = Path(__file__).resolve().parent.parent
 SR = 48000
 
 
-def process_voice(v: np.ndarray) -> np.ndarray:
-    v = resample_poly(v, 2, 1)
+def process_voice(v: np.ndarray, vsr: int = 24000) -> np.ndarray:
+    if vsr != SR:
+        v = resample_poly(v, SR, vsr)
     v = sosfilt(butter(2, 75, "high", fs=SR, output="sos"), v)
     # Présence : léger relief autour de 2,5-5 kHz, chaleur vers 180 Hz.
     pres = sosfilt(butter(2, [2500, 5000], "band", fs=SR, output="sos"), v)
@@ -142,8 +143,7 @@ def main() -> None:
     n = int(total * SR)
 
     voice, vsr = sf.read(ROOT / "public" / "audio" / "voice.wav", dtype="float64")
-    assert vsr == 24000
-    voice = process_voice(voice)[:n]
+    voice = process_voice(voice, vsr)[:n]
     voice = np.pad(voice, (0, n - len(voice)))
 
     if spec.get("music_file"):
