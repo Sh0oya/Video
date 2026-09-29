@@ -1,6 +1,6 @@
 # La grande accélération : 5 millions de robots
 
-Vidéo explicative en français (1920×1080, 30 i/s, environ 2 min 46), tirée du communiqué de l'IFR du 24 septembre 2026 : [« Five Million Robots Now Operate in Factories Globally »](https://ifr.org/ifr-press-releases/news/five-million-robots-now-operate-in-factories-globally) (rapport *World Robotics 2026*).
+Vidéo explicative en français (1920×1080, 30 i/s, environ 2 min 37), tirée du communiqué de l'IFR du 24 septembre 2026 : [« Five Million Robots Now Operate in Factories Globally »](https://ifr.org/ifr-press-releases/news/five-million-robots-now-operate-in-factories-globally) (rapport *World Robotics 2026*).
 
 Le fil conducteur : le monde se robotise à une vitesse folle, et cette accélération peut être une chance si elle est accompagnée. La vidéo suit quatre chapitres :
 
@@ -14,13 +14,13 @@ L'image et les bruitages sont produits par du code, sans banque d'images ni de s
 | Élément | Outil |
 |---|---|
 | Animation, graphiques, carte en points, bras robotisé, pictogrammes | [Remotion](https://www.remotion.dev) (React + TypeScript, SVG) |
-| Voix off | ElevenLabs Multilingual v2 via fal (workflow n8n `docs/n8n/voix-off-fal.json`), découpée en répliques, pauses resserrées et débit +8 % par `tools/voice_import.py`. Repli : [Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M), voix `ff_siwis` |
+| Voix off | ElevenLabs Eleven v4 Turbo via fal (workflow n8n `docs/n8n/voix-off-fal-v4.json`), découpée en répliques et pauses resserrées par `tools/voice_import.py`. Repli : [Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M), voix `ff_siwis` |
 | Musique | ElevenLabs Music via fal (`fal-ai/elevenlabs/music`, requête dans `docs/fal/musique-elevenlabs-music.json`), remontée sur la timeline par `tools/mix.py` (coupes à la mesure, champ `music_file` du script). Repli : synthèse numpy/scipy (`tools/music.py`) |
 | Bruitages | Synthèse procédurale (`tools/sfx.py`) |
 | Mixage | Ducking de la musique sous la voix, creux de 5 dB sur 1-4 kHz pendant la parole, limiteur, normalisation EBU R128 à -14 LUFS (`tools/mix.py`) |
 | Carte du monde | `world-atlas` + `d3-geo`, pré-calculée en points (`tools/build-map.mjs`) |
 
-La vidéo finale est dans `video/cinq-millions-de-robots.mp4` (2 min 46, 1080p, 43 Mo), avec ses sous-titres `video/cinq-millions-de-robots.srt` et une miniature `video/miniature.jpg`. Les sous-titres sont aussi incrustés dans l'image.
+La vidéo finale est dans `video/cinq-millions-de-robots.mp4` (2 min 37, 1080p, 42 Mo), avec ses sous-titres `video/cinq-millions-de-robots.srt` et une miniature `video/miniature.jpg`. Les sous-titres sont aussi incrustés dans l'image.
 
 ## Contenu
 

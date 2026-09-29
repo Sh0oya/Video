@@ -206,14 +206,14 @@ def main() -> None:
     sf.write(raw, mix.T.astype(np.float32), SR, subtype="FLOAT")
 
     out = ROOT / "public" / "audio" / "mix.wav"
-    # Normalisation EBU R128 en deux passes : -14 LUFS intégrés, crête vraie -1,5 dBTP.
+    # Normalisation EBU R128 en deux passes : -14 LUFS intégrés, crête vraie -2 dBTP.
     p = subprocess.run(
-        ["ffmpeg", "-hide_banner", "-nostats", "-i", str(raw), "-af", "loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"],
+        ["ffmpeg", "-hide_banner", "-nostats", "-i", str(raw), "-af", "loudnorm=I=-14:TP=-2:LRA=11:print_format=json", "-f", "null", "-"],
         capture_output=True, text=True,
     )
     js = json.loads(p.stderr[p.stderr.rfind("{") : p.stderr.rfind("}") + 1])
     af = (
-        f"loudnorm=I=-14:TP=-1.5:LRA=11:measured_I={js['input_i']}:measured_TP={js['input_tp']}:"
+        f"loudnorm=I=-14:TP=-2:LRA=11:measured_I={js['input_i']}:measured_TP={js['input_tp']}:"
         f"measured_LRA={js['input_lra']}:measured_thresh={js['input_thresh']}:offset={js['target_offset']}:linear=true"
     )
     subprocess.run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", str(raw), "-af", af, "-ar", str(SR), str(out)], check=True)
