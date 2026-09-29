@@ -16,6 +16,7 @@ Configuration dans script/narration.json :
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -141,6 +142,8 @@ def main() -> None:
     spec = json.loads((ROOT / "script" / "narration.json").read_text(encoding="utf-8"))
     cfg = spec["voice_file"]
     texts = json.loads((ROOT / cfg["text"]).read_text(encoding="utf-8"))["text"].split("\n\n")
+    # Les balises d'expression ElevenLabs ([excited]...) ne sont pas prononcées : on les retire.
+    texts = [re.sub(r"\[[^\]]*\]\s*", "", t).strip() for t in texts]
     n_lines = sum(len(s["lines"]) for s in spec["scenes"])
     if len(texts) != n_lines:
         sys.exit(f"{len(texts)} paragraphes dans {cfg['text']} pour {n_lines} répliques dans le script")
