@@ -4,6 +4,7 @@
 Configuration dans script/narration.json :
   "voice_file": {"path": "assets/audio/voix.mp3", "text": "docs/fal/voix.json",
                  "tempo": 1.06, "pause_keep": 0.12, "pause_ratio": 0.35, "pause_max": 0.4,
+                 "boundary_min": 0.2,
                  "lines_dir": "public/audio/voice_ext"}
 
 1. Repère les silences du fichier, puis choisit, parmi eux, les N-1 frontières entre répliques :
@@ -160,7 +161,7 @@ def main() -> None:
 
     tok = Tokenizer()
     ph = np.array([max(1, len(tok.phonemize(t, "fr-fr").replace(" ", ""))) for t in texts], dtype=float)
-    sil = silences(db, thresh, 0.2)
+    sil = silences(db, thresh, cfg.get("boundary_min", 0.2))
     picks = choose_boundaries(sil, speech_before, ph, total_speech)
     cuts = [0] + [int((sil[j][0] + sil[j][1]) / 2) for j in picks] + [len(db)]
 

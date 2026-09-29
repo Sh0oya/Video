@@ -33,9 +33,25 @@ ROOT = Path(__file__).resolve().parent.parent
 SR = 48000
 
 
+def speech_rms_db(v: np.ndarray) -> float:
+    """Niveau moyen de la parole (fenêtres de 50 ms à moins de 35 dB sous la plus forte)."""
+    w = int(0.05 * SR)
+    n = len(v) // w
+    r = np.sqrt(np.mean(v[: n * w].reshape(n, w) ** 2, axis=1) + 1e-12)
+    a = r[r > r.max() * 10 ** (-35 / 20)]
+    return float(20 * np.log10(np.sqrt(np.mean(a**2)) + 1e-12))
+
+
+# Niveau de parole visé après traitement : celui de la voix Kokoro, sur lequel l'équilibre
+# voix / musique a été réglé. Toute voix (Kokoro, ElevenLabs...) y est ramenée.
+VOICE_TARGET_DB = -17.6
+
+
 def process_voice(v: np.ndarray, vsr: int = 24000) -> np.ndarray:
     if vsr != SR:
         v = resample_poly(v, SR, vsr)
+    # Niveau d'entrée homogène, pour que le compresseur travaille pareil quelle que soit la source.
+    v = v * 10 ** ((-18 - speech_rms_db(v)) / 20)
     v = sosfilt(butter(2, 75, "high", fs=SR, output="sos"), v)
     # Présence : léger relief autour de 2,5-5 kHz, chaleur vers 180 Hz.
     pres = sosfilt(butter(2, [2500, 5000], "band", fs=SR, output="sos"), v)
@@ -50,7 +66,11 @@ def process_voice(v: np.ndarray, vsr: int = 24000) -> np.ndarray:
     gain = 10 ** (-(over * (1 - 1 / 3)) / 20)
     gain = np.convolve(gain, np.ones(240) / 240, "same")
     v = v * gain
-    return v / (np.max(np.abs(v)) + 1e-9) * 0.7
+    v = v * 10 ** ((VOICE_TARGET_DB - speech_rms_db(v)) / 20)
+    # Crêtes rares au-dessus de 0,9 : écrêtage doux plutôt que de baisser toute la voix.
+    over = np.abs(v) > 0.9
+    v[over] = np.sign(v[over]) * (0.9 + 0.1 * np.tanh((np.abs(v[over]) - 0.9) / 0.1))
+    return v
 
 
 def duck_envelope(timeline: dict, n: int, low: float, high: float) -> np.ndarray:

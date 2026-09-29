@@ -1,54 +1,54 @@
 {
  "fps": 30,
- "durationInFrames": 4978,
+ "durationInFrames": 4720,
  "scenes": [
   {
    "id": "coldopen",
    "from": 0,
-   "duration": 332,
+   "duration": 330,
    "lines": [
     {
      "from": 72,
-     "to": 94,
+     "to": 99,
      "subs": [
       {
        "text": "5 millions.",
        "from": 72,
-       "to": 94
+       "to": 99
       }
      ],
      "key": "l0"
     },
     {
-     "from": 103,
-     "to": 251,
+     "from": 108,
+     "to": 245,
      "subs": [
       {
        "text": "C’est le nombre de robots industriels",
-       "from": 103,
-       "to": 174
+       "from": 108,
+       "to": 162
       },
       {
        "text": "qui travaillent, en ce moment,",
-       "from": 174,
-       "to": 199
+       "from": 162,
+       "to": 203
       },
       {
        "text": "dans les usines de la planète.",
-       "from": 199,
-       "to": 251
+       "from": 203,
+       "to": 245
       }
      ],
      "key": "l1"
     },
     {
-     "from": 260,
-     "to": 317,
+     "from": 254,
+     "to": 315,
      "subs": [
       {
        "text": "Un record. Et ça va très vite.",
-       "from": 260,
-       "to": 317
+       "from": 254,
+       "to": 315
       }
      ],
      "key": "l2"
@@ -57,27 +57,27 @@
   },
   {
    "id": "title",
-   "from": 332,
-   "duration": 232,
+   "from": 330,
+   "duration": 216,
    "lines": [
     {
-     "from": 350,
-     "to": 534,
+     "from": 348,
+     "to": 516,
      "subs": [
       {
        "text": "Ce chiffre, publié ce mois-ci,",
-       "from": 350,
-       "to": 406
+       "from": 348,
+       "to": 400
       },
       {
        "text": "vient de la Fédération internationale de la robotique,",
-       "from": 406,
-       "to": 496
+       "from": 400,
+       "to": 480
       },
       {
        "text": "dans son rapport annuel.",
-       "from": 496,
-       "to": 534
+       "from": 480,
+       "to": 516
       }
      ],
      "key": "l0"
@@ -86,39 +86,39 @@
   },
   {
    "id": "stock",
-   "from": 564,
-   "duration": 196,
+   "from": 546,
+   "duration": 195,
    "lines": [
     {
-     "from": 579,
-     "to": 680,
+     "from": 561,
+     "to": 658,
      "subs": [
       {
        "text": "En un an, le parc mondial",
-       "from": 579,
-       "to": 627
+       "from": 561,
+       "to": 607
       },
       {
        "text": "a encore grimpé de 9 %.",
-       "from": 627,
-       "to": 680
+       "from": 607,
+       "to": 658
       }
      ],
      "key": "l0"
     },
     {
-     "from": 689,
-     "to": 733,
+     "from": 667,
+     "to": 714,
      "subs": [
       {
        "text": "En dix ans,",
-       "from": 689,
-       "to": 709
+       "from": 667,
+       "to": 688
       },
       {
        "text": "il a triplé.",
-       "from": 709,
-       "to": 733
+       "from": 688,
+       "to": 714
       }
      ],
      "key": "l1"
@@ -127,61 +127,61 @@
   },
   {
    "id": "installs",
-   "from": 760,
-   "duration": 483,
+   "from": 741,
+   "duration": 471,
    "lines": [
     {
-     "from": 772,
-     "to": 872,
+     "from": 753,
+     "to": 841,
      "subs": [
       {
        "text": "Après un plateau,",
-       "from": 772,
-       "to": 803
+       "from": 753,
+       "to": 784
       },
       {
        "text": "les installations repartent de plus belle.",
-       "from": 803,
-       "to": 872
+       "from": 784,
+       "to": 841
       }
      ],
      "key": "l0"
     },
     {
-     "from": 881,
-     "to": 1078,
+     "from": 850,
+     "to": 1044,
      "subs": [
       {
        "text": "En 2025, nouveau record :",
-       "from": 881,
-       "to": 951
+       "from": 850,
+       "to": 912
       },
       {
        "text": "plus de 600 000 robots,",
-       "from": 951,
-       "to": 998
+       "from": 912,
+       "to": 958
       },
       {
        "text": "en hausse de 11 %, bien plus que prévu.",
-       "from": 998,
-       "to": 1078
+       "from": 958,
+       "to": 1044
       }
      ],
      "key": "l1"
     },
     {
-     "from": 1087,
-     "to": 1222,
+     "from": 1053,
+     "to": 1191,
      "subs": [
       {
        "text": "Soit plus de 1 600 par jour, en moyenne.",
-       "from": 1087,
-       "to": 1175
+       "from": 1053,
+       "to": 1137
       },
       {
        "text": "Plus d’un robot chaque minute.",
-       "from": 1175,
-       "to": 1222
+       "from": 1137,
+       "to": 1191
       }
      ],
      "key": "l2"
@@ -190,49 +190,49 @@
   },
   {
    "id": "quote",
-   "from": 1243,
-   "duration": 381,
+   "from": 1212,
+   "duration": 344,
    "lines": [
     {
-     "from": 1258,
-     "to": 1452,
+     "from": 1227,
+     "to": 1394,
      "subs": [
       {
        "text": "« L’automatisation industrielle progresse à grande vitesse »,",
-       "from": 1258,
-       "to": 1366
+       "from": 1227,
+       "to": 1314
       },
       {
        "text": "résume Jane Heffner,",
-       "from": 1366,
-       "to": 1407
+       "from": 1314,
+       "to": 1352
       },
       {
        "text": "présidente de la fédération.",
-       "from": 1407,
-       "to": 1452
+       "from": 1352,
+       "to": 1394
       }
      ],
      "key": "l0"
     },
     {
-     "from": 1466,
-     "to": 1600,
+     "from": 1408,
+     "to": 1532,
      "subs": [
       {
        "text": "L’Asie fonce,",
-       "from": 1466,
-       "to": 1493
+       "from": 1408,
+       "to": 1437
       },
       {
        "text": "suivie des Amériques.",
-       "from": 1493,
-       "to": 1531
+       "from": 1437,
+       "to": 1467
       },
       {
        "text": "L’Europe, elle, avance plus lentement.",
-       "from": 1531,
-       "to": 1600
+       "from": 1467,
+       "to": 1532
       }
      ],
      "key": "l1"
@@ -241,44 +241,44 @@
   },
   {
    "id": "china",
-   "from": 1624,
-   "duration": 348,
+   "from": 1556,
+   "duration": 361,
    "lines": [
     {
-     "from": 1636,
-     "to": 1814,
+     "from": 1568,
+     "to": 1748,
      "subs": [
       {
        "text": "En tête, et de loin : la Chine.",
-       "from": 1636,
-       "to": 1676
+       "from": 1568,
+       "to": 1628
       },
       {
        "text": "Plus de 350 000 nouveaux robots,",
-       "from": 1676,
-       "to": 1773
+       "from": 1628,
+       "to": 1703
       },
       {
        "text": "un bond de 20 %.",
-       "from": 1773,
-       "to": 1814
+       "from": 1703,
+       "to": 1748
       }
      ],
      "key": "l0"
     },
     {
-     "from": 1823,
-     "to": 1948,
+     "from": 1757,
+     "to": 1893,
      "subs": [
       {
        "text": "59 % du total mondial.",
-       "from": 1823,
-       "to": 1889
+       "from": 1757,
+       "to": 1832
       },
       {
        "text": "Près de trois nouveaux robots sur cinq.",
-       "from": 1889,
-       "to": 1948
+       "from": 1832,
+       "to": 1893
       }
      ],
      "key": "l1"
@@ -287,39 +287,39 @@
   },
   {
    "id": "usajapan",
-   "from": 1972,
-   "duration": 311,
+   "from": 1917,
+   "duration": 277,
    "lines": [
     {
-     "from": 1984,
-     "to": 2170,
+     "from": 1929,
+     "to": 2097,
      "subs": [
       {
        "text": "Derrière, le podium bascule :",
-       "from": 1984,
-       "to": 2042
+       "from": 1929,
+       "to": 1984
       },
       {
        "text": "les États-Unis dépassent le Japon",
-       "from": 2042,
-       "to": 2099
+       "from": 1984,
+       "to": 2035
       },
       {
        "text": "et deviennent le deuxième marché mondial.",
-       "from": 2099,
-       "to": 2170
+       "from": 2035,
+       "to": 2097
       }
      ],
      "key": "l0"
     },
     {
-     "from": 2179,
-     "to": 2262,
+     "from": 2106,
+     "to": 2173,
      "subs": [
       {
        "text": "Leurs installations progressent de 12 %.",
-       "from": 2179,
-       "to": 2262
+       "from": 2106,
+       "to": 2173
       }
      ],
      "key": "l1"
@@ -328,51 +328,51 @@
   },
   {
    "id": "labour",
-   "from": 2283,
-   "duration": 396,
+   "from": 2194,
+   "duration": 366,
    "lines": [
     {
-     "from": 2298,
-     "to": 2359,
+     "from": 2209,
+     "to": 2276,
      "subs": [
       {
        "text": "Et si cette vitesse était une chance ?",
-       "from": 2298,
-       "to": 2359
+       "from": 2209,
+       "to": 2276
       }
      ],
      "key": "l0"
     },
     {
-     "from": 2371,
-     "to": 2491,
+     "from": 2288,
+     "to": 2388,
      "subs": [
       {
        "text": "Le monde vieillit.",
-       "from": 2371,
-       "to": 2411
+       "from": 2288,
+       "to": 2319
       },
       {
        "text": "Dans bien des pays, les usines manquent de bras.",
-       "from": 2411,
-       "to": 2491
+       "from": 2319,
+       "to": 2388
       }
      ],
      "key": "l1"
     },
     {
-     "from": 2503,
-     "to": 2655,
+     "from": 2400,
+     "to": 2536,
      "subs": [
       {
        "text": "Pour la fédération, la robotique est une réponse clé :",
-       "from": 2503,
-       "to": 2590
+       "from": 2400,
+       "to": 2485
       },
       {
        "text": "elle aide à continuer à produire.",
-       "from": 2590,
-       "to": 2655
+       "from": 2485,
+       "to": 2536
       }
      ],
      "key": "l2"
@@ -381,54 +381,54 @@
   },
   {
    "id": "hardtasks",
-   "from": 2679,
-   "duration": 561,
+   "from": 2560,
+   "duration": 515,
    "lines": [
     {
-     "from": 2691,
-     "to": 2898,
+     "from": 2572,
+     "to": 2763,
      "subs": [
       {
        "text": "Les robots peuvent aussi se charger des tâches répétitives,",
-       "from": 2691,
-       "to": 2785
+       "from": 2572,
+       "to": 2654
       },
       {
        "text": "des tâches pénibles,",
-       "from": 2785,
-       "to": 2822
+       "from": 2654,
+       "to": 2686
       },
       {
        "text": "des tâches dangereuses, et réduire les accidents.",
-       "from": 2822,
-       "to": 2898
+       "from": 2686,
+       "to": 2763
       }
      ],
      "key": "l0"
     },
     {
-     "from": 2908,
-     "to": 3216,
+     "from": 2774,
+     "to": 3051,
      "subs": [
       {
        "text": "Certains emplois disparaissent.",
-       "from": 2908,
-       "to": 2962
+       "from": 2774,
+       "to": 2820
       },
       {
        "text": "Mais d’autres métiers peuvent naître, selon la fédération.",
-       "from": 2962,
-       "to": 3063
+       "from": 2820,
+       "to": 2901
       },
       {
        "text": "Par exemple : contrôle, programmation, maintenance.",
-       "from": 3063,
-       "to": 3162
+       "from": 2901,
+       "to": 2996
       },
       {
        "text": "Encore faut-il y former les salariés.",
-       "from": 3162,
-       "to": 3216
+       "from": 2996,
+       "to": 3051
       }
      ],
      "key": "l1"
@@ -437,71 +437,71 @@
   },
   {
    "id": "sectors",
-   "from": 3240,
-   "duration": 566,
+   "from": 3075,
+   "duration": 517,
    "lines": [
     {
-     "from": 3252,
-     "to": 3394,
+     "from": 3087,
+     "to": 3220,
      "subs": [
       {
        "text": "Côté économie,",
-       "from": 3252,
-       "to": 3281
+       "from": 3087,
+       "to": 3113
       },
       {
        "text": "les robots font progresser la productivité",
-       "from": 3281,
-       "to": 3349
+       "from": 3113,
+       "to": 3178
       },
       {
        "text": "et peuvent faire baisser les prix.",
-       "from": 3349,
-       "to": 3394
+       "from": 3178,
+       "to": 3220
       }
      ],
      "key": "l0"
     },
     {
-     "from": 3403,
-     "to": 3502,
+     "from": 3229,
+     "to": 3315,
      "subs": [
       {
        "text": "La fédération y voit aussi un atout de compétitivité.",
-       "from": 3403,
-       "to": 3502
+       "from": 3229,
+       "to": 3315
       }
      ],
      "key": "l1"
     },
     {
-     "from": 3511,
-     "to": 3779,
+     "from": 3324,
+     "to": 3565,
      "subs": [
       {
        "text": "Aux États-Unis, les robots se multiplient",
-       "from": 3511,
-       "to": 3576
+       "from": 3324,
+       "to": 3382
       },
       {
        "text": "dans l’agroalimentaire,",
-       "from": 3576,
-       "to": 3615
+       "from": 3382,
+       "to": 3420
       },
       {
        "text": "la logistique,",
-       "from": 3615,
-       "to": 3643
+       "from": 3420,
+       "to": 3447
       },
       {
        "text": "le médical.",
-       "from": 3643,
-       "to": 3672
+       "from": 3447,
+       "to": 3474
       },
       {
        "text": "La relocalisation devrait les porter, selon la fédération.",
-       "from": 3672,
-       "to": 3779
+       "from": 3474,
+       "to": 3565
       }
      ],
      "key": "l2"
@@ -510,56 +510,56 @@
   },
   {
    "id": "forecast",
-   "from": 3806,
-   "duration": 454,
+   "from": 3592,
+   "duration": 440,
    "lines": [
     {
-     "from": 3818,
-     "to": 3846,
+     "from": 3604,
+     "to": 3638,
      "subs": [
       {
        "text": "Et ce n’est qu’un début.",
-       "from": 3818,
-       "to": 3846
+       "from": 3604,
+       "to": 3638
       }
      ],
      "key": "l0"
     },
     {
-     "from": 3856,
-     "to": 4026,
+     "from": 3648,
+     "to": 3807,
      "subs": [
       {
        "text": "Prévision pour 2026 :",
-       "from": 3856,
-       "to": 3920
+       "from": 3648,
+       "to": 3697
       },
       {
        "text": "655 000 installations,",
-       "from": 3920,
-       "to": 3984
+       "from": 3697,
+       "to": 3769
       },
       {
        "text": "en hausse de 9 %.",
-       "from": 3984,
-       "to": 4026
+       "from": 3769,
+       "to": 3807
       }
      ],
      "key": "l1"
     },
     {
-     "from": 4036,
-     "to": 4227,
+     "from": 3817,
+     "to": 3999,
      "subs": [
       {
        "text": "Puis 806 000 attendues pour 2029 :",
-       "from": 4036,
-       "to": 4139
+       "from": 3817,
+       "to": 3910
       },
       {
        "text": "un bond d’environ un tiers, en quatre ans à peine.",
-       "from": 4139,
-       "to": 4227
+       "from": 3910,
+       "to": 3999
       }
      ],
      "key": "l2"
@@ -568,54 +568,54 @@
   },
   {
    "id": "outro",
-   "from": 4260,
-   "duration": 718,
+   "from": 4032,
+   "duration": 688,
    "lines": [
     {
-     "from": 4275,
-     "to": 4525,
+     "from": 4047,
+     "to": 4290,
      "subs": [
       {
        "text": "Aujourd’hui, 5 millions de robots.",
-       "from": 4275,
-       "to": 4340
+       "from": 4047,
+       "to": 4109
       },
       {
        "text": "En 2029, plus de 800 000 installations prévues.",
-       "from": 4340,
-       "to": 4444
+       "from": 4109,
+       "to": 4224
       },
       {
        "text": "Le monde se robotise à une vitesse folle.",
-       "from": 4444,
-       "to": 4525
+       "from": 4224,
+       "to": 4290
       }
      ],
      "key": "l0"
     },
     {
-     "from": 4537,
-     "to": 4822,
+     "from": 4302,
+     "to": 4564,
      "subs": [
       {
        "text": "Bien accompagnée, cette révolution peut être une chance :",
-       "from": 4537,
-       "to": 4635
+       "from": 4302,
+       "to": 4394
       },
       {
        "text": "moins de tâches pénibles, de nouveaux métiers.",
-       "from": 4635,
-       "to": 4718
+       "from": 4394,
+       "to": 4468
       },
       {
        "text": "La vitesse, on ne la choisit pas.",
-       "from": 4718,
-       "to": 4780
+       "from": 4468,
+       "to": 4525
       },
       {
        "text": "La direction, si.",
-       "from": 4780,
-       "to": 4822
+       "from": 4525,
+       "to": 4564
       }
      ],
      "key": "l1"

@@ -669,7 +669,7 @@
         "card1": "LA GRANDE",
         "card2": "ACCÉLÉRATION",
         "card3": "Et pourquoi elle peut être une chance",
-        "credits": "Animation générée par du code (Remotion) · voix ElevenLabs Multilingual v2 et musique ElevenLabs Music, via fal"
+        "credits": "Animation générée par du code (Remotion) · voix ElevenLabs Eleven v4 Turbo et musique ElevenLabs Music, via fal"
       }
     }
   ],
@@ -678,24 +678,24 @@
     "source": "ElevenLabs Music via fal (fal-ai/elevenlabs/music), docs/fal/musique-elevenlabs-music.json",
     "edits": [
       {
-        "from": 4.2061,
-        "to": 76.3536,
+        "from": 4.2727,
+        "to": 65.4445,
         "at": 0.0
       },
       {
-        "from": 82.8991,
-        "to": 95.99,
-        "at": 72.1476
+        "from": 76.3536,
+        "to": 89.4445,
+        "at": 61.1718
       },
       {
-        "from": 98.1718,
+        "from": 93.8082,
         "to": 130.8991,
-        "at": 85.2385
+        "at": 74.2627
       },
       {
         "from": 133.0809,
         "to": 180.0879,
-        "at": 117.9658
+        "at": 111.3536
       }
     ],
     "xfade": 0.02,
@@ -728,14 +728,15 @@
     ]
   },
   "voice_file": {
-    "path": "assets/audio/voix-elevenlabs-fal.mp3",
-    "text": "docs/fal/voix-elevenlabs-multilingual-v2.json",
-    "source": "ElevenLabs Multilingual v2 via fal (workflow docs/n8n/voix-off-fal.json)",
-    "tempo": 1.08,
+    "path": "assets/audio/voix-elevenlabs-v4-fal.mp3",
+    "text": "docs/fal/voix-elevenlabs-v4-turbo.json",
+    "source": "ElevenLabs Eleven v4 Turbo via fal (workflow docs/n8n/voix-off-fal-v4.json)",
+    "tempo": 1.0,
     "pause_keep": 0.12,
     "pause_ratio": 0.35,
     "pause_max": 0.4,
     "silence_db": -40.0,
-    "lines_dir": "public/audio/voice_ext"
+    "lines_dir": "public/audio/voice_ext",
+    "boundary_min": 0.1
   }
 }
